@@ -1,4 +1,4 @@
-# Recipe App
+# larder
 
 Recipe App lets you add recipes to your recipebook (maybe by category)
 and create a Pantry of the current stock of ingredients you have.
@@ -40,8 +40,21 @@ tracked item)
 - Recommended recipes you can currently make (or can almost make)
 - Favorite sections
 
+## Follow
+
+- Users can follow/unfollow other users
+- when following a user can see their recipes marked as their favorite
+
 ## Stretch Goals - Future Ideas
 
 - Search my recipes by ingredient
 - Recipes can be public/private to allow ability to share/modify recipes with other users
 - comment/add notes to recipes
+
+# Routes
+
+## Backend
+
+**/api**
+
+## Frontend
