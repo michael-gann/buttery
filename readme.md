@@ -7,7 +7,7 @@ exist they can create their own igredient item for their recipe.
 
 ## DB Schema
 
-![buttery db schema](https://i.imgur.com/EKop3qT.png)
+![buttery db schema](https://i.imgur.com/kdGlheD.png)
 
 ## User Auth
 
