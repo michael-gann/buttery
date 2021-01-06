@@ -16,9 +16,9 @@ class User(db.Model, UserMixin):
                            server_onupdate=db.func.now())
 
     recipes = db.relationship("Recipe", back_populates="users")
-    cooking_lists = db.relationship("Cooking_List", back_populates="users")
+    cooking_lists = db.relationship("CookingList", back_populates="users")
     pantry_ingredients = db.relationship(
-        "Pantry_Ingredient", back_populates="users")
+        "PantryIngredient", back_populates="users")
 
     @property
     def password(self):

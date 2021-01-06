@@ -23,7 +23,7 @@ def upgrade():
                     sa.Column('recipe_id', sa.Integer(), nullable=False),
                     sa.Column('ingredient_id', sa.Integer(), nullable=False),
                     sa.Column('measurement_id', sa.Integer(), nullable=False),
-                    sa.Column('quantity', sa.Integer(), nullable=False),
+                    sa.Column('quantity', sa.Float(), nullable=False),
                     sa.Column('created_at', sa.DateTime(),
                               server_default=sa.text('now()'), nullable=True),
                     sa.Column('updated_at', sa.DateTime(),
