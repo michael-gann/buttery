@@ -1,4 +1,4 @@
-# larder
+# buttery
 
 Recipe App lets you add recipes to your recipebook (maybe by category)
 and create a Pantry of the current stock of ingredients you have.
