@@ -13,15 +13,11 @@ class Ingredient(db.Model):
                            server_onupdate=db.func.now())
 
     ingredient_types = db.relationship(
-        "Ingredient_Type", back_populates="ingredients")
+        "IngredientType", back_populates="ingredients")
     recipe_ingredients = db.relationship(
-        "Recipe_Ingredient", back_populates="ingredients")
+        "RecipeIngredient", back_populates="ingredients")
     pantry_ingredients = db.relationship(
-        "Pantry_Ingredient", back_populates="ingredients")
+        "PantryIngredient", back_populates="ingredients")
 
     def to_dict(self):
-        return {
-            "id": self.id,
-            "name": self.name,
-            "type_id": self.type_id
-        }
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}

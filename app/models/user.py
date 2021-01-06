@@ -16,9 +16,9 @@ class User(db.Model, UserMixin):
                            server_onupdate=db.func.now())
 
     recipes = db.relationship("Recipe", back_populates="users")
-    cooking_lists = db.relationship("Cooking_List", back_populates="users")
+    cooking_lists = db.relationship("CookingList", back_populates="users")
     pantry_ingredients = db.relationship(
-        "Pantry_Ingredient", back_populates="users")
+        "PantryIngredient", back_populates="users")
 
     @property
     def password(self):
@@ -32,8 +32,4 @@ class User(db.Model, UserMixin):
         return check_password_hash(self.password, password)
 
     def to_dict(self):
-        return {
-            "id": self.id,
-            "username": self.username,
-            "email": self.email
-        }
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}

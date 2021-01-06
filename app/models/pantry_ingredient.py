@@ -1,7 +1,7 @@
 from .db import db
 
 
-class Pantry_Ingredient(db.Model):
+class PantryIngredient(db.Model):
     __tablename__ = 'pantry_ingredients'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -23,10 +23,4 @@ class Pantry_Ingredient(db.Model):
         "Measurement", back_populates="pantry_ingredients")
 
     def to_dict(self):
-        return {
-            "id": self.id,
-            "user_id": self.user_id,
-            "ingredient_id": self.ingredient_id,
-            "measurement_id": self.measurement_id,
-            "quantity": self.quantity
-        }
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}

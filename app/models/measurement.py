@@ -11,12 +11,9 @@ class Measurement(db.Model):
                            server_onupdate=db.func.now())
 
     recipe_ingredients = db.relationship(
-        "Recipe_Ingredient", back_populates="measurements")
+        "RecipeIngredient", back_populates="measurements")
     pantry_ingredients = db.relationship(
-        "Pantry_Ingredient", back_populates="measurements")
+        "PantryIngredient", back_populates="measurements")
 
     def to_dict(self):
-        return {
-            "id": self.id,
-            "name": self.name,
-        }
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}

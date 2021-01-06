@@ -13,15 +13,10 @@ class Recipe(db.Model):
                            server_onupdate=db.func.now())
 
     users = db.relationship("User", back_populates="recipes")
-    recipe_steps = db.relationship("Recipe_Step", back_populates="recipes")
-    cooking_lists = db.relationship("Cooking_List", back_populates="recipes")
+    recipe_steps = db.relationship("RecipeStep", back_populates="recipes")
+    cooking_lists = db.relationship("CookingList", back_populates="recipes")
     recipe_ingredients = db.relationship(
-        "Recipe_Ingredient", back_populates="recipes")
+        "RecipeIngredient", back_populates="recipes")
 
     def to_dict(self):
-        return {
-            "id": self.id,
-            "user_id": self.user_id,
-            "name": self.name,
-            "content": self.content
-        }
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}

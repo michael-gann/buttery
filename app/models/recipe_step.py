@@ -1,7 +1,7 @@
 from .db import db
 
 
-class Recipe_Step(db.Model):
+class RecipeStep(db.Model):
     __tablename__ = 'recipe_steps'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -16,9 +16,4 @@ class Recipe_Step(db.Model):
     recipes = db.relationship("Recipe", back_populates="recipe_steps")
 
     def to_dict(self):
-        return {
-            "id": self.id,
-            "recipe_id": self.recipe_id,
-            "step_number": self.step_number,
-            "content": self.content
-        }
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
