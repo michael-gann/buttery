@@ -19,9 +19,4 @@ class Recipe(db.Model):
         "Recipe_Ingredient", back_populates="recipes")
 
     def to_dict(self):
-        return {
-            "id": self.id,
-            "user_id": self.user_id,
-            "name": self.name,
-            "content": self.content
-        }
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}

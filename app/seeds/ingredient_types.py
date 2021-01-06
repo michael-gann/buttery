@@ -1,20 +1,20 @@
-from app.models import db, Ingredient_Type
+from app.models import db, IngredientType
 
 # Adds a demo user, you can add other users here if you want
 
 
 def seed_ingredient_types():
 
-    demo = Ingredient_Type(name="Baking")
-    demo = Ingredient_Type(name="Spice")
-    demo = Ingredient_Type(name="Dairy")
-    demo = Ingredient_Type(name="Bread")
-    demo = Ingredient_Type(name="Refrigerated")
-    demo = Ingredient_Type(name="Refrigerated")
-    demo = Ingredient_Type(name="Refrigerated")
-    demo = Ingredient_Type(name="Refrigerated")
-    demo = Ingredient_Type(name="Refrigerated")
-    demo = Ingredient_Type(name="Refrigerated")
+    demo = IngredientType(name="Baking")
+    demo = IngredientType(name="Spice")
+    demo = IngredientType(name="Dairy")
+    demo = IngredientType(name="Bread")
+    demo = IngredientType(name="Refrigerated")
+    demo = IngredientType(name="Refrigerated")
+    demo = IngredientType(name="Refrigerated")
+    demo = IngredientType(name="Refrigerated")
+    demo = IngredientType(name="Refrigerated")
+    demo = IngredientType(name="Refrigerated")
 
     db.session.add(demo)
 

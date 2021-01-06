@@ -16,7 +16,4 @@ class Measurement(db.Model):
         "Pantry_Ingredient", back_populates="measurements")
 
     def to_dict(self):
-        return {
-            "id": self.id,
-            "name": self.name,
-        }
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}

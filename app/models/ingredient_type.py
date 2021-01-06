@@ -1,7 +1,7 @@
 from .db import db
 
 
-class Ingredient_Type(db.Model):
+class IngredientType(db.Model):
     __tablename__ = 'ingredient_types'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -14,7 +14,4 @@ class Ingredient_Type(db.Model):
         "Ingredient", back_populates="ingredient_types")
 
     def to_dict(self):
-        return {
-            "id": self.id,
-            "name": self.name,
-        }
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}

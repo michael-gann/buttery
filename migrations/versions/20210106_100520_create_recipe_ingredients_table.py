@@ -1,8 +1,8 @@
 """create_recipe_ingredients_table
 
-Revision ID: bb4bb5e1857e
-Revises: 5ec3d62ade65
-Create Date: 2021-01-05 20:33:57.959720
+Revision ID: 8f0a903d18dc
+Revises: 9ecdc8f598bb
+Create Date: 2021-01-06 10:05:20.710960
 
 """
 from alembic import op
@@ -10,8 +10,8 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'bb4bb5e1857e'
-down_revision = '5ec3d62ade65'
+revision = '8f0a903d18dc'
+down_revision = '9ecdc8f598bb'
 branch_labels = None
 depends_on = None
 

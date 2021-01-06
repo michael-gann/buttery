@@ -20,8 +20,4 @@ class Ingredient(db.Model):
         "Pantry_Ingredient", back_populates="ingredients")
 
     def to_dict(self):
-        return {
-            "id": self.id,
-            "name": self.name,
-            "type_id": self.type_id
-        }
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
