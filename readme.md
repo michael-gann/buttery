@@ -16,12 +16,14 @@ tracked item)
 ![buttery db schema](https://i.imgur.com/Hr4fM5k.png)
 
 ## User Auth
+
 Users can sign-up and login.
 
 - sign-up
 - login/logout
 
 ## Pantry
+
 A user can add ingredients to their pantry to reflect their current inventory of ingredients. Doing so enables the app to generate
 shopping lists and also recommend recipes to the user based on how close they are to already being able to make it with what they have in stock.
 
@@ -29,6 +31,7 @@ shopping lists and also recommend recipes to the user based on how close they ar
 - update pantry button (probably by category to keep organized ie. spices / baking / meat / etc.)
 
 ## Shopping List
+
 A user gets a shopping list based on recieps they add as "want to make". When added a dynamic list will appear allowing users to manually edit values
 or accept the values provided. There will be color indicators to let a user know if they already have an item but an added recipe will cause them to run out so they need to buy more. They can click "shopped" to have those ingredients updated in their pantry.
 
@@ -36,6 +39,7 @@ or accept the values provided. There will be color indicators to let a user know
 - state for shopping list (shopping / shopped)
 
 ## Recipes
+
 A user can add recipes to keep track of for easy reference and to get recomendations for what they can make based on the stock of their pantry.
 Users will get an indicator on a recipe for how close they are to being able to make a recipe. On the homepage recipes will be sorted in order of closest to make to unable to make.
 
