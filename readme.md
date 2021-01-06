@@ -1,6 +1,6 @@
 # buttery
 
-Recipe App lets you add recipes to your recipebook (maybe by category)
+buttery lets you add recipes to your recipebook (maybe by category)
 and create a Pantry of the current stock of ingredients you have.
 You can mark recipes as "want to make" and receive a shopping list of
 items needed based off of your pantry. You can then mark recipes as "post-shop"
