@@ -1,15 +1,9 @@
 # buttery
 
-buttery lets you add recipes to your recipebook (maybe by category)
-and create a Pantry of the current stock of ingredients you have.
-You can mark recipes as "want to make" and receive a shopping list of
-items needed based off of your pantry. You can then mark recipes as "post-shop"
-to update your Pantry and even mark them as "made" to update your pantry stock (maybe have
-some indicator when submitting that maybe you used more than an ingredient to update it before submitting).
+buttery lets you add recipes and create a pantry keep track of your pantry's ingredients. You can mark recipes as "want to make" and receive a shopping list of items needed based off of your pantry. You can then mark recipes as "post-shop" to update your Pantry and even mark them as "made" to update your pantry stock.
 
 Will have a list of defined ingredients/quantities/measurement-units users can select when adding recipes and if it doesn't
-exist they can create their own igredient item for their recipe (possible problems with stocking pantry if item name varies from already
-tracked item)
+exist they can create their own igredient item for their recipe.
 
 ## DB Schema
 
@@ -33,7 +27,7 @@ shopping lists and also recommend recipes to the user based on how close they ar
 ## Shopping List
 
 A user gets a shopping list based on recieps they add as "want to make". When added a dynamic list will appear allowing users to manually edit values
-or accept the values provided. There will be color indicators to let a user know if they already have an item but an added recipe will cause them to run out so they need to buy more. They can click "shopped" to have those ingredients updated in their pantry.
+or accept the values provided. There will be color indicators to let a user know if they already have an item but an added recipe will cause them to run out so they need to buy more. They can click "shopped" to have those ingredients updated in their pantry. 
 
 - create/update/delete items in easy to read list
 - state for shopping list (shopping / shopped)
@@ -50,10 +44,11 @@ Users will get an indicator on a recipe for how close they are to being able to 
 
 ## Stretch Goals - Future Ideas
 
-- Search my recipes by ingredient
-- Recipes can be public/private to allow ability to share/modify recipes with other users
+- Search recipes
+- Recipes can be public/private to allow ability to share/modify recipes with other users?
 - comment/add notes to recipes
 - (Favorite sections?)
+- recipe categories
 
 # Routes
 
