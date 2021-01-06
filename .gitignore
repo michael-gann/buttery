@@ -3,3 +3,4 @@ node_modules/
 .venv
 .eslintcache
 package-lock.json
+Pipfile.lock
