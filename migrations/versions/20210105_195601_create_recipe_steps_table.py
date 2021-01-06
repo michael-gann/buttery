@@ -23,8 +23,12 @@ def upgrade():
                     sa.Column('recipe_id', sa.Integer(), nullable=False),
                     sa.Column('step_number', sa.Integer(), nullable=False),
                     sa.Column('content', sa.String(), nullable=True),
+                    sa.Column('created_at', sa.DateTime(),
+                              server_default=sa.text('now()'), nullable=True),
+                    sa.Column('updated_at', sa.DateTime(),
+                              server_default=sa.text('now()'), nullable=True),
                     sa.ForeignKeyConstraint(['recipe_id'], ['recipes.id'], ),
-                    sa.PrimaryKeyConstraint('id')
+                    sa.PrimaryKeyConstraint('id'),
                     )
     # ### end Alembic commands ###
 

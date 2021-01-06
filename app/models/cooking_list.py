@@ -8,6 +8,9 @@ class Cooking_List(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     recipe_id = db.Column(db.Integer, db.ForeignKey(
         "recipes.id"), nullable=False)
+    created_at = db.Column(db.DateTime, server_default=db.func.now())
+    updated_at = db.Column(db.DateTime, server_default=db.func.now(),
+                           server_onupdate=db.func.now())
 
     users = db.relationship("User", back_populates="cooking_lists")
     recipes = db.relationship("Recipe", back_populates="cooking_lists")

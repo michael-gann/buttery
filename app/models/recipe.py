@@ -8,14 +8,15 @@ class Recipe(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     name = db.Column(db.String(100), nullable=False)
     content = db.Column(db.String)
+    created_at = db.Column(db.DateTime, server_default=db.func.now())
+    updated_at = db.Column(db.DateTime, server_default=db.func.now(),
+                           server_onupdate=db.func.now())
 
     users = db.relationship("User", back_populates="recipes")
     recipe_steps = db.relationship("Recipe_Step", back_populates="recipes")
     cooking_lists = db.relationship("Cooking_List", back_populates="recipes")
     recipe_ingredients = db.relationship(
         "Recipe_Ingredient", back_populates="recipes")
-    pantry_ingredients = db.relationship(
-        "Pantry_Ingredient", back_populates="recipes")
 
     def to_dict(self):
         return {
