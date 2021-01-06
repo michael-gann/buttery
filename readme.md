@@ -13,10 +13,7 @@ tracked item)
 
 ## DB Schema
 
-- Create table of item types/txt file of defined ingredients
-- Units of measurement/Quantity
-- Recipe body (one chunk or steps)
--
+![buttery db schema](https://i.imgur.com/Hr4fM5k.png)
 
 ## User Auth
 
@@ -33,17 +30,12 @@ tracked item)
 - create/update/delete items in easy to read list
 - state for shopping list (shopping / shopped)
 
-## Recipe Book
+## Recipes
 
 - Add new recipe
 - Mark recipe state (want-to-make / shopping / shopped / made) to update pantry/shopping list
 - Recommended recipes you can currently make (or can almost make)
-- Favorite sections
-
-## Follow
-
-- Users can follow/unfollow other users
-- when following a user can see their recipes marked as their favorite
+- (Favorite sections?)
 
 ## Stretch Goals - Future Ideas
 
@@ -57,4 +49,22 @@ tracked item)
 
 **/api**
 
+- /users
+- /users/id
+- /recipes
+- /recipes/id
+- /pantries/
+- /pantries/id
+- /ingredients
+- /measurements
+- /shopping-list
+- /shopping-list/id
+- /mark-shopped
+
 ## Frontend
+
+ - "/" Home
+ - "/pantry" Pantry
+ - "recipes" Recipes
+ - "recipe/id" One Recipe
+ - "shopping-list/id" Shopping List
