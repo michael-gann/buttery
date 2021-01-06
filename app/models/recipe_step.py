@@ -11,3 +11,11 @@ class Recipe_Step(db.Model):
     content = db.Column(db.String)
 
     recipes = db.relationship("Recipe", back_populates="recipe_steps")
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "recipe_id": self.recipe_id,
+            "step_number": self.step_number,
+            "content": self.content
+        }

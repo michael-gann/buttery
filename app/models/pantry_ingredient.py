@@ -18,3 +18,12 @@ class Pantry_Ingredient(db.Model):
         "Ingredient", back_populates="pantry_ingredients")
     measurements = db.relationship(
         "Measurement", back_populates="pantry_ingredients")
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "user_id": self.user_id,
+            "ingredient_id": self.ingredient_id,
+            "measurement_id": self.measurement_id,
+            "quantity": self.quantity
+        }

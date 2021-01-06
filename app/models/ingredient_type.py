@@ -9,3 +9,9 @@ class Ingredient_Type(db.Model):
 
     ingredients = db.relationship(
         "Ingredient", back_populates="ingredient_types")
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+        }

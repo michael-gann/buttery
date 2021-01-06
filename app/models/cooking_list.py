@@ -11,3 +11,10 @@ class Cooking_List(db.Model):
 
     users = db.relationship("User", back_populates="cooking_lists")
     recipes = db.relationship("Recipe", back_populates="cooking_lists")
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "user_id": self.user_id,
+            "recipe_id": self.recipe_id,
+        }
