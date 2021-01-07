@@ -64,24 +64,23 @@ Mostly RESTful endpoints for buttery. Data api endpoints are prepended with /api
 
 ### Recipe
 
-- ["GET", "POST"] /recipes
-- ["GET", "DELETE"] /recipes/id
+- ["GET", "POST"] /recipes *
+- ["GET", "DELETE"] /recipes/id *
 
 ### Pantry
 
-- ["GET"] /pantries/user-pantry
-- ["POST"] /pantries/add-to-pantry
-- ["GET"] /pantries/id
+- ["GET"] /pantries/user-pantry *
+- ["PUT"] /pantries/update-pantry *
 - ["POST"] /pantries/mark-shopped
 - ["POST"] /mark-cooked
 
 ### Ingredient
 
-- ["GET"] /ingredients
+- ["GET"] /ingredients *
 
 ### Measurement
 
-- ["GET"] /measurements
+- ["GET"] /measurements *
 
 ### Cooking List
 
