@@ -56,18 +56,36 @@ Users will get an indicator on a recipe for how close they are to being able to 
 
 **/api**
 
+# User
+
 - /users
 - /users/id
-- /recipes
-- /recipes/id
-- /pantries/
-- /pantries/id
-- /ingredients
-- /measurements
-- /shopping-list
-- /shopping-list/id
-- /mark-shopped
-- /mark-cooked
+
+# Recipe
+
+- ["GET", "POST"] /recipes
+- ["GET", "DELETE"] /recipes/id
+
+# Pantry
+
+- ["GET"] /pantries/user-pantry
+- ["POST"] /pantries/add-to-pantry
+- ["GET"] /pantries/id
+- ["POST"] pantries/mark-shopped
+- ["POST"] /mark-cooked
+
+# Ingredient
+
+- ["GET"] /ingredients
+
+# Measurement
+
+- ["GET"] /measurements
+
+# Cooking List
+
+- ["GET", "POST"] /shopping-list
+- ["GET"] /shopping-list/id
 
 ## Frontend
 
