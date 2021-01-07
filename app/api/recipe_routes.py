@@ -54,7 +54,7 @@ def recipe(id):
     return jsonify(recipe)
 
 
-@ recipe_routes.route("", methods=["POST"])  # submit a recipe to the db
+@recipe_routes.route("", methods=["POST"])  # commit a recipe to the db
 def post_recipes():
     # TODO: data validation
     form = RecipeForm()
