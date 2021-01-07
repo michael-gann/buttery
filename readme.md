@@ -67,6 +67,7 @@ Users will get an indicator on a recipe for how close they are to being able to 
 - /shopping-list
 - /shopping-list/id
 - /mark-shopped
+- /mark-cooked
 
 ## Frontend
 
