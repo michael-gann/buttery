@@ -51,6 +51,7 @@ Users will get an indicator on a recipe for how close they are to being able to 
 - recipe categories
 
 # Routes
+Mostly RESTful endpoints for buttery. Data api endpoints are prepended with /api and follow RESTful convention except where a more descriptive name is... well, more descriptive.
 
 ## Backend
 
@@ -71,7 +72,7 @@ Users will get an indicator on a recipe for how close they are to being able to 
 - ["GET"] /pantries/user-pantry
 - ["POST"] /pantries/add-to-pantry
 - ["GET"] /pantries/id
-- ["POST"] pantries/mark-shopped
+- ["POST"] /pantries/mark-shopped
 - ["POST"] /mark-cooked
 
 ### Ingredient
