@@ -89,7 +89,8 @@ Mostly RESTful endpoints for buttery. Data api endpoints are prepended with /api
 
 ## Frontend
 
- - "/" Home
+ - "/" Splash
+ - "/home" Home
  - "/pantry" Pantry
  - "recipes" Recipes
  - "recipe/id" One Recipe
