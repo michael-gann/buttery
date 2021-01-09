@@ -5,7 +5,7 @@ from app.models import Measurement, db
 measurement_routes = Blueprint('measurements', __name__)
 
 
-@measurement_routes.route("")
+@measurement_routes.route("/options")
 def measurements():
     measurements_query = db.session.query(Measurement).all()
 

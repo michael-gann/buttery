@@ -22,7 +22,7 @@ const RecipeIngredient = ({
       </button>
       {ingredientFields.map((field, idx) => {
         return (
-          <div key={`${field.idx}`}>
+          <div key={`${idx}`}>
             {`ingredient ${idx + 1}`}
             <Quantity
               idx={idx}
@@ -54,18 +54,6 @@ const RecipeIngredient = ({
           </div>
         );
       })}
-      <div>
-        {/* <Quantity></Quantity>
-      </div>
-      <div>
-        <MeasurementSelect
-          measurements={measurements}
-          setMeasurement={setMeasurement}
-        ></MeasurementSelect>
-      </div>
-      <div>
-        <Ingredient></Ingredient> */}
-      </div>
     </>
   );
 };

@@ -1,21 +1,19 @@
 import React from "react";
-
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { useSelector } from "react-redux";
 import RecipeName from "./RecipeFormComponents/RecipeName";
 import RecipeContent from "./RecipeFormComponents/RecipeContent";
 import RecipeStep from "./RecipeFormComponents/RecipeStep";
 import RecipeIngredient from "./RecipeFormComponents/RecipeIngredient";
 
-const RecipeForm = () => {
+const RecipeForm = ({ user }) => {
+  const ingredients = useSelector((state) => state.ingredients.ingredients);
+  const measurements = useSelector((state) => state.measurements.measurements);
   const [recipe, setRecipe] = useState("");
   const [recipeContent, setRecipeContent] = useState("");
   const [displayContent, setDisplayContent] = useState(false);
   const [recipeStep, setRecipeStep] = useState("");
   const [stepFields, setStepFields] = useState([]);
-  const [measurements, setMeasurements] = useState([]);
-  const [measurement, setMeasurement] = useState("");
-  const [ingredients, setIngredients] = useState([]);
-  const [ingredient, setIngredient] = useState("");
   const [recipeIngredient, setRecipeIngredient] = useState([]);
   const [ingredientFields, setIngredientFields] = useState([]);
 
@@ -33,11 +31,12 @@ const RecipeForm = () => {
         setIngredientFields(values);
         break;
       case "measurement":
-        console.log(val, inputVal);
+        console.log("VAL ------", val, "InputVal ---------", inputVal);
         val
           ? (values[idx] = {
               ...values[idx],
               measurement: val,
+              measurementInput: val.label,
             })
           : (values[idx] = {
               ...values[idx],
@@ -50,6 +49,7 @@ const RecipeForm = () => {
           ? (values[idx] = {
               ...values[idx],
               ingredient: val,
+              ingredientInput: val.label,
             })
           : (values[idx] = {
               ...values[idx],
@@ -71,11 +71,11 @@ const RecipeForm = () => {
   const handleRecipeIngredientAdd = () => {
     const values = [...ingredientFields];
     values.push({
-      qty: null,
-      measurement: null,
-      ingredient: null,
-      measurementInput: "cup",
-      ingredientInput: "buttter",
+      qty: 0,
+      measurement: { value: -1, label: "" },
+      ingredient: { value: -1, label: "" },
+      measurementInput: "",
+      ingredientInput: "",
     });
     setIngredientFields(values);
   };
@@ -92,26 +92,55 @@ const RecipeForm = () => {
     setIngredientFields(values);
   };
 
-  const handleSubmit = () => {};
+  const handleSubmit = () => {
+    let recipe_ingredients = {};
+    let recipe_steps = {};
 
-  const fetch_data = async () => {
-    const resMeasure = await fetch("/api/measurements");
-    const resMeasureData = await resMeasure.json();
-    setMeasurements(resMeasureData);
+    ingredientFields.forEach((ingredient, i) => {
+      // eslint-disable-next-line
+      for (const key in ingredient) {
+        recipe_ingredients[`ingredients-${i}-ingredient_id`] =
+          ingredient.ingredient.value;
+        recipe_ingredients[`ingredients-${i}-measurement_id`] =
+          ingredient.measurement.value;
+        recipe_ingredients[`ingredients-${i}-quantity`] = ingredient.qty;
+      }
+    });
 
-    const resIngredients = await fetch("/api/ingredients/options");
-    const resIngredientsData = await resIngredients.json();
-    setIngredients(resIngredientsData);
+    stepFields.forEach((step, s) => {
+      // eslint-disable-next-line
+      for (const key in step) {
+        recipe_steps[`steps-${s}-step_number`] = s + 1;
+        recipe_steps[`steps-${s}-content`] = step.value;
+      }
+    });
+
+    const form = new FormData();
+
+    form.set("user_id", user.id);
+    form.set("name", recipe);
+    form.set("content", recipeContent);
+
+    for (const key in recipe_ingredients) {
+      form.set(key, recipe_ingredients[key]);
+    }
+
+    for (const key in recipe_steps) {
+      form.set(key, recipe_steps[key]);
+    }
+
+    const submit_form = async () => {
+      const res = await fetch("/api/recipes", {
+        method: "POST",
+        headers: { "Content-Type": "multipart/form-data" },
+        body: form,
+      });
+
+      const resData = await res.json();
+      console.log(resData);
+    };
+    submit_form();
   };
-
-  useEffect(() => {
-    fetch_data();
-  }, []);
-
-  useEffect(() => {
-    // add submit form function here
-    // don't forget to add first recipeStep to fields state (shift?) when submitting steps
-  });
 
   return (
     <>
@@ -129,6 +158,18 @@ const RecipeForm = () => {
         ></RecipeContent>
       </div>
       <div>
+        <RecipeIngredient
+          recipeIngredient={recipeIngredient}
+          setRecipeIngredient={setRecipeIngredient}
+          measurements={measurements}
+          ingredients={ingredients}
+          handleRecipeIngredientChange={handleRecipeIngredientChange}
+          handleRecipeIngredientAdd={handleRecipeIngredientAdd}
+          handleRecipeIngredientRemove={handleRecipeIngredientRemove}
+          ingredientFields={ingredientFields}
+        ></RecipeIngredient>
+      </div>
+      <div>
         <RecipeStep
           stepFields={stepFields}
           handleAdd={handleAdd}
@@ -139,23 +180,7 @@ const RecipeForm = () => {
         ></RecipeStep>
       </div>
       <div>
-        <RecipeIngredient
-          recipeIngredient={recipeIngredient}
-          setRecipeIngredient={setRecipeIngredient}
-          measurements={measurements}
-          measurement={measurement}
-          setMeasurement={setMeasurement}
-          ingredients={ingredients}
-          ingredient={ingredient}
-          setIngredient={setIngredient}
-          handleRecipeIngredientChange={handleRecipeIngredientChange}
-          handleRecipeIngredientAdd={handleRecipeIngredientAdd}
-          handleRecipeIngredientRemove={handleRecipeIngredientRemove}
-          ingredientFields={ingredientFields}
-        ></RecipeIngredient>
-      </div>
-      <div>
-        <button onSubmit={handleSubmit}></button>
+        <button onClick={handleSubmit}>Submit</button>
       </div>
     </>
   );

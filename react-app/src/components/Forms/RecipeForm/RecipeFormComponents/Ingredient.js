@@ -17,13 +17,12 @@ const Ingredient = ({
   return (
     <>
       <Autocomplete
-        value={value.ingredient ? value.ingredient : ""}
+        value={value.ingredient}
         onChange={(e, newValue) => {
           handleRecipeIngredientChange(idx, e, type, newValue);
         }}
-        inputValue={ingredient}
+        inputValue={value.ingredientInput}
         onInputChange={(event, newInputValue) => {
-          setIngredient(newInputValue);
           handleRecipeIngredientChange(idx, event, type, null, newInputValue);
         }}
         id="ingredient-select"
