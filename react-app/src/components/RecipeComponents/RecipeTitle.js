@@ -1,9 +1,12 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
-const RecipeTitle = ({ title }) => {
+const RecipeTitle = ({ title, id }) => {
   return (
     <>
-      <div>{title}</div>
+      <NavLink to={`/recipes/${id}`} exact={true} activeClassName="active">
+        {title}
+      </NavLink>
     </>
   );
 };

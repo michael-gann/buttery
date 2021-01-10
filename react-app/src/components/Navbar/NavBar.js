@@ -1,6 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import LogoutButton from "./auth/LogoutButton";
+import LogoutButton from "../auth/LogoutButton";
+
+import "./navbar.css";
 
 const NavBar = ({ setAuthenticated, isAuthenticated }) => {
   return (
@@ -11,7 +13,7 @@ const NavBar = ({ setAuthenticated, isAuthenticated }) => {
             <img
               className="logo"
               alt="buttery-logo"
-              // src="/images/petsy-logo.svg"
+              src="/images/buttery-logo.svg"
             ></img>
           </NavLink>
         </div>
@@ -33,6 +35,8 @@ const NavBar = ({ setAuthenticated, isAuthenticated }) => {
                   Pantry
                 </NavLink>
               </div>
+            </div>
+            <div>
               <LogoutButton setAuthenticated={setAuthenticated}></LogoutButton>
             </div>
           </div>

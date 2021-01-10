@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
-import NavBar from "./components/NavBar";
+import NavBar from "./components/Navbar/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 // import UsersList from "./components/UsersList";
 // import User from "./components/User";
@@ -18,6 +18,7 @@ import Pantry from "./components/PantryPage/Pantry";
 
 import * as ingredientActions from "./store/ingredients";
 import * as measurementActions from "./store/measurements";
+import * as userActions from "./store/users";
 
 function App() {
   const dispatch = useDispatch();
@@ -37,6 +38,7 @@ function App() {
   }, []);
 
   useEffect(() => {
+    dispatch(userActions.user());
     dispatch(ingredientActions.ingredients());
     dispatch(measurementActions.measurements());
   }, [dispatch]);
@@ -75,7 +77,7 @@ function App() {
           <Home></Home>
         </ProtectedRoute>
         <ProtectedRoute
-          path="/recipe/:id>"
+          path="/recipes/:id"
           exact={true}
           authenticated={authenticated}
         >

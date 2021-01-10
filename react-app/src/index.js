@@ -5,14 +5,17 @@ import App from "./App";
 
 import { Provider } from "react-redux";
 import configureStore from "./store/rootReducer";
+import * as recipeActions from "./store/recipes";
 
 const store = configureStore();
 
+store.dispatch(recipeActions.getAllRecipes());
+
 ReactDOM.render(
-  <Provider store={store}>
-    <React.StrictMode>
+  <React.StrictMode>
+    <Provider store={store}>
       <App />
-    </React.StrictMode>
-  </Provider>,
+    </Provider>
+  </React.StrictMode>,
   document.getElementById("root")
 );

@@ -6,6 +6,7 @@ from wtforms import StringField, IntegerField, FieldList, FormField
 
 
 class RecipeForm(FlaskForm):
+    recipe_id = IntegerField('recipe_id')
     user_id = IntegerField('userId', validators=[DataRequired()])
     name = StringField('name', validators=[DataRequired()])
     content = StringField('content')

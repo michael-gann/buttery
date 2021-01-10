@@ -10,8 +10,8 @@ const Quantity = ({ value, handleRecipeIngredientChange, idx }) => {
       <label>
         Qty.
         <input
-          value={value.qty ? value.qty : ""}
-          type="integer"
+          value={value.qty}
+          type="number"
           onChange={(e) => handleRecipeIngredientChange(idx, e, type)}
         ></input>
       </label>

@@ -10,7 +10,6 @@ const MeasurementSelect = ({
   value,
   idx,
 }) => {
-  console.log("VALUE FROM MEASUREMENT", value);
   const type = {
     value: "measurement",
   };

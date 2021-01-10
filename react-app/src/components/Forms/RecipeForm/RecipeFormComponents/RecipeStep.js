@@ -1,13 +1,6 @@
 import React from "react";
 
-const RecipeStep = ({
-  handleAdd,
-  handleChange,
-  handleRemove,
-  stepFields,
-  recipeStep,
-  setRecipeStep,
-}) => {
+const RecipeStep = ({ handleAdd, handleChange, handleRemove, stepFields }) => {
   //   const onClick = (e) => {};
   return (
     <>

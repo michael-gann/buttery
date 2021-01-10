@@ -1,21 +1,73 @@
 import React from "react";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import RecipeName from "./RecipeFormComponents/RecipeName";
 import RecipeContent from "./RecipeFormComponents/RecipeContent";
 import RecipeStep from "./RecipeFormComponents/RecipeStep";
 import RecipeIngredient from "./RecipeFormComponents/RecipeIngredient";
 
-const RecipeForm = ({ user }) => {
+// import * as userActions from "../../../store/users";
+import * as recipeActions from "../../../store/recipes";
+
+const RecipeForm = ({ isEditing, recipeToEdit, handleEditRecipe }) => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const editingRecipe = useSelector((state) =>
+    state.recipes.recipes.find(
+      (recipe) => Object.keys(recipe)[0] === recipeToEdit
+    )
+  );
   const ingredients = useSelector((state) => state.ingredients.ingredients);
   const measurements = useSelector((state) => state.measurements.measurements);
-  const [recipe, setRecipe] = useState("");
-  const [recipeContent, setRecipeContent] = useState("");
+
+  // const { id } = useParams();
+  let editSteps = [];
+  let editIngredients = [];
+
+  const user = useSelector((state) => state.users.sessionUser);
+
+  if (isEditing) {
+    const steps = editingRecipe[`${recipeToEdit}`].steps;
+    const ingredients = editingRecipe[`${recipeToEdit}`].ingredients;
+
+    console.log("STEPS", steps);
+
+    steps.forEach((step, idx) => {
+      const editStep = {};
+      editStep["value"] = step.content;
+      editSteps.push(editStep);
+    });
+
+    ingredients.forEach((i) => {
+      const editIngredient = {};
+      editIngredient["qty"] = i.quantity;
+      editIngredient["measurement"] = {
+        value: i.measurement.id,
+        label: i.measurement.name,
+      };
+      editIngredient["ingredient"] = {
+        value: i.ingredient.id,
+        label: i.ingredient.name,
+      };
+      editIngredient["measurementInput"] = i.measurement.name;
+      editIngredient["ingredientInput"] = i.name;
+      editIngredients.push(editIngredient);
+    });
+  }
+
   const [displayContent, setDisplayContent] = useState(false);
-  const [recipeStep, setRecipeStep] = useState("");
-  const [stepFields, setStepFields] = useState([]);
-  const [recipeIngredient, setRecipeIngredient] = useState([]);
-  const [ingredientFields, setIngredientFields] = useState([]);
+  const [recipe, setRecipe] = useState(
+    isEditing ? editingRecipe[`${recipeToEdit}`].name : ""
+  );
+  const [recipeContent, setRecipeContent] = useState(
+    isEditing ? editingRecipe[`${recipeToEdit}`].content : ""
+  );
+  const [ingredientFields, setIngredientFields] = useState(
+    isEditing ? editIngredients : []
+  );
+  const [stepFields, setStepFields] = useState(isEditing ? editSteps : []);
 
   const handleChange = (i, event) => {
     const values = [...stepFields];
@@ -31,7 +83,6 @@ const RecipeForm = ({ user }) => {
         setIngredientFields(values);
         break;
       case "measurement":
-        console.log("VAL ------", val, "InputVal ---------", inputVal);
         val
           ? (values[idx] = {
               ...values[idx],
@@ -117,6 +168,10 @@ const RecipeForm = ({ user }) => {
 
     const form = new FormData();
 
+    if (isEditing) {
+      form.set("recipe_id", recipeToEdit);
+    }
+
     form.set("user_id", user.id);
     form.set("name", recipe);
     form.set("content", recipeContent);
@@ -129,18 +184,25 @@ const RecipeForm = ({ user }) => {
       form.set(key, recipe_steps[key]);
     }
 
-    const submit_form = async () => {
-      const res = await fetch("/api/recipes", {
-        method: "POST",
-        headers: { "Content-Type": "multipart/form-data" },
-        body: form,
-      });
+    // let newRecipeResponse;
 
-      const resData = await res.json();
-      console.log(resData);
+    const submit_form = () => {
+      if (isEditing) {
+        dispatch(recipeActions.editRecipe(form));
+        handleEditRecipe();
+      } else {
+        dispatch(recipeActions.addNewRecipe(form));
+      }
     };
+
     submit_form();
+
+    history.push("/recipes");
   };
+
+  // useEffect(() => {
+  //   if (!user) dispatch(userActions.user());
+  // }, [dispatch, user]);
 
   return (
     <>
@@ -159,8 +221,6 @@ const RecipeForm = ({ user }) => {
       </div>
       <div>
         <RecipeIngredient
-          recipeIngredient={recipeIngredient}
-          setRecipeIngredient={setRecipeIngredient}
           measurements={measurements}
           ingredients={ingredients}
           handleRecipeIngredientChange={handleRecipeIngredientChange}
@@ -175,8 +235,6 @@ const RecipeForm = ({ user }) => {
           handleAdd={handleAdd}
           handleChange={handleChange}
           handleRemove={handleRemove}
-          recipeStep={recipeStep}
-          setRecipeStep={setRecipeStep}
         ></RecipeStep>
       </div>
       <div>

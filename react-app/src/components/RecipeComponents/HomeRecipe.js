@@ -1,12 +1,16 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, shallowEqual } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import RecipeCard from "./RecipeCard";
 
 const HomeRecipe = () => {
-  const recipes = useSelector((state) => state.recipes.recipes);
   const history = useHistory();
+
+  const recipeIds = useSelector(
+    (state) => state.recipes.recipes.map((r) => Object.keys(r)[0]),
+    shallowEqual
+  );
 
   const handleClick = () => {
     return history.push(`/new-recipe`);
@@ -16,11 +20,11 @@ const HomeRecipe = () => {
     <>
       <button onClick={handleClick}>Add new recipe</button>
       <div className="home-recipecard-container">
-        {recipes &&
-          recipes.map((recipe) => {
+        {recipeIds &&
+          recipeIds.map((id) => {
             return (
-              <div key={recipe.id}>
-                <RecipeCard recipe={recipe} />
+              <div key={id}>
+                <RecipeCard id={id} />
               </div>
             );
           })}
