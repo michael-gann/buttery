@@ -1,0 +1,30 @@
+nav {
+    position: sticky;
+    top: 0;
+    background-color: transparent;
+    height: 75px;
+}
+
+.navbar-main-container {
+    display: flex;
+    justify-content: space-between;
+    background-color: #E2E7E3;
+    align-items: center;
+    background-color: #DAB781;
+    min-height: 75px;
+    width: 100%;
+}
+
+.links {
+    display: flex;
+    justify-content: space-around;
+    max-width: 300px;
+    width: auto;
+    min-width: 300px;
+    font-size: 1.25rem;
+}
+
+.links a {
+    color: #4B0908;
+
+}
