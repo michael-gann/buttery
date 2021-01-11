@@ -1,6 +1,6 @@
 import React from "react";
 
-const Quantity = ({ value, handleRecipeIngredientChange, idx }) => {
+const Quantity = ({ value, handleUpdateIngredient, idx }) => {
   const type = {
     value: "quantity",
   };
@@ -12,7 +12,7 @@ const Quantity = ({ value, handleRecipeIngredientChange, idx }) => {
         <input
           value={value.qty}
           type="number"
-          onChange={(e) => handleRecipeIngredientChange(idx, e, type)}
+          onChange={(e) => handleUpdateIngredient(idx, e, type)}
         ></input>
       </label>
     </>

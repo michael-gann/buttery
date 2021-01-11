@@ -72,7 +72,7 @@ const RecipeForm = ({ isEditing, recipeToEdit, handleEditRecipe }) => {
     setStepFields(values);
   };
 
-  const handleRecipeIngredientChange = (idx, event, type, val, inputVal) => {
+  const handleUpdateIngredient = (idx, event, type, val, inputVal) => {
     const values = [...ingredientFields];
     switch (type.value) {
       case "quantity":
@@ -214,7 +214,7 @@ const RecipeForm = ({ isEditing, recipeToEdit, handleEditRecipe }) => {
         <RecipeIngredient
           measurements={measurements}
           ingredients={ingredients}
-          handleRecipeIngredientChange={handleRecipeIngredientChange}
+          handleUpdateIngredient={handleUpdateIngredient}
           handleRecipeIngredientAdd={handleRecipeIngredientAdd}
           handleRecipeIngredientRemove={handleRecipeIngredientRemove}
           ingredientFields={ingredientFields}

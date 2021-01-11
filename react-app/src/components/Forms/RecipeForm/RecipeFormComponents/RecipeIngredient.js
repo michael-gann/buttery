@@ -5,14 +5,10 @@ import Ingredient from "./Ingredient";
 
 const RecipeIngredient = ({
   measurements,
-  measurement,
-  setMeasurement,
   ingredientFields,
   ingredients,
-  ingredient,
-  setIngredient,
   handleRecipeIngredientAdd,
-  handleRecipeIngredientChange,
+  handleUpdateIngredient,
   handleRecipeIngredientRemove,
 }) => {
   return (
@@ -27,23 +23,19 @@ const RecipeIngredient = ({
             <Quantity
               idx={idx}
               value={field}
-              handleRecipeIngredientChange={handleRecipeIngredientChange}
+              handleUpdateIngredient={handleUpdateIngredient}
             ></Quantity>
             <MeasurementSelect
-              handleRecipeIngredientChange={handleRecipeIngredientChange}
+              handleUpdateIngredient={handleUpdateIngredient}
               measurements={measurements}
-              measurement={measurement}
-              setMeasurement={setMeasurement}
               value={field}
               idx={idx}
             ></MeasurementSelect>
             <Ingredient
               ingredients={ingredients}
-              ingredient={ingredient}
-              setIngredient={setIngredient}
               value={field}
               idx={idx}
-              handleRecipeIngredientChange={handleRecipeIngredientChange}
+              handleUpdateIngredient={handleUpdateIngredient}
             ></Ingredient>
             <button
               type="button"

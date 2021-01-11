@@ -6,7 +6,7 @@ const MeasurementSelect = ({
   // measurement,
   // setMeasurement,
   measurements,
-  handleRecipeIngredientChange,
+  handleUpdateIngredient,
   value,
   idx,
 }) => {
@@ -18,11 +18,11 @@ const MeasurementSelect = ({
       <Autocomplete
         value={value.measurement}
         onChange={(e, newValue) => {
-          handleRecipeIngredientChange(idx, e, type, newValue);
+          handleUpdateIngredient(idx, e, type, newValue);
         }}
         inputValue={value.measurementInput}
         onInputChange={(event, newInputValue) => {
-          handleRecipeIngredientChange(idx, event, type, null, newInputValue);
+          handleUpdateIngredient(idx, event, type, null, newInputValue);
         }}
         id="measurement-select"
         getOptionLabel={(o) => o.label}

@@ -5,6 +5,7 @@ ol, li, dl, dt, dd, form, a, fieldset, input, th, td, button {
     border: 0;
     outline: none;
     box-sizing: border-box;
+    color: #4B0908;
 }
 
 a {
@@ -19,4 +20,14 @@ h1, h2, h3, h4, h5, h6 {
 ul, ol
 {
 list-style: none;
+}
+
+body, html {
+    background-color: #eef6f8;
+    font-family: 'Nunito', sans-serif;
+}
+
+#root {
+height: 100%;
+width: 100%;
 }

@@ -6,10 +6,9 @@ import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/Navbar/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
-// import UsersList from "./components/UsersList";
-// import User from "./components/User";
 import { authenticate } from "./services/auth";
 import RecipeForm from "./components/Forms/RecipeForm/RecipeForm";
+import PantryForm from "./components/Forms/PantryForm/PantryForm";
 import Home from "./components/Homepage/Home";
 import Splash from "./components/Splash";
 import Recipes from "./components/RecipesPage/Recipes";
@@ -54,10 +53,6 @@ function App() {
   if (!loaded) {
     return null;
   }
-
-  // <Route path="/test-form" exact={true}>
-  //         <RecipeForm></RecipeForm>
-  //       </Route>
 
   return (
     <BrowserRouter>
@@ -104,6 +99,13 @@ function App() {
           authenticated={authenticated}
         >
           <RecipeForm user={sessionUser} />
+        </ProtectedRoute>
+        <ProtectedRoute
+          path="/add-to-pantry"
+          exact={true}
+          authenticated={authenticated}
+        >
+          <PantryForm />
         </ProtectedRoute>
         <ProtectedRoute
           path="/recipes"

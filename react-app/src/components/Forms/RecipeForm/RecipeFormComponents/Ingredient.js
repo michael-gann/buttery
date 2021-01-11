@@ -3,14 +3,7 @@ import React from "react";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 
-const Ingredient = ({
-  value,
-  idx,
-  ingredients,
-  ingredient,
-  setIngredient,
-  handleRecipeIngredientChange,
-}) => {
+const Ingredient = ({ value, idx, ingredients, handleUpdateIngredient }) => {
   const type = {
     value: "ingredient",
   };
@@ -19,11 +12,11 @@ const Ingredient = ({
       <Autocomplete
         value={value.ingredient}
         onChange={(e, newValue) => {
-          handleRecipeIngredientChange(idx, e, type, newValue);
+          handleUpdateIngredient(idx, e, type, newValue);
         }}
         inputValue={value.ingredientInput}
         onInputChange={(event, newInputValue) => {
-          handleRecipeIngredientChange(idx, event, type, null, newInputValue);
+          handleUpdateIngredient(idx, event, type, null, newInputValue);
         }}
         id="ingredient-select"
         getOptionLabel={(o) => o.label}
