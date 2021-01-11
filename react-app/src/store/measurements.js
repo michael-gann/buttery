@@ -17,7 +17,7 @@ export const measurements = () => async (dispatch) => {
   return res;
 };
 
-const measurementsReducer = (state = { measurements: null }, action) => {
+const measurementsReducer = (state = { measurements: [] }, action) => {
   let newState;
   switch (action.type) {
     case GET_MEASUREMENTS:

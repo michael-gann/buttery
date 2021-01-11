@@ -17,7 +17,7 @@ export const ingredients = () => async (dispatch) => {
   return res;
 };
 
-const ingredientsReducer = (state = { ingredients: null }, action) => {
+const ingredientsReducer = (state = { ingredients: [] }, action) => {
   let newState;
   switch (action.type) {
     case GET_INGREDIENTS:

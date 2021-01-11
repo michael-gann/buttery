@@ -5,12 +5,16 @@ import ingredientsReducer from "./ingredients";
 import measurementsReducer from "./measurements";
 import recipesReducer from "./recipes";
 import usersReducer from "./users";
+import categoriesReducer from "./categories";
+import pantriesReducer from "./pantries";
 
 const rootReducer = combineReducers({
   ingredients: ingredientsReducer,
   measurements: measurementsReducer,
   recipes: recipesReducer,
   users: usersReducer,
+  categories: categoriesReducer,
+  pantries: pantriesReducer,
 });
 
 let enhancer;

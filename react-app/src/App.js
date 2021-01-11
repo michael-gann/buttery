@@ -19,6 +19,9 @@ import Pantry from "./components/PantryPage/Pantry";
 import * as ingredientActions from "./store/ingredients";
 import * as measurementActions from "./store/measurements";
 import * as userActions from "./store/users";
+import * as categoryActions from "./store/categories";
+import * as recipeActions from "./store/recipes";
+import * as pantryActions from "./store/pantries";
 
 function App() {
   const dispatch = useDispatch();
@@ -41,7 +44,12 @@ function App() {
     dispatch(userActions.user());
     dispatch(ingredientActions.ingredients());
     dispatch(measurementActions.measurements());
-  }, [dispatch]);
+    dispatch(categoryActions.categories());
+    if (sessionUser) {
+      dispatch(recipeActions.getAllRecipes(sessionUser.id));
+      dispatch(pantryActions.getUserPantryItems(sessionUser.id));
+    }
+  }, [dispatch, sessionUser]);
 
   if (!loaded) {
     return null;

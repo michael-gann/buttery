@@ -58,10 +58,10 @@ const editRecipeSuccess = (updatedRecipe) => {
   };
 };
 
-export const getAllRecipes = () => async (dispatch) => {
+export const getAllRecipes = (userId) => async (dispatch) => {
   dispatch(getRecipesBegin());
 
-  const res = await fetch("/api/recipes?userId=1");
+  const res = await fetch(`/api/recipes?userId=${userId}`);
 
   const recipesData = await res.json();
 
@@ -123,7 +123,7 @@ const updateState = (oldState, payload) => {
 };
 
 const recipesReducer = (
-  state = { recipes: [], errors: null, loading: false },
+  state = { recipes: [], errors: [], loading: false },
   action
 ) => {
   let newState;
@@ -148,6 +148,7 @@ const recipesReducer = (
       return newState;
     case ADD_RECIPE_FAILURE:
       newState = _.cloneDeep(state);
+      newState.loading = false;
       newState.errors = action.payload;
       return newState;
     case EDIT_RECIPE_BEGIN:
@@ -159,7 +160,6 @@ const recipesReducer = (
       newState.loading = false;
       const updatedState = updateState(newState.recipes, action.payload);
       newState.recipes = updatedState;
-      console.log(newState.recipes);
       return newState;
     default:
       return state;

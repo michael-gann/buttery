@@ -10,8 +10,6 @@ const Recipe = ({ recipe }) => {
   // const [deletion, setDeletion] = useState(false);
   const { id } = useParams();
 
-  console.log("ID", id);
-
   const handleEditRecipe = () => {
     setIsEditing(!isEditing);
   };

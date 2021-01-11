@@ -7,7 +7,6 @@ import RecipeContent from "./RecipeFormComponents/RecipeContent";
 import RecipeStep from "./RecipeFormComponents/RecipeStep";
 import RecipeIngredient from "./RecipeFormComponents/RecipeIngredient";
 
-// import * as userActions from "../../../store/users";
 import * as recipeActions from "../../../store/recipes";
 
 const RecipeForm = ({ isEditing, recipeToEdit, handleEditRecipe }) => {
@@ -31,8 +30,6 @@ const RecipeForm = ({ isEditing, recipeToEdit, handleEditRecipe }) => {
   if (isEditing) {
     const steps = editingRecipe[`${recipeToEdit}`].steps;
     const ingredients = editingRecipe[`${recipeToEdit}`].ingredients;
-
-    console.log("STEPS", steps);
 
     steps.forEach((step, idx) => {
       const editStep = {};
@@ -184,8 +181,6 @@ const RecipeForm = ({ isEditing, recipeToEdit, handleEditRecipe }) => {
       form.set(key, recipe_steps[key]);
     }
 
-    // let newRecipeResponse;
-
     const submit_form = () => {
       if (isEditing) {
         dispatch(recipeActions.editRecipe(form));
@@ -199,10 +194,6 @@ const RecipeForm = ({ isEditing, recipeToEdit, handleEditRecipe }) => {
 
     history.push("/recipes");
   };
-
-  // useEffect(() => {
-  //   if (!user) dispatch(userActions.user());
-  // }, [dispatch, user]);
 
   return (
     <>

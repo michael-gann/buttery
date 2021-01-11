@@ -2,6 +2,7 @@ from flask import Blueprint, jsonify, request
 from app.models import PantryIngredient, db
 from sqlalchemy.orm import selectinload
 from app.forms import PantryItemsForm
+from sqlalchemy import asc
 
 
 pantry_routes = Blueprint('pantries', __name__)
@@ -13,12 +14,18 @@ def pantry():
     userId = request.args.get("userId")
 
     pantry_ingredients = PantryIngredient.query.filter_by(
-        user_id=userId).options(
+        user_id=userId).order_by(asc(PantryIngredient.updated_at)).options(
         selectinload(PantryIngredient.ingredients),
         selectinload(PantryIngredient.measurements)).all()
 
-    return jsonify([{**ingredient.to_dict()}
-                    for ingredient in pantry_ingredients])
+    return jsonify([
+        {
+            **ingredient.to_dict(),
+            "ingredient": {**ingredient.ingredients.to_dict()},
+            "measurement": {**ingredient.measurements.to_dict()}
+        }
+        for ingredient in pantry_ingredients
+    ])
 
 
 # submit a new item to pantry or update existing
