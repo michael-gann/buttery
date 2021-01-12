@@ -1,0 +1,99 @@
+.home-main-container {
+ display: flex;
+ justify-content: center;
+
+}
+
+.home-recipecard-container,
+.home-pantry-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.recipes, .pantry {
+display: flex;
+flex-direction: column;
+width: 50%;
+}
+
+.recipes-header {
+    font-size: 1.5rem;
+    border-bottom: 1px solid gray;
+    text-align: center;
+    width: 80%;
+    align-self: center;
+    margin: 20px 0px 20px 0px;
+}
+
+.recipecard-main-containers {
+min-width: 49%;
+max-width: 48%;
+border: 1px solid black;
+padding: 5px;
+margin: 2px;
+border-radius: 5px;
+width: 100%;
+}
+
+.home-recipe-title {
+    width: 100%;
+
+}
+
+.home-recipe-title > a {
+    display: inline-block;
+    width: 100%;
+}
+
+.pantry {
+
+}
+
+.pantry-header {
+    font-size: 1.5rem;
+    border-bottom: 1px solid gray;
+    text-align: center;
+    width: 80%;
+    align-self: center;
+    margin: 20px 0px 20px 0px;
+}
+
+/* .home-pantry-container {} */
+
+.pantry-category-containers {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 49%;
+    max-width: 48%;
+    border: 1px solid black;
+    padding: 5px;
+    margin: 2px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.pantry-category-header {
+    font-size: 1.2rem; /* add font awesome icons?*/
+    border-bottom: 1px solid gray;
+    text-align: center;
+    width: 80%;
+    align-self: center;
+    margin: 20px 0px 20px 0px;
+}
+
+.pantry-ingredients-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 85%;
+    justify-content: center;
+    align-items: center;
+}
+
+.pantry-ingredient-container {
+    display: flex;
+    font-size: 8px;
+    max-width: 49%;
+    min-width: 48%;
+}

@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 
 import RecipeCard from "./RecipeCard";
 
-const HomeRecipe = () => {
+const HomeRecipe = ({ isHomepage, setIsHomepage }) => {
   const history = useHistory();
 
   const recipeIds = useSelector(
@@ -19,12 +19,22 @@ const HomeRecipe = () => {
   return (
     <>
       <button onClick={handleClick}>Add new recipe</button>
-      <div className="home-recipecard-container">
+      <div
+        className={
+          isHomepage
+            ? `home-recipecard-container`
+            : `recipe-page-recipecard-container`
+        }
+      >
         {recipeIds &&
           recipeIds.map((id) => {
             return (
-              <div key={id}>
-                <RecipeCard id={id} />
+              <div className="recipecard-main-containers" key={id}>
+                <RecipeCard
+                  isHomepage={isHomepage}
+                  setIsHomepage={setIsHomepage}
+                  id={id}
+                />
               </div>
             );
           })}

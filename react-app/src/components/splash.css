@@ -26,11 +26,15 @@ color: white;
 padding-top: 3%;
 }
 
-.splash-description-1, .splash-description-2, .splash-description-3 {
+.splash-description-1, .splash-description-2, .splash-description-3, .splash-description-4 {
     height: 8vw;
     font-size: 2rem;
     width: 100%;
     text-align: center;
     padding-top: 3%;
     /* min-height: 180px; @media */
+}
+
+.splash-description-2, .splash-description-4 {
+    background-color: #ffffff
 }

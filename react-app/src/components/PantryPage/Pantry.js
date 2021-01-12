@@ -16,10 +16,10 @@ const Pantry = () => {
   return (
     <>
       <div>PANTRY</div>
+      <MetroSpinner size={50} color="#3ce50f" loading={isLoading} />
       <button type="button" onClick={() => history.push("/add-to-pantry")}>
         Add to Pantry
       </button>
-      <MetroSpinner size={50} color="#3ce50f" loading={isLoading} />
       <Categories categories={categoryIds}></Categories>
     </>
   );

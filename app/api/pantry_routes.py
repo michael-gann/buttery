@@ -32,8 +32,8 @@ def pantry():
 @pantry_routes.route("update-pantry", methods=["PUT"])
 def post_pantry():
     form = PantryItemsForm()
-    print("FORM DATA", form.data)
     form['csrf_token'].data = request.cookies['csrf_token']
+    print("FORM DATA", form.data)
 
     if form.validate_on_submit():
 

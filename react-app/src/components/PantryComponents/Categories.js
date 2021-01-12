@@ -2,18 +2,18 @@ import React from "react";
 
 import Category from "./Category";
 
-const Categories = ({ categories }) => {
+const Categories = ({ categories, isHomepage }) => {
   return (
-    <>
+    <div className="home-pantry-container">
       {categories &&
         categories.map((c) => {
           return (
-            <div key={c}>
-              <Category id={c}></Category>
+            <div className="pantry-category-containers" key={c}>
+              <Category isHomepage={isHomepage} id={c}></Category>
             </div>
           );
         })}
-    </>
+    </div>
   );
 };
 
