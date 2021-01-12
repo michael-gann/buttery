@@ -1,14 +1,30 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import HomeRecipe from "../RecipeComponents/HomeRecipe";
 import HomePantry from "../PantryComponents/HomePantry";
 
+import "./home.css";
+
 const Home = () => {
+  const [isHomepage, setIsHomepage] = useState(false);
+
+  useEffect(() => {
+    setIsHomepage(true);
+  }, []);
+
   return (
-    <div>
-      <div>HOME</div>
-      <HomeRecipe></HomeRecipe>
-      <HomePantry></HomePantry>
+    <div className="home-main-container">
+      <div className="recipes">
+        <h2 className="recipes-header">Recipes</h2>
+        <HomeRecipe
+          isHomepage={isHomepage}
+          setIsHomepage={setIsHomepage}
+        ></HomeRecipe>
+      </div>
+      <div className="pantry">
+        <h2 className="pantry-header">Pantry</h2>
+        <HomePantry isHomepage={isHomepage}></HomePantry>
+      </div>
     </div>
   );
 };

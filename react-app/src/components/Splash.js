@@ -29,10 +29,10 @@ const Splash = () => {
           Do you struggle with figuring out what to add to your shopping list
           when it comes time to cook?
         </div>
-        <div className="splash-description-1">
+        <div className="splash-description-3">
           Well then, here's something for you....{" "}
         </div>
-        <div className="splash-description-3">
+        <div className="splash-description-4">
           With buttery, you can add your favorite recipes and have a shopping
           list generated for you!
         </div>

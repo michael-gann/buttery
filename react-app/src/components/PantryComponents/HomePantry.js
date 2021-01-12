@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import Categories from "./Categories";
 import { MetroSpinner } from "react-spinners-kit";
 
-const HomePantry = () => {
+const HomePantry = ({ isHomepage }) => {
   const isLoading = useSelector((state) => state.categories.loading);
 
   const categoryIds = useSelector((state) =>
@@ -15,9 +15,13 @@ const HomePantry = () => {
 
   return (
     <>
-      <div>PANTRY</div>
       <MetroSpinner size={40} color="#3ce50f" loading={isLoading} />
-      {categoryIds && <Categories categories={categoryIds}></Categories>}
+      {categoryIds && (
+        <Categories
+          isHomepage={isHomepage}
+          categories={categoryIds}
+        ></Categories>
+      )}
     </>
   );
 };

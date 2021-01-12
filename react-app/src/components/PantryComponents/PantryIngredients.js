@@ -9,26 +9,24 @@ const PantryIngredients = ({ id }) => {
   const ingredients = useSelector((state) => state.pantries.pantries);
   const isLoading = useSelector((state) => state.pantries.loading);
 
-  const pantryIngredients = ingredients
-    ? ingredients.filter((i) => i.ingredient.type_id === id)
-    : null;
+  const pantryIngredients = ingredients.filter(
+    (i) => i.ingredient.type_id === id
+  );
 
   return (
     <>
       {pantryIngredients &&
         pantryIngredients.map((i, idx) => {
           return (
-            <div
-              key={idx}
-              className="pantry-ingredient-container"
-              style={{ display: "flex" }}
-            >
+            <>
               <MetroSpinner size={40} color="#3ce50f" loading={isLoading} />
-              <PantryIngredient
-                ingredient={i}
-                isLoading={isLoading}
-              ></PantryIngredient>
-            </div>
+              <div key={idx} className="pantry-ingredient-container">
+                <PantryIngredient
+                  ingredient={i}
+                  isLoading={isLoading}
+                ></PantryIngredient>
+              </div>
+            </>
           );
         })}
     </>

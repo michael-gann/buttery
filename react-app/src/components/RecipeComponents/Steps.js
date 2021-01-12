@@ -8,7 +8,7 @@ const Steps = ({ steps }) => {
       {steps &&
         steps.map((s, idx) => {
           return (
-            <div key={idx}>
+            <div className="home-step" key={idx}>
               <Step step={s} />
             </div>
           );
