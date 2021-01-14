@@ -7,6 +7,7 @@ import recipesReducer from "./recipes";
 import usersReducer from "./users";
 import categoriesReducer from "./categories";
 import pantriesReducer from "./pantries";
+import cookingListsReducer from "./cookingLists";
 
 const rootReducer = combineReducers({
   ingredients: ingredientsReducer,
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   users: usersReducer,
   categories: categoriesReducer,
   pantries: pantriesReducer,
+  cookingLists: cookingListsReducer,
 });
 
 let enhancer;

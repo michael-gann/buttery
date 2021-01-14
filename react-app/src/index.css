@@ -31,3 +31,38 @@ body, html {
 height: 100%;
 width: 100%;
 }
+
+/*
+DRY/BAKING
+<i class="fas fa-cookie"></i>
+
+PRODUCE
+<i class="fas fa-apple-alt"></i>
+
+BREAD
+<i class="fas fa-bread-slice"></i>
+
+DAIRY
+<i class="fas fa-cheese"></i>
+
+MEAT
+<i class="fas fa-bacon"></i>
+
+FROZEN
+<i class="far fa-snowflake"></i>
+
+SPICE
+<i class="fas fa-mortar-pestle"></i>
+
+BEVERAGE
+<i class="fas fa-wine-glass-alt"></i>
+
+NEW RECIPE
+<i class="fas fa-file-alt"></i>
+
+USER
+<i class="fas fa-user"></i>
+<i class="fas fa-user-circle"></i>
+
+
+*/

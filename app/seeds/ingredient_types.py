@@ -5,12 +5,12 @@ from app.models import db, IngredientType
 
 def seed_ingredient_types():
 
-    demo = IngredientType(name="Dry/Baking")
+    demo = IngredientType(name="Dry & Baking")
     demo1 = IngredientType(name="Spice")
     demo2 = IngredientType(name="Dairy")
     demo3 = IngredientType(name="Bread")
     demo4 = IngredientType(name="Beverage")
-    demo5 = IngredientType(name="Meat")
+    demo5 = IngredientType(name="Meat & Seafood")
     demo6 = IngredientType(name="Produce")
     demo7 = IngredientType(name="Frozen")
 

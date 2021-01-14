@@ -1,5 +1,5 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 import RecipeForm from "../Forms/RecipeForm/RecipeForm";
 import RecipeTitle from "./RecipeTitle";
@@ -7,12 +7,27 @@ import RecipeTitle from "./RecipeTitle";
 // import Steps from "./Steps";
 import { MetroSpinner } from "react-spinners-kit";
 
+import * as cookingListActions from "../../store/cookingLists";
+
 const RecipeCard = ({ id, isEditing, handleEditRecipe, isHomepage }) => {
+  const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.recipes.loading);
+  const user = useSelector((state) => state.users.sessionUser);
+  const [toShop, setToShop] = useState(false);
 
   const recipe = useSelector((state) =>
     state.recipes.recipes.find((recipe) => Object.keys(recipe)[0] === id)
   );
+
+  const addToShop = () => {
+    const form = new FormData();
+
+    form.set("recipe_id", id);
+    form.set("user_id", user.id);
+
+    dispatch(cookingListActions.addToShoppingList(form));
+    setToShop(true);
+  };
 
   return (
     <>
@@ -25,10 +40,15 @@ const RecipeCard = ({ id, isEditing, handleEditRecipe, isHomepage }) => {
       ) : (
         <>
           {isHomepage ? (
-            <div className="home-recipe-title">
-              <MetroSpinner size={40} color="#3ce50f" loading={isLoading} />
-              <RecipeTitle title={recipe[`${id}`].name} id={id} />
-            </div>
+            <>
+              <div className="home-recipe-title">
+                <MetroSpinner size={40} color="#3ce50f" loading={isLoading} />
+                <RecipeTitle title={recipe[`${id}`].name} id={id} />
+              </div>
+              <button onClick={addToShop}>Add to shopping list</button>
+              {toShop ? <div>SHOP</div> : null}
+              {/* display how close to being able to make here */}
+            </>
           ) : (
             <>
               <MetroSpinner size={40} color="#3ce50f" loading={isLoading} />

@@ -13,6 +13,7 @@ from .api.pantry_routes import pantry_routes
 from .api.ingredient_routes import ingredient_routes
 from .api.measurement_routes import measurement_routes
 from .api.categories_routes import category_routes
+from .api.cooking_list_routes import cooking_list_routes
 
 from .seeds import seed_commands
 
@@ -41,6 +42,7 @@ app.register_blueprint(pantry_routes, url_prefix='/api/pantries')
 app.register_blueprint(ingredient_routes, url_prefix='/api/ingredients')
 app.register_blueprint(measurement_routes, url_prefix='/api/measurements')
 app.register_blueprint(category_routes, url_prefix='/api/categories')
+app.register_blueprint(cooking_list_routes, url_prefix='/api/cooking-lists')
 
 db.init_app(app)
 Migrate(app, db)

@@ -21,6 +21,7 @@ import * as userActions from "./store/users";
 import * as categoryActions from "./store/categories";
 import * as recipeActions from "./store/recipes";
 import * as pantryActions from "./store/pantries";
+import * as cookingListActions from "./store/cookingLists";
 
 function App() {
   const dispatch = useDispatch();
@@ -47,6 +48,8 @@ function App() {
     if (sessionUser) {
       dispatch(recipeActions.getAllRecipes(sessionUser.id));
       dispatch(pantryActions.getUserPantryItems(sessionUser.id));
+      dispatch(cookingListActions.getCookingList(sessionUser.id));
+      dispatch(cookingListActions.getShoppingList(sessionUser.id));
     }
   }, [dispatch, sessionUser]);
 
