@@ -46,6 +46,40 @@ def seed_recipe_steps():
     Using a large spoon, dollop a generous amount of whipped cream in
     the center of pie. Sprinkle with reserved graham cracker crumbs.
     Slice and serve with any remaining whipped cream alongside.''')
+    pancakes = RecipeStep(recipe_id=2, step_number=1,
+                          content='''In a large bowl, mix flour,
+                          sugar, baking powder and salt. Make a well
+                          in the center, and pour in milk, egg and
+                          oil. Mix until smooth.''')
+    pancakes1 = RecipeStep(recipe_id=2, step_number=2,
+                           content='''Heat a lightly oiled griddle
+                           or frying pan over medium high heat.
+                           Pour or scoop the batter onto the
+                           griddle, using approximately 1/4 cup
+                           for each pancake. Brown on both sides
+                           and serve hot.''')
+    waffles = RecipeStep(recipe_id=3, step_number=1,
+                         content='''Preheat waffle iron according
+                         to manufacturer's directions.''')
+    waffles1 = RecipeStep(recipe_id=3, step_number=2,
+                          content='''Place flour, baking powder,
+                           sugar and salt in a bowl. Whisk to
+                           combine.''')
+    waffles2 = RecipeStep(recipe_id=3, step_number=3,
+                          content='''In a small bowl, mix
+                          egg yolks, milk and butter. Set aside.''')
+    waffles3 = RecipeStep(recipe_id=3, step_number=4,
+                          content='''In a separate bowl,
+                          beat egg whites with a mixer on medium
+                          high speed until stiff peaks form.''')
+    waffles4 = RecipeStep(recipe_id=3, step_number=5,
+                          content='''Add egg yolk mixture to
+                          flour mixture and stir to combine.
+                          Fold in egg whites''')
+    waffles5 = RecipeStep(recipe_id=3, step_number=6,
+                          content='''Drop by large spoonfuls
+                          onto greased waffle iron, close
+                          the lid and cook about 3-5 minutes.''')
 
     db.session.add(chiffon)
     db.session.add(chiffon1)
@@ -54,6 +88,14 @@ def seed_recipe_steps():
     db.session.add(chiffon4)
     db.session.add(chiffon5)
     db.session.add(chiffon6)
+    db.session.add(pancakes)
+    db.session.add(pancakes1)
+    db.session.add(waffles)
+    db.session.add(waffles1)
+    db.session.add(waffles2)
+    db.session.add(waffles3)
+    db.session.add(waffles4)
+    db.session.add(waffles5)
 
     db.session.commit()
 

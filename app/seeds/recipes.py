@@ -6,8 +6,14 @@ from app.models import db, Recipe
 def seed_recipes():
 
     demo = Recipe(user_id=1, name="Pumpkin Chiffon Pie")
+    demo1 = Recipe(user_id=1, name="Basic Pancakes")
+    demo2 = Recipe(user_id=1, name="Fluffy Homemade Waffles")
+    # demo = Recipe(user_id=1, name="Pumpkin Chiffon Pie")
+    # demo = Recipe(user_id=1, name="Pumpkin Chiffon Pie")
 
     db.session.add(demo)
+    db.session.add(demo1)
+    db.session.add(demo2)
 
     db.session.commit()
 

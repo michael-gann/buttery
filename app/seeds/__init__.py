@@ -6,6 +6,7 @@ from .ingredient_types import seed_ingredient_types, undo_ingredient_types
 from .ingredients import seed_ingredients, undo_ingredients
 from .measurements import seed_measurements, undo_measurements
 from .recipe_ingredients import seed_recipe_ingredients, undo_recipe_ingredients
+from .pantry_ingredients import seed_pantry_ingredients, undo_pantry_ingredients
 
 # Creates a seed group to hold our commands
 # So we can type `flask seed --help`
@@ -23,6 +24,7 @@ def seed():
     seed_ingredients()
     seed_measurements()
     seed_recipe_ingredients()
+    seed_pantry_ingredients()
     # Add other seed functions here
 
 # Creates the `flask seed undo` command
@@ -37,4 +39,5 @@ def undo():
     undo_ingredients()
     undo_measurements()
     undo_recipe_ingredients()
+    undo_pantry_ingredients()
     # Add other undo functions here

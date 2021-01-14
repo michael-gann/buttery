@@ -21,22 +21,50 @@ def seed_recipe_ingredients():
         recipe_id=1, ingredient_id=10, measurement_id=2, quantity=0.25)
     demo7 = RecipeIngredient(
         recipe_id=1, ingredient_id=2, measurement_id=4, quantity=0.75)
-    demo7 = RecipeIngredient(
+    demo8 = RecipeIngredient(
         recipe_id=1, ingredient_id=3, measurement_id=2, quantity=0.75)
-    demo7 = RecipeIngredient(
+    demo9 = RecipeIngredient(
         recipe_id=1, ingredient_id=12, measurement_id=17, quantity=3.00)
-    demo7 = RecipeIngredient(
+    demo10 = RecipeIngredient(
         recipe_id=1, ingredient_id=15, measurement_id=4, quantity=0.75)
-    demo7 = RecipeIngredient(
+    demo11 = RecipeIngredient(
         recipe_id=1, ingredient_id=17, measurement_id=5, quantity=15.00)
-    demo7 = RecipeIngredient(
+    demo12 = RecipeIngredient(
         recipe_id=1, ingredient_id=13, measurement_id=17, quantity=3.00)
-    demo7 = RecipeIngredient(
+    demo13 = RecipeIngredient(
         recipe_id=1, ingredient_id=18, measurement_id=4, quantity=0.75)
-    demo7 = RecipeIngredient(
+    demo14 = RecipeIngredient(
         recipe_id=1, ingredient_id=19, measurement_id=4, quantity=0.25)
-    demo7 = RecipeIngredient(
+    demo15 = RecipeIngredient(
         recipe_id=1, ingredient_id=2, measurement_id=4, quantity=0.75)
+    demo16 = RecipeIngredient(
+        recipe_id=2, ingredient_id=19, measurement_id=4, quantity=1)
+    demo17 = RecipeIngredient(
+        recipe_id=2, ingredient_id=2, measurement_id=3, quantity=2)
+    demo18 = RecipeIngredient(
+        recipe_id=2, ingredient_id=44, measurement_id=2, quantity=2)
+    demo19 = RecipeIngredient(
+        recipe_id=2, ingredient_id=3, measurement_id=2, quantity=1)
+    demo20 = RecipeIngredient(
+        recipe_id=2, ingredient_id=11, measurement_id=17, quantity=1)
+    demo21 = RecipeIngredient(
+        recipe_id=2, ingredient_id=14, measurement_id=4, quantity=1)
+    demo22 = RecipeIngredient(
+        recipe_id=2, ingredient_id=24, measurement_id=3, quantity=2)
+    demo23 = RecipeIngredient(
+        recipe_id=3, ingredient_id=19, measurement_id=4, quantity=2)
+    demo24 = RecipeIngredient(
+        recipe_id=3, ingredient_id=43, measurement_id=3, quantity=1)
+    demo25 = RecipeIngredient(
+        recipe_id=3, ingredient_id=3, measurement_id=2, quantity=.5)
+    demo26 = RecipeIngredient(
+        recipe_id=3, ingredient_id=2, measurement_id=3, quantity=2)
+    demo27 = RecipeIngredient(
+        recipe_id=3, ingredient_id=11, measurement_id=17, quantity=2)
+    demo28 = RecipeIngredient(
+        recipe_id=3, ingredient_id=14, measurement_id=4, quantity=1.66)
+    demo29 = RecipeIngredient(
+        recipe_id=3, ingredient_id=5, measurement_id=3, quantity=6)
 
     db.session.add(demo)
     db.session.add(demo1)
@@ -46,6 +74,28 @@ def seed_recipe_ingredients():
     db.session.add(demo5)
     db.session.add(demo6)
     db.session.add(demo7)
+    db.session.add(demo8)
+    db.session.add(demo9)
+    db.session.add(demo10)
+    db.session.add(demo11)
+    db.session.add(demo12)
+    db.session.add(demo13)
+    db.session.add(demo14)
+    db.session.add(demo15)
+    db.session.add(demo16)
+    db.session.add(demo17)
+    db.session.add(demo18)
+    db.session.add(demo19)
+    db.session.add(demo20)
+    db.session.add(demo21)
+    db.session.add(demo22)
+    db.session.add(demo23)
+    db.session.add(demo24)
+    db.session.add(demo25)
+    db.session.add(demo26)
+    db.session.add(demo27)
+    db.session.add(demo28)
+    db.session.add(demo29)
 
     db.session.commit()
 
