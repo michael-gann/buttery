@@ -4,3 +4,4 @@ node_modules/
 .eslintcache
 package-lock.json
 Pipfile.lock
+.vscode

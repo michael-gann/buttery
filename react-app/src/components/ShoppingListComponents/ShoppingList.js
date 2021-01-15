@@ -20,13 +20,12 @@ const ShoppingList = () => {
 
   return (
     <>
-      <div>SHOPPING LIST</div>
-      <div>you are shopping for {numberOfRecipesToShop} recipes</div>
-      <>
+      <div className="shopping-list-items-container">
+        <div>you are shopping for {numberOfRecipesToShop} recipes</div>
         {ingredientsToShop ? (
           ingredientsToShop.map((i) => {
             return (
-              <div key={i.name}>
+              <div key={i.name} className="shopping-list-item">
                 <ShoppingListItems ingredient={i}></ShoppingListItems>
               </div>
             );
@@ -34,7 +33,7 @@ const ShoppingList = () => {
         ) : (
           <div>There's nothing to shop for!</div>
         )}
-      </>
+      </div>
     </>
   );
 };

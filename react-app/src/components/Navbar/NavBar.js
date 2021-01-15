@@ -1,10 +1,13 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+
 import LogoutButton from "../auth/LogoutButton";
 
 import "./navbar.css";
 
-const NavBar = ({ setAuthenticated, isAuthenticated }) => {
+const NavBar = () => {
+  const isAuthenticated = useSelector((state) => state.users.authenticated);
   return (
     <nav>
       <div className="navbar-main-container">
@@ -37,7 +40,7 @@ const NavBar = ({ setAuthenticated, isAuthenticated }) => {
               </div>
             </div>
             <div>
-              <LogoutButton setAuthenticated={setAuthenticated}></LogoutButton>
+              <LogoutButton></LogoutButton>
             </div>
           </div>
         ) : (

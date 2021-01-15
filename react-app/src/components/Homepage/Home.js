@@ -22,13 +22,13 @@ const Home = () => {
           setIsHomepage={setIsHomepage}
         ></HomeRecipe>
       </div>
-      <div className="pantry">
-        <h2 className="pantry-header">Pantry</h2>
-        <HomePantry isHomepage={isHomepage}></HomePantry>
-      </div>
       <div className="shopping-list">
         <h2 className="shopping-list-header">Shopping List</h2>
         <ShoppingList isHomepage={isHomepage}></ShoppingList>
+      </div>
+      <div className="pantry">
+        <h2 className="pantry-header">Pantry</h2>
+        <HomePantry isHomepage={isHomepage}></HomePantry>
       </div>
     </div>
   );

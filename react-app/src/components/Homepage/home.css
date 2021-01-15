@@ -97,3 +97,33 @@ width: 100%;
     max-width: 49%;
     min-width: 48%;
 }
+
+.shopping-list {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.shopping-list-header {
+    font-size: 1.5rem;
+    border-bottom: 1px solid gray;
+    text-align: center;
+    width: 80%;
+    align-self: center;
+    margin: 20px 0px 20px 0px;
+}
+
+.shopping-list-items-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+}
+
+.shopping-list-item {
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 80%;
+    text-align: center;
+    margin: 3px 0;
+}

@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/Navbar/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
-import { authenticate } from "./services/auth";
 import RecipeForm from "./components/Forms/RecipeForm/RecipeForm";
 import PantryForm from "./components/Forms/PantryForm/PantryForm";
 import Home from "./components/Homepage/Home";
@@ -25,27 +24,18 @@ import * as cookingListActions from "./store/cookingLists";
 
 function App() {
   const dispatch = useDispatch();
-  const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
-  const [sessionUser, setSessionUser] = useState(undefined);
+  const sessionUser = useSelector((state) => state.users.sessionUser);
 
   useEffect(() => {
-    (async () => {
-      const user = await authenticate();
-      if (!user.errors) {
-        setAuthenticated(true);
-        setSessionUser(user);
-      }
-      setLoaded(true);
-    })();
-  }, []);
-
-  useEffect(() => {
-    dispatch(userActions.user());
-    dispatch(ingredientActions.ingredients());
-    dispatch(measurementActions.measurements());
-    dispatch(categoryActions.categories());
+    if (!sessionUser) {
+      dispatch(userActions.authenticateUser());
+    }
+    setLoaded(true);
     if (sessionUser) {
+      dispatch(ingredientActions.ingredients());
+      dispatch(measurementActions.measurements());
+      dispatch(categoryActions.categories());
       dispatch(recipeActions.getAllRecipes(sessionUser.id));
       dispatch(pantryActions.getUserPantryItems(sessionUser.id));
       dispatch(cookingListActions.getCookingList(sessionUser.id));
@@ -59,62 +49,33 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar
-        setAuthenticated={setAuthenticated}
-        isAuthenticated={authenticated}
-      />
+      <NavBar />
       <Switch>
         <Route path="/" exact={true}>
           <Splash></Splash>
         </Route>
         <Route path="/login" exact={true}>
-          <LoginForm
-            authenticated={authenticated}
-            setAuthenticated={setAuthenticated}
-          />
+          <LoginForm />
         </Route>
         <Route path="/sign-up" exact={true}>
-          <SignUpForm
-            authenticated={authenticated}
-            setAuthenticated={setAuthenticated}
-          />
+          <SignUpForm />
         </Route>
-        <ProtectedRoute path="/home" exact={true} authenticated={authenticated}>
+        <ProtectedRoute path="/home" exact={true}>
           <Home></Home>
         </ProtectedRoute>
-        <ProtectedRoute
-          path="/recipes/:id"
-          exact={true}
-          authenticated={authenticated}
-        >
+        <ProtectedRoute path="/recipes/:id" exact={true}>
           <Recipe></Recipe>
         </ProtectedRoute>
-        <ProtectedRoute
-          path="/pantry"
-          exact={true}
-          authenticated={authenticated}
-        >
+        <ProtectedRoute path="/pantry" exact={true}>
           <Pantry></Pantry>
         </ProtectedRoute>
-        <ProtectedRoute
-          path="/new-recipe"
-          exact={true}
-          authenticated={authenticated}
-        >
+        <ProtectedRoute path="/new-recipe" exact={true}>
           <RecipeForm user={sessionUser} />
         </ProtectedRoute>
-        <ProtectedRoute
-          path="/add-to-pantry"
-          exact={true}
-          authenticated={authenticated}
-        >
+        <ProtectedRoute path="/add-to-pantry" exact={true}>
           <PantryForm />
         </ProtectedRoute>
-        <ProtectedRoute
-          path="/recipes"
-          exact={true}
-          authenticated={authenticated}
-        >
+        <ProtectedRoute path="/recipes" exact={true}>
           <Recipes></Recipes>
         </ProtectedRoute>
         <Route route="*">
