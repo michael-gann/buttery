@@ -6,13 +6,20 @@ import RecipeTitle from "./RecipeTitle";
 // import Ingredients from "./Ingredients";
 // import Steps from "./Steps";
 import { MetroSpinner } from "react-spinners-kit";
+import { IconContext } from "react-icons";
+import { FaCircle } from "react-icons/fa";
+import { BsCircleFill } from "react-icons/bs";
+import { ImPlus } from "react-icons/im";
+import { ImMinus } from "react-icons/im";
 
 import * as cookingListActions from "../../store/cookingLists";
 
 const RecipeCard = ({ id, isEditing, handleEditRecipe, isHomepage }) => {
+  // get state of toShop from localStorage
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.recipes.loading);
   const user = useSelector((state) => state.users.sessionUser);
+  // use local storage state or default
   const [toShop, setToShop] = useState(false);
 
   const recipe = useSelector((state) =>
@@ -27,6 +34,7 @@ const RecipeCard = ({ id, isEditing, handleEditRecipe, isHomepage }) => {
 
     dispatch(cookingListActions.addToShoppingList(form));
     setToShop(true);
+    // set toShop in localStorage
   };
 
   return (
@@ -45,8 +53,27 @@ const RecipeCard = ({ id, isEditing, handleEditRecipe, isHomepage }) => {
                 <MetroSpinner size={40} color="#3ce50f" loading={isLoading} />
                 <RecipeTitle title={recipe[`${id}`].name} id={id} />
               </div>
-              <button onClick={addToShop}>Add to shopping list</button>
-              {toShop ? <div>SHOP</div> : null}
+              {toShop ? (
+                <button className="shop-button shop-button-remove">
+                  <ImMinus />
+                </button>
+              ) : (
+                <button
+                  className="shop-button shop-button-add"
+                  onClick={addToShop}
+                >
+                  <ImPlus />
+                </button>
+              )}
+
+              <IconContext.Provider
+                value={{ className: `circle-${toShop ? "yes" : ""}` }}
+              >
+                <div>
+                  <BsCircleFill />
+                </div>
+              </IconContext.Provider>
+
               {/* display how close to being able to make here */}
             </>
           ) : (

@@ -1,19 +1,21 @@
 .home-main-container {
- display: flex;
- justify-content: center;
- flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .home-recipecard-container,
 .home-pantry-container {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .recipes, .pantry {
-display: flex;
-flex-direction: column;
-width: 50%;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    position: relative;
 }
 
 .recipes-header {
@@ -26,13 +28,14 @@ width: 50%;
 }
 
 .recipecard-main-containers {
-min-width: 49%;
-max-width: 48%;
-border: 1px solid black;
-padding: 5px;
-margin: 2px;
-border-radius: 5px;
-width: 100%;
+    min-width: 80%;
+    max-width: 50%;
+    border: 1px solid black;
+    padding: 5px;
+    margin: 2px;
+    border-radius: 5px;
+    width: 100%;
+    position: relative;
 }
 
 .home-recipe-title {
@@ -45,9 +48,9 @@ width: 100%;
     width: 100%;
 }
 
-.pantry {
+/* .pantry {
 
-}
+} */
 
 .pantry-header {
     font-size: 1.5rem;
@@ -126,4 +129,48 @@ width: 100%;
     width: 80%;
     text-align: center;
     margin: 3px 0;
+}
+
+.circle-yes {
+    color: rgb(0, 253, 127);
+    position: absolute;
+    top: -10%;
+    right: -1%;
+    border: 1px solid green;
+    border-radius: 100%;
+}
+
+.circle- {
+    color: rgb(106, 116, 111);
+    position: absolute;
+    top: -10%;
+    right: -1%;
+    border: 1px solid rgb(102, 96, 96);
+    border-radius: 100%;
+}
+
+.shop-button {
+    position: absolute;
+    left: 103%;
+    bottom: 20%;
+    width: 25px;
+    height:20px;
+    /* border: 1px solid black; */
+    font-size: 1.2rem;
+}
+
+.shop-button-add {
+    /* background-color: orange; */
+}
+
+.shop-button-remove {
+    /* background-color: red; */
+}
+
+.add-recipe-button {
+    position: absolute;
+    top: 5%;
+    right: 40%;
+    font-size: 1.5rem;
+    height: 20px
 }

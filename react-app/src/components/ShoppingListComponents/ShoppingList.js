@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from "react-redux";
 import ShoppingListItems from "../ShoppingListComponents/ShoppingListItem";
 
 import * as cookingListActions from "../../store/cookingLists";
+// TODO:
+// IoStorefront IMPORT ICONS FROM REACT ICONS/IO
 
 const ShoppingList = () => {
   const dispatch = useDispatch();
