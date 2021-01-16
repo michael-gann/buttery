@@ -11,7 +11,7 @@ const NavBar = () => {
   return (
     <nav>
       <div className="navbar-main-container">
-        <div>
+        <div className="logo">
           <NavLink to="/" exact={true} activeClassName="active">
             <img
               className="logo"
@@ -22,24 +22,24 @@ const NavBar = () => {
         </div>
         {isAuthenticated ? (
           <div className="links">
-            <div>
+            <div className="nav-home">
               <NavLink to="/home" exact={true} activeClassName="active">
                 Home
               </NavLink>
             </div>
-            <div>
+            <div className="nav-recipes">
               <NavLink to="/recipes" exact={true} activeClassName="active">
                 Recipes
               </NavLink>
             </div>
             <div>
-              <div>
+              <div className="nav-pantry">
                 <NavLink to="/pantry" exact={true} activeClassName="active">
                   Pantry
                 </NavLink>
               </div>
             </div>
-            <div>
+            <div className="nav-logout-button">
               <LogoutButton></LogoutButton>
             </div>
           </div>
@@ -47,13 +47,15 @@ const NavBar = () => {
           <div className="links">
             <div></div>
             <div></div>
-            <div>
+            <div className="login-link">
               <NavLink to="/login" exact={true} activeClassName="active">
+                {" "}
                 Login
               </NavLink>
             </div>
-            <div>
+            <div className="sign-up-link">
               <NavLink to="/sign-up" exact={true} activeClassName="active">
+                {" "}
                 Sign-up
               </NavLink>
             </div>

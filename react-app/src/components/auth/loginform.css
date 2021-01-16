@@ -20,12 +20,12 @@
 
 form {
     width: 100%;
-    margin-left: 50%;
     margin-bottom: 25%;
     min-height: 250px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    align-items: center;
+    justify-content: center;
 }
 
 .loginform {
@@ -52,15 +52,23 @@ form {
 
 .welcome {
     font-size: 2rem;
+    width: 250px;
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 15%;
 }
 
 .please-login-container, .welcome-container, .email-container, .password-container {
     width: 100%;
 }
 
-.please-login-container, .welcome-container {
-    margin-left: 50%;
+ .welcome-container {
+    margin-top: 5%;
     margin-bottom: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin-bottom: 10%; */
 }
 
 .please-login {
@@ -71,24 +79,28 @@ form {
 .email-container, .password-container {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    /* margin-bottom: 8px; */
+    width: 250px;
+    margin-bottom: 5%;
 }
 
 .loginform label {
-    font-size: 12px;
+    font-size: 10px;
+    color: rgba(128, 128, 128, 0.637);
 }
 
 .email, .password {
-    width: 200px;
+    /* width: 200px; */
     border-bottom: 1px solid rgba(0,0,0, .2);
     margin-top: 8px;
     font-size: 0.9rem;
+    /* margin-bottom: 30px; */
 }
 
-.password-container {
-    /* width: 100%; */
+.email:focus, .password:focus {
+    color: #b7a731
 }
+
+/* .password-container {} */
 
 .login-button {
     background-color: #23bf93;
@@ -96,4 +108,43 @@ form {
     width: 200px;
     border-radius: 20px;
     border: 1px solid black;
+    transition: background-color 250ms ease-in-out;
+}
+
+.login-button:hover {
+    background-color:  #eb7a10ce;
+    cursor: pointer;
+}
+
+.login-button:focus {
+    outline: steelblue;
+}
+
+.sign-up-redirect {
+    font-size: 12px;
+    text-align: center;
+    width: 50%;
+}
+
+.sign-up-redirect a {
+    color: rgb(25, 137, 202);
+}
+
+.sign-up-redirect a:hover {
+    cursor: pointer;
+}
+
+.errors {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    margin-bottom: 10px;
+}
+
+.errors div {
+    min-height: 20px;
+    color: rgb(196, 31, 31);
+    margin-bottom: 5px;
 }

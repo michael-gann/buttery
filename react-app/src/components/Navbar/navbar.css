@@ -10,21 +10,93 @@ nav {
     justify-content: space-between;
     background-color: #E2E7E3;
     align-items: center;
-    background-color: #DAB781;
+    background-color: white;
     min-height: 75px;
     width: 100%;
+    box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.2);
+}
+
+.logo:hover {
+    cursor: pointer;
 }
 
 .links {
     display: flex;
-    justify-content: space-around;
-    max-width: 300px;
-    width: auto;
-    min-width: 300px;
     font-size: 1.25rem;
 }
 
-.links a {
-    color: #4B0908;
+.links a{
+    height: 100%;
+    width: 100%;
+}
 
+.login-link, .sign-up-link{
+    width: 100px;
+    text-align: center;
+    height: 75px;
+    line-height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 300ms ease-in-out,
+                transform 300ms ease-in-out;
+}
+
+.login-link:hover {
+    background-color: #e6c73b;
+    cursor: pointer;
+}
+
+.login-link a:hover, .sign-up-link a:hover, .nav-home:hover, .nav-recipes:hover, .nav-pantry:hover, .nav-logout-button:hover, .nav-home:hover a, .nav-recipes:hover a, .nav-pantry:hover a, .nav-logout-button:hover button {
+    cursor: pointer;
+    display: block;
+}
+
+.sign-up-link:hover {
+    background-color: #23bf93;
+    cursor: pointer;
+}
+
+.nav-home, .nav-recipes, .nav-pantry, .nav-logout-button {
+    width: 100px;
+    text-align: center;
+    height: 75px;
+    line-height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 300ms ease-in-out,
+                color 300ms ease-in-out,
+                transform 300ms ease-in-out,
+}
+
+.nav-home:hover {
+    background-color: #23bf93;
+    /* transition: color 150ms ease-in-out,
+    transform 150ms ease-out; */
+}
+
+.nav-logout-button:hover button {
+    color: white;
+}
+
+.nav-recipes:hover {
+    background-color: #eb7910
+}
+
+.nav-pantry:hover {
+    background-color: #e6c73b
+}
+
+.nav-logout-button:hover {
+    background-color: #3e400f
+}
+
+.nav-logout-button button {
+    background-color: transparent;
+    font-size: 1.2rem;
+    font-weight: 300;
+    height: 75px;
+    text-align: center;
+    width: 100px;
 }
