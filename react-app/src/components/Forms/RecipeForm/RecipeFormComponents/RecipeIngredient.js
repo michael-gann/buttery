@@ -2,6 +2,8 @@ import React from "react";
 import MeasurementSelect from "./MeasurementSelect";
 import Quantity from "./Quantity";
 import Ingredient from "./Ingredient";
+import { ImPlus } from "react-icons/im";
+import { ImMinus } from "react-icons/im";
 
 const RecipeIngredient = ({
   measurements,
@@ -13,13 +15,16 @@ const RecipeIngredient = ({
 }) => {
   return (
     <>
-      <button type="button" onClick={() => handleRecipeIngredientAdd()}>
-        add ingredient
-      </button>
+      <div className="add-new-recipe-ingredient-button">
+        Ingredients
+        <button type="button" onClick={() => handleRecipeIngredientAdd()}>
+          <ImPlus />
+        </button>
+      </div>
       {ingredientFields.map((field, idx) => {
         return (
-          <div key={`${idx}`}>
-            {`ingredient ${idx + 1}`}
+          <div className="ingredient-fields" key={`${idx}`}>
+            {/* {`${idx + 1}`} */}
             <Quantity
               idx={idx}
               value={field}
@@ -37,12 +42,14 @@ const RecipeIngredient = ({
               idx={idx}
               handleUpdateIngredient={handleUpdateIngredient}
             ></Ingredient>
-            <button
-              type="button"
-              onClick={() => handleRecipeIngredientRemove(idx)}
-            >
-              remove ingredient
-            </button>
+            <div className="recipe-ingredient-remove-button">
+              <button
+                type="button"
+                onClick={() => handleRecipeIngredientRemove(idx)}
+              >
+                <ImMinus />
+              </button>
+            </div>
           </div>
         );
       })}

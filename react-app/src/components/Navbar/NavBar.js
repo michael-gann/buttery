@@ -49,13 +49,11 @@ const NavBar = () => {
             <div></div>
             <div className="login-link">
               <NavLink to="/login" exact={true} activeClassName="active">
-                {" "}
                 Login
               </NavLink>
             </div>
             <div className="sign-up-link">
               <NavLink to="/sign-up" exact={true} activeClassName="active">
-                {" "}
                 Sign-up
               </NavLink>
             </div>

@@ -9,6 +9,8 @@ import RecipeIngredient from "./RecipeFormComponents/RecipeIngredient";
 
 import * as recipeActions from "../../../store/recipes";
 
+import "./recipeform.css";
+
 const RecipeForm = ({ isEditing, recipeToEdit, handleEditRecipe }) => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -196,42 +198,46 @@ const RecipeForm = ({ isEditing, recipeToEdit, handleEditRecipe }) => {
   };
 
   return (
-    <>
-      <div>
-        <RecipeName recipe={recipe} setRecipe={setRecipe}></RecipeName>
+    <div className="recipe-form-container">
+      <div className="recipe-form-holder">
+        <div className="recipe-form">
+          <h1 className="new-recipe-header">
+            {isEditing ? "Edit Recipe" : "New Recipe"}
+          </h1>
+          <div className="recipe-name">
+            <RecipeName recipe={recipe} setRecipe={setRecipe}></RecipeName>
+          </div>
+          <div className="recipe-content">
+            <RecipeContent
+              recipeContent={recipeContent}
+              setRecipeContent={setRecipeContent}
+              displayContent={displayContent}
+            ></RecipeContent>
+          </div>
+          <div className="recipe-ingredients">
+            <RecipeIngredient
+              measurements={measurements}
+              ingredients={ingredients}
+              handleUpdateIngredient={handleUpdateIngredient}
+              handleRecipeIngredientAdd={handleRecipeIngredientAdd}
+              handleRecipeIngredientRemove={handleRecipeIngredientRemove}
+              ingredientFields={ingredientFields}
+            ></RecipeIngredient>
+          </div>
+          <div className="recipe-steps">
+            <RecipeStep
+              stepFields={stepFields}
+              handleAdd={handleAdd}
+              handleChange={handleChange}
+              handleRemove={handleRemove}
+            ></RecipeStep>
+          </div>
+          <div className="recipe-submit-button">
+            <button onClick={handleSubmit}>Submit</button>
+          </div>
+        </div>
       </div>
-      <div>
-        <button onClick={() => setDisplayContent(!displayContent)}>
-          {displayContent ? "remove" : "add"}{" "}
-        </button>
-        <RecipeContent
-          recipeContent={recipeContent}
-          setRecipeContent={setRecipeContent}
-          displayContent={displayContent}
-        ></RecipeContent>
-      </div>
-      <div>
-        <RecipeIngredient
-          measurements={measurements}
-          ingredients={ingredients}
-          handleUpdateIngredient={handleUpdateIngredient}
-          handleRecipeIngredientAdd={handleRecipeIngredientAdd}
-          handleRecipeIngredientRemove={handleRecipeIngredientRemove}
-          ingredientFields={ingredientFields}
-        ></RecipeIngredient>
-      </div>
-      <div>
-        <RecipeStep
-          stepFields={stepFields}
-          handleAdd={handleAdd}
-          handleChange={handleChange}
-          handleRemove={handleRemove}
-        ></RecipeStep>
-      </div>
-      <div>
-        <button onClick={handleSubmit}>Submit</button>
-      </div>
-    </>
+    </div>
   );
 };
 

@@ -21,9 +21,9 @@ const Ingredient = ({ value, idx, ingredients, handleUpdateIngredient }) => {
         id="ingredient-select"
         getOptionLabel={(o) => o.label}
         options={ingredients}
-        style={{ width: 300 }}
+        style={{ width: 180 }}
         renderInput={(params) => (
-          <TextField {...params} label="Ingredient" variant="outlined" />
+          <TextField {...params} label="Ingredient" size="small" />
         )}
       />
     </>

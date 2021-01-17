@@ -1,6 +1,7 @@
 import React from "react";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
+import StyledAutocomplete from "./StyledAutocomplete";
 
 const MeasurementSelect = ({
   // measurement,
@@ -30,9 +31,15 @@ const MeasurementSelect = ({
           o1.label === o2.label && o1.value === o2.value
         }
         options={measurements}
-        style={{ width: 300 }}
+        style={{ width: 180 }}
+        // SelectDisplayProps={{ style: { className: "measurement-select" } }}
         renderInput={(params) => (
-          <TextField {...params} label="Measurement" variant="outlined" />
+          <TextField
+            {...params}
+            label="Measurement"
+            // variant="outlined"
+            size="small"
+          />
         )}
       />
     </>

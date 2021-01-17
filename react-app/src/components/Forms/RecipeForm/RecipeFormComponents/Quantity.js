@@ -7,9 +7,10 @@ const Quantity = ({ value, handleUpdateIngredient, idx }) => {
 
   return (
     <>
-      <label>
-        Qty.
+      <label className="quantity-label">
+        Amount
         <input
+          className="recipe-form-quantity"
           value={value.qty}
           type="number"
           onChange={(e) => handleUpdateIngredient(idx, e, type)}

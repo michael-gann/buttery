@@ -1,0 +1,225 @@
+.recipe-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100% - 75px)
+}
+
+.recipe-form-holder {
+    box-shadow: 0px 0px 10px 1px rgba(0,0,0, .2);
+    background-color: white;
+    border-radius: 5%;
+    min-height: 500px;
+    min-width: 750px;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    /* max-width: 500px; */
+}
+
+.recipe-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+    width: 100%;
+}
+
+.new-recipe-header {
+    font-size: 3rem;
+    text-align: center;
+    margin-top: 3%;
+}
+
+.recipe-name {
+    /* height: 50px; */
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    margin-bottom: 5%;
+    margin-top: 5%;
+}
+
+.recipe-name label {
+    width: 100%;
+    margin-left: 5%;
+}
+
+.recipe-name input {
+ /* height: 50px; */
+ border-bottom:1px solid rgba(0,0,0, .2);
+ font-size: 1em;
+ margin-left: 5%;
+ width: 500px;
+}
+
+.recipe-content {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5%;
+}
+
+.recipe-content label {
+    width: 100%;
+    margin-left: 5%;
+}
+
+.recipe-content input {
+    border-bottom:1px solid rgba(0,0,0, .2);
+    font-size: 1em;
+    margin-left: 5%;
+    width: 500px;
+}
+
+.add-new-recipe-ingredient-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 3%;
+}
+
+.add-new-recipe-ingredient-button button {
+    color: green;
+    background-color: white;
+    /* height: 30px;
+    width: 30px; */
+    font-size: 1.5rem;
+    margin-left: 10px;
+    /* border: 1px solid rgba(0, 0, 0, .2) */
+}
+
+.recipe-ingredients {
+    display: flex;
+    flex-direction: column;
+}
+
+.ingredient-fields {
+    display: flex;
+    /* height: 50px; */
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid black; */
+    margin-bottom: 20px;
+}
+
+.quantity-label {
+    height: 100%;
+    width: 150px;
+}
+
+.recipe-form-quantity {
+    margin-top: 17%;
+    border-bottom: 1px solid rgba(0,0,0, .2);
+    height: 100%;
+    /* background-color: rgba(0,0,0, .2); */
+    width: 50px;
+    font-size: 1em;
+}
+
+
+recipe-form-quantity label {
+    /* margin-left: 3%; */
+}
+
+.recipe-form-quantity {
+    margin-right: 3%;
+    margin-left: 10%;
+}
+
+.ingredient-fields .MuiAutocomplete-root {
+    margin-right: 5%;
+}
+
+.MuiAutocomplete-root {
+    /* background-color: red; */
+}
+
+/* .MuiInput-input {
+    font-size: .5em;
+} */
+
+#measurement-select, #measurement-select-label {
+    font-size: 1em;
+    transition: color 200ms ease-in-out;
+}
+
+#measurement-select:focus {
+    color: #b7a731;
+}
+
+.recipe-ingredient-remove-button {
+    margin-top: 3%;
+}
+
+.recipe-ingredient-remove-button button {
+    color: red;
+    font-size: 1.5em;
+    background-color: white;
+}
+
+.add-step-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 5%;
+}
+
+.add-step-button button {
+    color: green;
+    background-color: white;
+    /* height: 30px;
+    width: 30px; */
+    font-size: 1.5rem;
+    margin-left: 10px;
+    /* border: 1px solid rgba(0, 0, 0, .2) */
+}
+
+.recipe-steps {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.recipe-step {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    margin-bottom: 5%;
+    height: 50px;
+}
+
+.recipe-step textarea {
+    /* border-bottom:1px solid rgba(0,0,0, .2); */
+    font-size: 1em;
+    margin-left: 10%;
+    height: 50px;
+    width: 558px;
+    border: 1px solid rgba(0,0,0, .2);
+    border-radius: 5px;
+}
+
+.recipe-submit-button {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 5%;
+}
+
+.recipe-submit-button button {
+    width: 400px;
+    height: 40px;
+    border-radius: 50px;
+}
+
+.step-remove-button {
+    margin-left: 3%;
+}
+
+.step-remove-button button {
+    color: red;
+    font-size: 1.5em;
+    background-color: white;
+}

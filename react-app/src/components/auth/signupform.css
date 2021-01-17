@@ -1,4 +1,4 @@
-.login-container {
+.sign-up-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -6,14 +6,14 @@
     width: 100%
 }
 
-.login-form-container, .fun-login-image {
+.sign-up-form-container, .fun-login-image-sign-up {
     max-width: 49%;
     width: 100%;
     height: 100%;
     min-height: 99%;
 }
 
-.login-form-container {
+.sign-up-form-container {
     width: 100%;
     height: 100%;
     display: flex;
@@ -21,17 +21,17 @@
     align-items: center;
 }
 
-form {
+.sign-up-form form {
     width: 100%;
-    margin-bottom: 25%;
-    min-height: 250px;
+    margin-bottom: 10%;
+    min-height: 300px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-.loginform {
+.sign-up-form {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -40,30 +40,13 @@ form {
     min-height: 500px;
     min-width: 400px;
     max-width: 400px;
+    /* max-height: 650px; */
     box-shadow: 0px 0px 10px 1px rgba(0,0,0, .2);
     border-radius: 5%;
+    position: relative;
 }
 
-.fun-login-image {
-    display: flex;
-    justify-content: center;;
-    height: calc(100vh - 75px);
-    border-left: 1px solid gray;
-}
-
-.welcome {
-    font-size: 2rem;
-    width: 250px;
-    text-align: center;
-    margin-top: 25px;
-    margin-bottom: 15%;
-}
-
-.please-login-container, .welcome-container, .email-container, .password-container {
-    width: 100%;
-}
-
- .welcome-container {
+.sign-up-welcome-container {
     margin-top: 5%;
     margin-bottom: 5%;
     display: flex;
@@ -71,24 +54,34 @@ form {
     align-items: center;
 }
 
-.please-login {
-    font-size: 1.5rem;
-    border-bottom: 1px solid rgba(0,0,0, .2);
+.sign-up-welcome {
+    font-size: 2rem;
+    width: 250px;
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 15%;
 }
 
-.email-container, .password-container {
+.signing-up-easy {
+    font-size: 1.5rem;
+    /* border-bottom: 1px solid rgba(0,0,0, .2); */
+    margin-bottom: 50px;
+}
+
+.first-name-container, .last-name-container, .email-container, .password-container, .confirm-password-container {
+    width: 100%;
     display: flex;
     flex-direction: column;
     width: 250px;
     margin-bottom: 5%;
 }
 
-.loginform label {
+.sign-up-form label {
     font-size: 10px;
     color: rgba(128, 128, 128, 0.637);
 }
 
-.email, .password {
+.last-name, .first-name, .email, .password, .confirm-password {
     border-bottom: 1px solid rgba(0,0,0, .2);
     margin-top: 8px;
     font-size: 1rem;
@@ -96,53 +89,54 @@ form {
                 color 200ms ease-in-out;
 }
 
-.email:focus, .password:focus {
+.last-name:focus, .first-name:focus, .email:focus, .password:focus, .confirm-password:focus {
     color: #b7a731;
     border-bottom: 1px solid rgba(0, 0, 0, .5);
 }
 
-.login-button {
+.sign-up-button {
     background-color: #23bf93;
     height: 35px;
     width: 250px;
     border-radius: 20px;
     border: 1px solid black;
     transition: background-color 250ms ease-in-out;
-    margin-top: 20px;
 }
 
-.login-button:hover {
+.sign-up-button:hover {
     background-color:  #eb7a10ce;
     cursor: pointer;
 }
 
-.sign-up-redirect {
+.login-redirect {
     font-size: 12px;
     text-align: center;
     width: 50%;
     margin-top: 20px;
 }
 
-.sign-up-redirect a {
+.login-redirect a {
     color: rgb(25, 137, 202);
 }
 
-.sign-up-redirect a:hover {
+.login-redirect a:hover {
     cursor: pointer;
 }
 
-.errors {
+.fun-login-image-sign-up {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 300px;
-    margin-bottom: 10px;
-    margin-top: 10px;
+    justify-content: center;;
+    height: calc(100vh - 75px);
+    border-right: 1px solid gray;
 }
 
-.errors div {
+.fun-login-image-sign-up img {
+    object-fit: contain;
+}
+
+.pass-error {
     min-height: 20px;
     color: rgb(196, 31, 31);
-    margin-bottom: 5px;
+    position: absolute;
+top: 28%;
 }

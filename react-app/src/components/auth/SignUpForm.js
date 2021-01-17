@@ -1,27 +1,42 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
-import { signUp } from "../../services/auth";
+import { useSelector, useDispatch } from "react-redux";
+import { Redirect, NavLink } from "react-router-dom";
+// import { signUp } from "../../services/auth";
+
+import * as userActions from "../../store/users";
+
+import "./signupform.css";
 
 const SignUpForm = () => {
+  const dispatch = useDispatch();
   const authenticated = useSelector((state) => state.users.authenticated);
-  const [username, setUsername] = useState("");
+  const [first_name, setFirstName] = useState("");
+  const [last_name, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
+  const [passError, setPassError] = useState("");
 
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const user = await signUp(username, email, password);
-      if (!user.errors) {
-        // setAuthenticated(true);
-      }
+      dispatch(
+        userActions.signUpNewUser(first_name, last_name, email, password)
+      );
+    } else {
+      setPassError("Passwords do not match");
+    }
+    if (authenticated) {
+      return <Redirect to="/home"></Redirect>;
     }
   };
 
-  const updateUsername = (e) => {
-    setUsername(e.target.value);
+  const updateFirstName = (e) => {
+    setFirstName(e.target.value);
+  };
+
+  const updateLastName = (e) => {
+    setLastName(e.target.value);
   };
 
   const updateEmail = (e) => {
@@ -41,46 +56,91 @@ const SignUpForm = () => {
   }
 
   return (
-    <form onSubmit={onSignUp}>
-      <div>
-        <label>User Name</label>
-        <input
-          type="text"
-          name="username"
-          onChange={updateUsername}
-          value={username}
-        ></input>
+    <div className="sign-up-container">
+      <div className="fun-login-image-sign-up">
+        <img
+          alt="pantry"
+          src="https://i.pinimg.com/originals/b2/d8/a7/b2d8a7e38bb0f30140183f2860d4a884.jpg"
+        ></img>
       </div>
-      <div>
-        <label>Email</label>
-        <input
-          type="text"
-          name="email"
-          onChange={updateEmail}
-          value={email}
-        ></input>
+      <div className="sign-up-form-container">
+        <div className="sign-up-form">
+          <div className="sign-up-welcome-container">
+            <h2 className="sign-up-welcome">Welcome!</h2>
+          </div>
+          <h3 className="signing-up-easy">Signing up is easy</h3>
+          {passError ? (
+            <div className="pass-error">{passError}</div>
+          ) : (
+            <div className="pass-error"></div>
+          )}
+          <form onSubmit={onSignUp}>
+            <div className="first-name-container">
+              <label>First Name</label>
+              <input
+                placeholder="Jane"
+                className="first-name"
+                type="text"
+                name="first_name"
+                onChange={updateFirstName}
+                value={first_name}
+              ></input>
+            </div>
+            <div className="last-name-container">
+              <label>Last Name</label>
+              <input
+                placeholder="Doe"
+                className="last-name"
+                type="text"
+                name="last_name"
+                onChange={updateLastName}
+                value={last_name}
+              ></input>
+            </div>
+            <div className="email-container">
+              <label>Email</label>
+              <input
+                placeholder="example@protonmail.com"
+                className="email"
+                type="email"
+                name="email"
+                onChange={updateEmail}
+                value={email}
+              ></input>
+            </div>
+            <div className="password-container">
+              <label>Password</label>
+              <input
+                placeholder="password"
+                className="password"
+                type="password"
+                name="password"
+                onChange={updatePassword}
+                value={password}
+              ></input>
+            </div>
+            <div className="confirm-password-container">
+              <label>Confirm Password</label>
+              <input
+                placeholder="confirm password"
+                className="confirm-password"
+                type="password"
+                name="repeat_password"
+                onChange={updateRepeatPassword}
+                value={repeatPassword}
+                required={true}
+              ></input>
+            </div>
+            <button className="sign-up-button" type="submit">
+              Sign Up
+            </button>
+            <div className="login-redirect">
+              Already have an account? <NavLink to="/login">Login</NavLink>
+            </div>
+          </form>
+        </div>
       </div>
-      <div>
-        <label>Password</label>
-        <input
-          type="password"
-          name="password"
-          onChange={updatePassword}
-          value={password}
-        ></input>
-      </div>
-      <div>
-        <label>Repeat Password</label>
-        <input
-          type="password"
-          name="repeat_password"
-          onChange={updateRepeatPassword}
-          value={repeatPassword}
-          required={true}
-        ></input>
-      </div>
-      <button type="submit">Sign Up</button>
-    </form>
+    </div>
   );
 };
 

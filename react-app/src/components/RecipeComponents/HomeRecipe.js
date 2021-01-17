@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useSelector, shallowEqual, useDispatch } from "react-redux";
+import React from "react";
+import { useSelector, shallowEqual } from "react-redux";
 // import { useHistory } from "react-router-dom";
 
 import RecipeCard from "./RecipeCard";

@@ -16,9 +16,11 @@ const ShoppingList = () => {
     Object.values(state.cookingLists.shoppingList).filter((i) => i.quantity > 0)
   );
 
+  const sessionUser = useSelector((state) => state.users.sessionUser);
+
   useEffect(() => {
-    dispatch(cookingListActions.getShoppingList(1));
-  }, [dispatch, numberOfRecipesToShop]);
+    dispatch(cookingListActions.getShoppingList(sessionUser.id));
+  }, [dispatch, numberOfRecipesToShop, sessionUser.id]);
 
   return (
     <>

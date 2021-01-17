@@ -7,7 +7,7 @@ import RecipeTitle from "./RecipeTitle";
 // import Steps from "./Steps";
 import { MetroSpinner } from "react-spinners-kit";
 import { IconContext } from "react-icons";
-import { FaCircle } from "react-icons/fa";
+// import { FaCircle } from "react-icons/fa";
 import { BsCircleFill } from "react-icons/bs";
 import { ImPlus } from "react-icons/im";
 import { ImMinus } from "react-icons/im";
