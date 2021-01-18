@@ -25,7 +25,9 @@ const ShoppingList = () => {
   return (
     <>
       <div className="shopping-list-items-container">
-        <div>you are shopping for {numberOfRecipesToShop} recipes</div>
+        <div className="shopping-for">
+          You are shopping for {numberOfRecipesToShop} recipes
+        </div>
         {ingredientsToShop ? (
           ingredientsToShop.map((i) => {
             return (

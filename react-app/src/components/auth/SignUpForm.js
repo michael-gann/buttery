@@ -7,6 +7,15 @@ import * as userActions from "../../store/users";
 
 import "./signupform.css";
 
+import styled, { keyframes } from "styled-components";
+import { slideInRight } from "react-animations";
+
+const slideInRightAnimation = keyframes`${slideInRight}`;
+
+const SlideInRight = styled.div`
+  animation: 1s ${slideInRightAnimation};
+`;
+
 const SignUpForm = () => {
   const dispatch = useDispatch();
   const authenticated = useSelector((state) => state.users.authenticated);
@@ -64,81 +73,83 @@ const SignUpForm = () => {
         ></img>
       </div>
       <div className="sign-up-form-container">
-        <div className="sign-up-form">
-          <div className="sign-up-welcome-container">
-            <h2 className="sign-up-welcome">Welcome!</h2>
+        <SlideInRight>
+          <div className="sign-up-form">
+            <div className="sign-up-welcome-container">
+              <h2 className="sign-up-welcome">Welcome!</h2>
+            </div>
+            <h3 className="signing-up-easy">Signing up is easy</h3>
+            {passError ? (
+              <div className="pass-error">{passError}</div>
+            ) : (
+              <div className="pass-error"></div>
+            )}
+            <form onSubmit={onSignUp}>
+              <div className="first-name-container">
+                <label>First Name</label>
+                <input
+                  placeholder="Jane"
+                  className="first-name"
+                  type="text"
+                  name="first_name"
+                  onChange={updateFirstName}
+                  value={first_name}
+                ></input>
+              </div>
+              <div className="last-name-container">
+                <label>Last Name</label>
+                <input
+                  placeholder="Doe"
+                  className="last-name"
+                  type="text"
+                  name="last_name"
+                  onChange={updateLastName}
+                  value={last_name}
+                ></input>
+              </div>
+              <div className="email-container">
+                <label>Email</label>
+                <input
+                  placeholder="example@protonmail.com"
+                  className="email"
+                  type="email"
+                  name="email"
+                  onChange={updateEmail}
+                  value={email}
+                ></input>
+              </div>
+              <div className="password-container">
+                <label>Password</label>
+                <input
+                  placeholder="password"
+                  className="password"
+                  type="password"
+                  name="password"
+                  onChange={updatePassword}
+                  value={password}
+                ></input>
+              </div>
+              <div className="confirm-password-container">
+                <label>Confirm Password</label>
+                <input
+                  placeholder="confirm password"
+                  className="confirm-password"
+                  type="password"
+                  name="repeat_password"
+                  onChange={updateRepeatPassword}
+                  value={repeatPassword}
+                  required={true}
+                ></input>
+              </div>
+              <button className="sign-up-button" type="submit">
+                Sign Up
+              </button>
+              <div className="login-redirect">
+                Already have an account? <NavLink to="/login">Login</NavLink>
+              </div>
+            </form>
           </div>
-          <h3 className="signing-up-easy">Signing up is easy</h3>
-          {passError ? (
-            <div className="pass-error">{passError}</div>
-          ) : (
-            <div className="pass-error"></div>
-          )}
-          <form onSubmit={onSignUp}>
-            <div className="first-name-container">
-              <label>First Name</label>
-              <input
-                placeholder="Jane"
-                className="first-name"
-                type="text"
-                name="first_name"
-                onChange={updateFirstName}
-                value={first_name}
-              ></input>
-            </div>
-            <div className="last-name-container">
-              <label>Last Name</label>
-              <input
-                placeholder="Doe"
-                className="last-name"
-                type="text"
-                name="last_name"
-                onChange={updateLastName}
-                value={last_name}
-              ></input>
-            </div>
-            <div className="email-container">
-              <label>Email</label>
-              <input
-                placeholder="example@protonmail.com"
-                className="email"
-                type="email"
-                name="email"
-                onChange={updateEmail}
-                value={email}
-              ></input>
-            </div>
-            <div className="password-container">
-              <label>Password</label>
-              <input
-                placeholder="password"
-                className="password"
-                type="password"
-                name="password"
-                onChange={updatePassword}
-                value={password}
-              ></input>
-            </div>
-            <div className="confirm-password-container">
-              <label>Confirm Password</label>
-              <input
-                placeholder="confirm password"
-                className="confirm-password"
-                type="password"
-                name="repeat_password"
-                onChange={updateRepeatPassword}
-                value={repeatPassword}
-                required={true}
-              ></input>
-            </div>
-            <button className="sign-up-button" type="submit">
-              Sign Up
-            </button>
-            <div className="login-redirect">
-              Already have an account? <NavLink to="/login">Login</NavLink>
-            </div>
-          </form>
-        </div>
+        </SlideInRight>
       </div>
     </div>
   );

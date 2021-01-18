@@ -67,7 +67,7 @@ const RecipeCard = ({ id, isEditing, handleEditRecipe, isHomepage }) => {
               )}
 
               <IconContext.Provider
-                value={{ className: `circle-${toShop ? "yes" : ""}` }}
+                value={{ className: `circle${toShop ? "-yes" : ""}` }}
               >
                 <div>
                   <BsCircleFill />

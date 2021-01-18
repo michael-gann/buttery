@@ -1,8 +1,9 @@
 nav {
     position: sticky;
     top: 0;
-    background-color: transparent;
+    background-color: white;
     height: 75px;
+    z-index: 999;
 }
 
 .navbar-main-container {
@@ -14,6 +15,23 @@ nav {
     min-height: 75px;
     width: 100%;
     box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.2);
+}
+
+.splashpage-navbar-main-container {
+    display: flex;
+    justify-content: space-between;
+    background-image: url("https://i.imgur.com/LZ7QWus.jpg?1");
+    align-items: center;
+    /* background-color: white; */
+    background-size: contain;
+    min-height: 75px;
+    width: 100%;
+    box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+    margin-left: 8px;
+    margin-top: 5px;
 }
 
 .logo:hover {

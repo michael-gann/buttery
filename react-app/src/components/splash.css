@@ -1,21 +1,28 @@
 .splashpage-container {
-/* /* display: flex; */
-flex-direction: column;
-height: 100%;
-width: 100%;
-align-items: center;
+    /* /* display: flex; */
+    flex-direction: column;
+    height: calc(100vh - 75px);
+    width: 100%;
+    align-items: center;
+    background-color: rgba(0,0,0,0.8);
+    background-image:
+    linear-gradient(to bottom, rgba(245, 246, 252, 0.52), rgba(65, 150, 124, 0.342)),
+    url("https://i.imgur.com/f1pX4Qt.jpg");
+    background-size: cover;
 }
+
+
 
 .splashpage-text-container {
-/* justify-content: center; */
-/* align-items: center; */
-display: flex;
-flex-direction: column;
-width: 100%;
-height: 100%;
+    /* justify-content: center; */
+    /* align-items: center; */
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
 }
 
-.buttery-welcome {
+/* .buttery-welcome {
 height: 10vw;
 font-size: 3rem;
 width: 100%;
@@ -24,17 +31,65 @@ min-height: 150px;
 background-color: #DE9E44;
 color: white;
 padding-top: 3%;
+} */
+
+.splash-description-1 {
+    display: flex;
+    justify-content: center;
+    height: 25%;
+    width: 50%;
+    margin-bottom: 12.7%;
+    margin-top: 6.8%;
+    margin-left: 10%;
+    /* background-color: #e6c73be0; */
+    border-radius: 50px;
 }
 
-.splash-description-1, .splash-description-2, .splash-description-3, .splash-description-4 {
-    height: 8vw;
-    font-size: 2rem;
-    width: 100%;
-    text-align: center;
-    padding-top: 3%;
-    /* min-height: 180px; @media */
+.text-1 {
+    display: flex;
+    color: white;
+    font-size: 2.5rem;
+    justify-content: center;
+    align-items: center;
+    font-weight: 800;
+    /* margin-top: 5%; */
 }
 
-.splash-description-2, .splash-description-4 {
-    background-color: #ffffff
+.splash-description-2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 65%;
+    width: 40%;
+    margin-left: 57%;
+    /* background-color:rgba(35, 191, 147, 0.863); */
+    border-radius: 50px;
+    margin-bottom: 100px;
+    animation-delay: 2s;
+}
+
+.text-2 {
+    font-size: 2.5rem;
+    color: white;
+    font-weight: 800;
+    margin-bottom: 25px;
+}
+
+.splash-sign-up {
+    background-color: #eb7a10ef;
+    height: 45px;
+    width: 300px;
+    border-radius: 20px;
+    border: 1px solid rgba(0,0,0,0.2);
+    transition: background-color 250ms ease-in-out,
+                color 250ms ease-in-out;
+    font-size: 1.4em;
+    color: white;
+}
+
+.splash-sign-up:hover {
+    background-color: #e6c73be0;
+    cursor: pointer;
+    color: black;
 }

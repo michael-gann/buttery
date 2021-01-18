@@ -8,6 +8,15 @@ import { FiPlusSquare } from "react-icons/fi";
 
 import "./home.css";
 
+import styled, { keyframes } from "styled-components";
+import { slideInLeft } from "react-animations";
+
+const slideInLeftAnimation = keyframes`${slideInLeft}`;
+
+const SlideInLeft = styled.div`
+  animation: 0.5s ${slideInLeftAnimation};
+`;
+
 const Home = () => {
   const history = useHistory();
   const [isHomepage, setIsHomepage] = useState(false);
@@ -23,17 +32,20 @@ const Home = () => {
   return (
     <div className="home-main-container">
       <div className="recipes">
-        <h2 className="recipes-header">Recipes</h2>
-        {
-          <button className="add-recipe-button" onClick={handleClick}>
-            <FiPlusSquare />
-          </button>
-        }
-        <HomeRecipe
-          handleClick={handleClick}
-          isHomepage={isHomepage}
-          setIsHomepage={setIsHomepage}
-        ></HomeRecipe>
+        <SlideInLeft>
+          <h2 className="recipes-header">Recipes</h2>
+          {
+            <button className="add-recipe-button" onClick={handleClick}>
+              <FiPlusSquare />
+            </button>
+          }
+
+          <HomeRecipe
+            handleClick={handleClick}
+            isHomepage={isHomepage}
+            setIsHomepage={setIsHomepage}
+          ></HomeRecipe>
+        </SlideInLeft>
       </div>
       <div className="shopping-list">
         <h2 className="shopping-list-header">Shopping List</h2>
