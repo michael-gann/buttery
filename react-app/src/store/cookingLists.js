@@ -12,6 +12,10 @@ const GET_SHOPPING_LIST_BEGIN = "GET_SHOPPING_LIST_BEGIN";
 const GET_SHOPPING_LIST_SUCCESS = "GET_SHOPPING_LIST_SUCCESS";
 // const GET_SHOPPING_LIST_FAILURE = "GET_SHOPPING_LIST_FAILURE"
 
+const REMOVE_SHOPPING_LIST_ITEM_BEGIN = "REMOVE_SHOPPING_LIST_ITEM_BEGIN";
+const REMOVE_SHOPPING_LIST_ITEM_SUCCESS = "REMOVE_SHOPPING_LIST_ITEM_SUCCESS";
+// const GET_SHOPPING_LIST_FAILURE = "GET_SHOPPING_LIST_FAILURE"
+
 const getCookingListsBegin = () => {
   return {
     type: GET_COOKING_LISTS_BEGIN,
@@ -27,6 +31,12 @@ const addToShoppingListBegin = () => {
 const getShoppingListBegin = () => {
   return {
     type: GET_SHOPPING_LIST_BEGIN,
+  };
+};
+
+const RemoveShoppingListItemBegin = () => {
+  return {
+    type: REMOVE_SHOPPING_LIST_ITEM_BEGIN,
   };
 };
 
@@ -48,6 +58,13 @@ const getShoppingListSuccess = (shoppingList) => {
   return {
     type: GET_SHOPPING_LIST_SUCCESS,
     payload: shoppingList,
+  };
+};
+
+const RemoveShoppingListItemSuccess = (recipe) => {
+  return {
+    type: REMOVE_SHOPPING_LIST_ITEM_SUCCESS,
+    payload: recipe,
   };
 };
 
@@ -87,6 +104,21 @@ export const getShoppingList = (userId) => async (dispatch) => {
   return res;
 };
 
+export const removeRecipe = (id) => async (dispatch) => {
+  dispatch(RemoveShoppingListItemBegin());
+
+  const res = await fetch("/api/cooking-lists/remove-from-shop", {
+    method: "POST",
+    headers: { "Content-type": "application/json" },
+    body: JSON.stringify({ recipeId: id }),
+  });
+  const resData = await res.json();
+
+  dispatch(RemoveShoppingListItemSuccess(resData));
+
+  return res;
+};
+
 const updateShoppingList = (oldState, newState) => {
   // const copyState = Object.assign(oldState, {});
 
@@ -94,11 +126,15 @@ const updateShoppingList = (oldState, newState) => {
     return {};
   }
 
+  if (Object.keys(oldState).length > Object.keys(newState).length) {
+    return newState;
+  }
+
   const mergedState = { ...oldState, ...newState };
 
   for (const key in mergedState) {
     if (newState[key] === undefined) {
-      return;
+      continue;
     } else if (mergedState[key].name === newState[key].name) {
       mergedState[key] = { ...mergedState[key], ...newState[key] };
     }
@@ -143,11 +179,22 @@ const cookingListsReducer = (
       return newState;
     case GET_SHOPPING_LIST_SUCCESS:
       newState = _.cloneDeep(state);
+      console.log("GET LIST", newState);
       newState.loading = false;
       newState.shoppingList = updateShoppingList(
         newState.shoppingList,
         action.payload
       );
+      return newState;
+    case REMOVE_SHOPPING_LIST_ITEM_BEGIN:
+      newState = _.cloneDeep(state);
+      newState.loading = true;
+      return newState;
+    case REMOVE_SHOPPING_LIST_ITEM_SUCCESS:
+      newState = _.cloneDeep(state);
+      console.log("REMOVE RECIPE", newState);
+      newState.loading = false;
+      newState.recipesToShop = action.payload;
       return newState;
     default:
       return state;

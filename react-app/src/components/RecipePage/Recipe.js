@@ -6,8 +6,10 @@ import RecipeCard from "../RecipeComponents/RecipeCard";
 import Ingredients from "../RecipeComponents/Ingredients";
 import Steps from "../RecipeComponents/Steps";
 import { MetroSpinner } from "react-spinners-kit";
+import { MdEdit } from "react-icons/md";
 
 import "./recipe.css";
+import PantryMatchIngredients from "../RecipeComponents/PantryMatchIngredients";
 
 const Recipe = () => {
   // const history = useHistory();
@@ -43,7 +45,6 @@ const Recipe = () => {
   return (
     <div className="recipe-page-container">
       <MetroSpinner size={40} color="#3ce50f" loading={isLoading} />
-      <button onClick={handleEditRecipe}>Edit Recipe</button>
       {/* <button onClick={handleDeleteRecipe}>Delete Recipe</button> */}
       <>
         {isEditing ? (
@@ -56,15 +57,37 @@ const Recipe = () => {
           <>
             {recipe && (
               <>
+                <div className="edit-recipe-button-container">
+                  <button
+                    className="edit-recipe-button"
+                    onClick={handleEditRecipe}
+                  >
+                    <MdEdit></MdEdit> Edit
+                  </button>
+                </div>
                 <RecipeCard
                   id={id}
                   isEditing={isEditing}
                   handleEditRecipe={handleEditRecipe}
                 ></RecipeCard>
                 <div className="home-ingredients-container">
-                  <Ingredients ingredients={recipe[`${id}`].ingredients} />
+                  <div className="ingredients-headers">
+                    <div className="recipe-ingredients-header">Ingredients</div>
+                    <div className="pantry-ingredients-header">Pantry</div>
+                  </div>
+                  <div className="new-ingredients-container">
+                    <div className="ingredients-for-recipe">
+                      <Ingredients ingredients={recipe[`${id}`].ingredients} />
+                    </div>
+                    <div className="pantry-ingredients-for-recipe">
+                      <PantryMatchIngredients
+                        ingredients={recipe[`${id}`].ingredients}
+                      ></PantryMatchIngredients>
+                    </div>
+                  </div>
                 </div>
                 <div className="home-steps-container">
+                  <div className="recipe-steps-header">Steps</div>
                   <Steps steps={recipe[`${id}`].steps} />
                 </div>
               </>

@@ -7,6 +7,8 @@ import PantryIngredient from "./PantryFormComponents/PantryIngredient";
 
 import * as pantryActions from "../../../store/pantries";
 
+import "./pantryform.css";
+
 const PantryForm = () => {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -117,18 +119,24 @@ const PantryForm = () => {
   };
 
   return (
-    <>
-      <div>Pantry Form</div>
-      <PantryIngredient
-        measurements={measurements}
-        ingredients={ingredients}
-        handleIngredientAdd={handleIngredientAdd}
-        handleUpdateIngredient={handleUpdateIngredient}
-        handleIngredientRemove={handleIngredientRemove}
-        ingredientFields={ingredientFields}
-      />
-      <button onClick={handleSubmit}>Submit</button>
-    </>
+    <div className="pantry-form-container">
+      <div className="pantry-form-holder">
+        <div className="pantry-form">
+          <div className="pantry-form-header">Add to pantry</div>
+          <PantryIngredient
+            measurements={measurements}
+            ingredients={ingredients}
+            handleIngredientAdd={handleIngredientAdd}
+            handleUpdateIngredient={handleUpdateIngredient}
+            handleIngredientRemove={handleIngredientRemove}
+            ingredientFields={ingredientFields}
+          />
+          <div className="pantry-submit-button">
+            <button onClick={handleSubmit}>Add Ingredient</button>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 

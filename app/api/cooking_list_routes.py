@@ -67,19 +67,48 @@ def add_to_shop():
 
     form['csrf_token'].data = request.cookies['csrf_token']
 
-    if form.validate_on_submit:
-        cooking_list = CookingList(
-            user_id=form.user_id.data,
-            recipe_id=form.recipe_id.data
-        )
+    check_exists = db.session.query(CookingList).filter(
+        CookingList.recipe_id == form.recipe_id.data).first()
 
-        db.session.add(cooking_list)
-        db.session.commit()
+    print("CHECKING IF RECIPE EXISTS, IF SO, SEND ERROR", check_exists)
 
-        return {**cooking_list.to_dict()}
+    if check_exists:
+        return {"errors": ["recipe ingredients already in your shopping cart!"]}, 500
     else:
-        return {'errors': ['Internal Server Error']}, 500
+
+        if form.validate_on_submit:
+            cooking_list = CookingList(
+                user_id=form.user_id.data,
+                recipe_id=form.recipe_id.data
+            )
+
+            db.session.add(cooking_list)
+            db.session.commit()
+
+            return {**cooking_list.to_dict()}
+        else:
+            return {'errors': ['Internal Server Error']}, 500
     return {'errors': ['Internal Server Error']}, 500
+
+
+@cooking_list_routes.route("/remove-from-shop", methods=["POST"])
+def remove_recipe():
+    data = request.get_json()
+
+    recipe_id = data.get("recipeId")
+
+    recipe_to_delete = db.session.query(CookingList).filter(
+        CookingList.recipe_id == recipe_id).first()
+
+    db.session.delete(recipe_to_delete)
+    db.session.commit()
+
+    cooking_list_query = db.session.query(CookingList).filter(
+        CookingList.user_id == recipe_to_delete.user_id).all()
+
+    cooking_list = [{**l.to_dict()} for l in cooking_list_query]
+
+    return jsonify(cooking_list)
 
 
 @ cooking_list_routes.route("", methods=["GET"])

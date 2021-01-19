@@ -1,0 +1,80 @@
+.pantry-page-pantry-container {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.pantry-page-header {
+    font-size: 2em;
+    text-align: center;
+    margin-top: 3%;
+    font-weight: bold;
+    margin-bottom: 3%;
+}
+
+.pantry-pantry-category-containers {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    min-width: 40%;
+    /* width: 45%; */
+    max-width: 40%;
+    padding: 5px;
+    margin: 2px;
+    border-radius: 5px;
+    width: 100%;
+    margin-bottom: 2%;
+    box-shadow: 0px 0px 10px 1px rgba(62, 64, 15, .2);
+    min-height: 200px;
+}
+
+.pantry-pantry-category-containers > .pantry-category-header {
+    color: black;
+    /* width: 25%; */
+    border-bottom: none;
+}
+
+.pantry-pantry-category-containers > .pantry-ingredients-container {
+    display: flex;
+    /* margin-right: 100px; */
+}
+
+.pantry-pantry-category-containers > .pantry-ingredients-container > .pantry-ingredient-container {
+    font-size: 15px;
+    display: flex;
+    width: 33%;
+    /* text-align: center; */
+    /* margin-right: 20px; */
+    /* justify-content: space-around; */
+    justify-content: center;
+}
+
+.pantry-ingredient-quantity {
+    margin-right: 10px;
+}
+
+.pantry-ingredient-measurement {
+    margin-right: 10px;
+}
+
+.pantry-ingredient-ingredient{
+    margin-right: 10px;
+}
+
+.add-pantry-item {
+    color: black;
+    background-color: white;
+    font-size: 1.2em;
+}
+
+.add-pantry-item:hover {
+    color: #23bf93;
+    cursor: pointer;
+}
+
+.pantry-page-header-container {
+    display: flex;
+    justify-content: center;
+}

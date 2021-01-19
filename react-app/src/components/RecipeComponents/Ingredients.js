@@ -17,7 +17,6 @@ const Ingredients = ({ ingredients }) => {
             </div>
           );
         })}
-      <Ingredient></Ingredient>
     </>
   );
 };

@@ -1,0 +1,71 @@
+.pantry-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100% - 75px)
+}
+
+.pantry-form-container > .pantry-form-holder {
+    box-shadow: 0px 0px 10px 1px rgba(0,0,0, .2);
+    background-color: white;
+    border-radius: 50px;
+    min-height: 500px;
+    min-width: 750px;
+    margin-top: 3%;
+    margin-bottom: 3%;
+
+}
+
+.pantry-form-container > .pantry-form-holder > .pantry-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+    width: 100%;
+}
+.pantry-form-container > .pantry-form-holder > .pantry-form  > .pantry-form-header {
+    font-size: 3rem;
+    text-align: center;
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+.pantry-form-container > .pantry-form-holder > .pantry-form > .add-new-pantry-ingredient-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 5%;
+
+}
+.pantry-form-container > .pantry-form-holder > .pantry-form > .add-new-pantry-ingredient-button button {
+    color: black;
+    background-color: white;
+    font-size: 1.5rem;
+    margin-left: 10px;
+    transition: color 150ms ease-in-out;
+}
+
+.pantry-form-container > .pantry-form-holder > .pantry-form > .add-new-pantry-ingredient-button button:hover {
+    color: #23bf93;
+    cursor: pointer;
+}
+
+
+.pantry-form-container > .pantry-form-holder > .pantry-form > .pantry-submit-button {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 5%;
+}
+.pantry-form-container > .pantry-form-holder > .pantry-form > .pantry-submit-button button {
+    width: 400px;
+    height: 40px;
+    border-radius: 50px;
+    background-color: #23BF93;
+    margin-top: 5%;
+}
+.pantry-form-container > .pantry-form-holder > .pantry-form > .pantry-submit-button button:hover {
+    background-color: #EB7910;
+    cursor: pointer;
+}

@@ -1,11 +1,19 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import styled, { keyframes } from "styled-components";
+import { fadeInLeft } from "react-animations";
 
 import ShoppingListItems from "../ShoppingListComponents/ShoppingListItem";
 
 import * as cookingListActions from "../../store/cookingLists";
 // TODO:
 // IoStorefront IMPORT ICONS FROM REACT ICONS/IO
+
+const fadeInAnimation = keyframes`${fadeInLeft}`;
+
+const FadeInLeft = styled.div`
+  animation: 1s ${fadeInAnimation};
+`;
 
 const ShoppingList = () => {
   const dispatch = useDispatch();
@@ -25,15 +33,17 @@ const ShoppingList = () => {
   return (
     <>
       <div className="shopping-list-items-container">
-        <div className="shopping-for">
+        {/* <div className="shopping-for">
           You are shopping for {numberOfRecipesToShop} recipes
-        </div>
+        </div> */}
         {ingredientsToShop ? (
-          ingredientsToShop.map((i) => {
+          ingredientsToShop.map((i, idx) => {
             return (
-              <div key={i.name} className="shopping-list-item">
-                <ShoppingListItems ingredient={i}></ShoppingListItems>
-              </div>
+              <FadeInLeft classname="shopping-list-item">
+                <div key={idx}>
+                  <ShoppingListItems ingredient={i}></ShoppingListItems>
+                </div>
+              </FadeInLeft>
             );
           })
         ) : (
