@@ -146,3 +146,18 @@ form {
     color: rgb(196, 31, 31);
     margin-bottom: 5px;
 }
+
+.demo-login-button {
+    background-color: #23bf93;
+    height: 35px;
+    width: 250px;
+    border-radius: 20px;
+    border: 1px solid black;
+    transition: background-color 250ms ease-in-out;
+    margin-top: 20px;
+}
+
+.demo-login-button:hover {
+    background-color:  #eb7a10ce;
+    cursor: pointer;
+}

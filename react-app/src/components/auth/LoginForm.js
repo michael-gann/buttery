@@ -42,6 +42,16 @@ const LoginForm = () => {
     return <Redirect to="/home" />;
   }
 
+  const demoLogin = (e) => {
+    const demoEmail = "demo@aa.io";
+    const demoPassword = "password";
+    e.preventDefault();
+    dispatch(userActions.loginUser(demoEmail, demoPassword));
+    if (!errors) {
+      return <Redirect to="/home" />;
+    }
+  };
+
   return (
     <div className="login-container">
       <div className="login-form-container">
@@ -82,6 +92,9 @@ const LoginForm = () => {
               </div>
               <button className="login-button" type="submit">
                 Login
+              </button>
+              <button className="demo-login-button" onClick={demoLogin}>
+                Demo Login
               </button>
               <div className="sign-up-redirect">
                 Don't have an account? <NavLink to="/sign-up">Sign-up</NavLink>
