@@ -16,6 +16,8 @@ Users can sign-up and login.
 - login/logout
 - access to site requires authentication
 
+![Alt Text](https://media.giphy.com/media/ClZZPi3QXgXXoNRyyG/giphy.gif)
+
 ## Pantry
 
 A user can add ingredients to their virtual pantry to reflect their current real life stock of ingredients. Doing so enables the app to generate
@@ -42,6 +44,8 @@ Users will get a colored number indicator on a recipe for how close they are to 
 - Add/edit/delete recipe
 - Mark recipe state (want-to-make / shopping / shopped / made) to update pantry/shopping list
 - Recommended recipes you can currently make (or can almost make)
+
+![Alt Text](https://media.giphy.com/media/YHw43U1Q8k6mSHg8Dy/giphy.gif)
 
 
 ## Stretch Goals - Future Ideas
