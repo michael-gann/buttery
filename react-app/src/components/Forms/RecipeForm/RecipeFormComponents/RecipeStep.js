@@ -7,9 +7,11 @@ const RecipeStep = ({ handleAdd, handleChange, handleRemove, stepFields }) => {
   return (
     <>
       <div className="add-step-button">
-        Steps
         <button type="button" onClick={() => handleAdd()}>
-          <ImPlus />
+          <div className="plus-button">
+            <ImPlus />
+          </div>
+          Add New Step
         </button>
       </div>
       {stepFields.map((field, idx) => {

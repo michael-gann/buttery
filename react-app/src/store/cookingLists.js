@@ -179,7 +179,6 @@ const cookingListsReducer = (
       return newState;
     case GET_SHOPPING_LIST_SUCCESS:
       newState = _.cloneDeep(state);
-      console.log("GET LIST", newState);
       newState.loading = false;
       newState.shoppingList = updateShoppingList(
         newState.shoppingList,
@@ -192,7 +191,6 @@ const cookingListsReducer = (
       return newState;
     case REMOVE_SHOPPING_LIST_ITEM_SUCCESS:
       newState = _.cloneDeep(state);
-      console.log("REMOVE RECIPE", newState);
       newState.loading = false;
       newState.recipesToShop = action.payload;
       return newState;

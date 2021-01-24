@@ -19,13 +19,18 @@
     background-color: white;
     border-radius: 50px;
     transition: background-color 150ms ease-in-out,
-    color 150ms ease-in-out;
+    color 150ms ease-in-out,
+    transform 50ms ease-out;
 }
 
 .edit-recipe-button:hover {
     background-color: #3E400F;
     color: white;
     cursor: pointer;
+}
+
+.edit-recipe-button:active {
+    transform: translate(1px, 1px);
 }
 
 .recipe-page-container span  > .home-recipe-title {
@@ -39,6 +44,8 @@
     text-align: center;
     max-width: 80%;
     margin-bottom: 2%;
+    line-height: 32px;
+    font-size: 18px;
 }
 
 .recipe-page-container > .home-ingredients-container {
@@ -48,11 +55,16 @@
     border-radius: 50px;
 }
 
-.recipe-page-container > .home-ingredients-container > .recipe-ingredients-header {
-    font-size: 2em;
-    margin-bottom: 25px;
-    margin-left: 45px;
-    margin-top: 20px;
+.recipe-page-container > .home-ingredients-container > .ingredients-headers > .recipe-ingredients-header {
+    color: black;
+    font-size: 2rem;
+    /* margin-bottom: 25px; */
+    /* margin-left: 45px; */
+    /* margin-top: 20px; */
+}
+
+.pantry-ingredients-header {
+    color: black;
 }
 
 .recipe-page-container > .home-steps-container > .recipe-steps-header {
@@ -60,6 +72,7 @@
     margin-bottom: 30px;
     margin-left: 50px;
     margin-top: 1%;
+    color: black;
 }
 
 .recipe-page-container > .home-ingredients-container > .new-ingredients-container > .ingredients-for-recipe > .home-ingredient-container {
@@ -111,6 +124,9 @@
 
 .recipe-page-container > .home-steps-container > .home-step > .steps-container > .step-number {
     margin-right: 50px;
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
 }
 
 .recipe-page-container > .home-steps-container > .home-step > .steps-container > .step-content {
@@ -127,6 +143,7 @@
     justify-content: space-around;
     font-size: 2rem;
     margin-top: 5px;
+    color: black;
 }
 
 .recipe-pantry-ingredient-container > .pantry-ingredient-recipe-container {

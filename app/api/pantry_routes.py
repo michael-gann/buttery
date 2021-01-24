@@ -81,6 +81,6 @@ def post_pantry():
                 for ingredient in new_pantry_ingredient_queries
             ]
 
-        print("INGREDIENT DB PANTRY", new_pantry_ingredients)
+        # print("INGREDIENT DB PANTRY", new_pantry_ingredients)
         return jsonify(new_pantry_ingredients)
     return {'errors': ['Internal Server Error']}, 500

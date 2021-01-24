@@ -7,9 +7,9 @@ import RecipeTitle from "./RecipeTitle";
 // import Ingredients from "./Ingredients";
 // import Steps from "./Steps";
 import { MetroSpinner } from "react-spinners-kit";
-import { IconContext } from "react-icons";
+// import { IconContext } from "react-icons";
 // import { FaCircle } from "react-icons/fa";
-import { BsCircleFill } from "react-icons/bs";
+// import { BsCircleFill } from "react-icons/bs";
 import { ImPlus } from "react-icons/im";
 import { ImMinus } from "react-icons/im";
 import { makeStyles } from "@material-ui/core/styles";
@@ -45,6 +45,10 @@ const useStyles3 = makeStyles((theme) => ({
 }));
 
 const RecipeCard = ({ id, isEditing, handleEditRecipe, isHomepage }) => {
+  const classes = useStyles();
+  const classes2 = useStyles2();
+  const classes3 = useStyles3();
+
   const shop = localStorage.getItem(`recipe-${id}`);
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.recipes.loading);
@@ -66,6 +70,9 @@ const RecipeCard = ({ id, isEditing, handleEditRecipe, isHomepage }) => {
       x.ingredient_id === y.ingredient_id && x.quantity - y.quantity <= 0
   );
 
+  const isClose = result.length > 0 && result.length <= 3;
+  const canMake = result.length === 0;
+
   const addToShop = () => {
     const form = new FormData();
 
@@ -83,12 +90,6 @@ const RecipeCard = ({ id, isEditing, handleEditRecipe, isHomepage }) => {
     localStorage.removeItem(`recipe-${id}`);
   };
 
-  const isClose = result.length > 0 && result.length <= 3;
-  const canMake = result.length === 0;
-
-  const classes = useStyles();
-  const classes2 = useStyles2();
-  const classes3 = useStyles3();
   return (
     <>
       {isEditing ? (
@@ -105,7 +106,7 @@ const RecipeCard = ({ id, isEditing, handleEditRecipe, isHomepage }) => {
                 <MetroSpinner size={40} color="#3ce50f" loading={isLoading} />
                 <RecipeTitle title={recipe[`${id}`].name} id={id}></RecipeTitle>
               </div>
-              {shop ? (
+              {toShop ? (
                 <button
                   onClick={removeFromShop}
                   className="shop-button shop-button-remove"
@@ -120,7 +121,7 @@ const RecipeCard = ({ id, isEditing, handleEditRecipe, isHomepage }) => {
                   <Badge
                     showZero={true}
                     badgeContent={result.length}
-                    anchorOrign={{ vertical: "top", horizontal: "right" }}
+                    anchororign={{ vertical: "top", horizontal: "right" }}
                     classes={
                       isClose
                         ? { badge: classes2.badge }
@@ -140,7 +141,7 @@ const RecipeCard = ({ id, isEditing, handleEditRecipe, isHomepage }) => {
               <Badge
                 showZero={true}
                 badgeContent={result.length}
-                anchorOrign={{ vertical: "top", horizontal: "right" }}
+                anchororign={{ vertical: "top", horizontal: "right" }}
                 classes={
                   isClose
                     ? { badge: classes2.badge }

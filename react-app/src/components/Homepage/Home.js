@@ -7,8 +7,8 @@ import Badge from "@material-ui/core/Badge";
 import HomeRecipe from "../RecipeComponents/HomeRecipe";
 import HomePantry from "../PantryComponents/HomePantry";
 import ShoppingList from "../ShoppingListComponents/ShoppingList";
-import { FiPlusSquare } from "react-icons/fi";
-import { ImPlus } from "react-icons/im";
+// import { FiPlusSquare } from "react-icons/fi";
+// import { ImPlus } from "react-icons/im";
 
 import "./home.css";
 
@@ -53,14 +53,8 @@ const Home = () => {
       <div className="recipes">
         <SlideInLeft>
           <div className="recipes-header-and-button-container">
-            <h2 className="recipes-header">Recipes</h2>
-            {
-              <button className="add-recipe-button" onClick={handleClick}>
-                <ImPlus />
-              </button>
-            }
+            <h2 className="recipes-header">Recipes List</h2>
           </div>
-
           <HomeRecipe
             handleClick={handleClick}
             isHomepage={isHomepage}

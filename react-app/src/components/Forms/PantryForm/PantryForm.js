@@ -94,12 +94,6 @@ const PantryForm = () => {
     // }
 
     for (const key in pantry_ingredients) {
-      console.log(
-        "KEY VALUE PAIRS IN PANTRY FORM",
-        key,
-        pantry_ingredients[key]
-      );
-
       form.set(key, pantry_ingredients[key]);
     }
 

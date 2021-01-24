@@ -29,7 +29,8 @@ def get_shopping_list():
         if ri.ingredient_id not in recipe_ingredient_totals:
             recipe_ingredient_totals[ri.ingredient_id] = {"quantity": ri.quantity,
                                                           "name": ri.ingredients.name,
-                                                          "measurement": ri.measurements.name}
+                                                          "measurement": ri.measurements.name,
+                                                          "ingredient_id": ri.ingredient_id}
         else:
             recipe_ingredient_totals[ri.ingredient_id]["quantity"] += ri.quantity
 
@@ -54,7 +55,8 @@ def get_shopping_list():
         id: {
             "name": ri["name"],
             "quantity": ri["quantity"] - pantry_ingredient_totals.get(id, {}).get("quantity", 0),
-            "measurement": ri["measurement"]
+            "measurement": ri["measurement"],
+            "ingredient_id": ri["ingredient_id"]
         } for id, ri in recipe_ingredient_totals.items()
     }
 

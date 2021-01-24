@@ -16,9 +16,11 @@ const RecipeIngredient = ({
   return (
     <>
       <div className="add-new-recipe-ingredient-button">
-        Ingredients
         <button type="button" onClick={() => handleRecipeIngredientAdd()}>
-          <ImPlus />
+          <div className="plus-button">
+            <ImPlus />
+          </div>
+          Add New Ingredient
         </button>
       </div>
       {ingredientFields.map((field, idx) => {

@@ -20,7 +20,7 @@ const PantryIngredients = ({ id }) => {
           return (
             <>
               <MetroSpinner size={40} color="#3ce50f" loading={isLoading} />
-              <div key={idx} className="pantry-ingredient-container">
+              <div key={id} className="pantry-ingredient-container">
                 <PantryIngredient
                   ingredient={i}
                   isLoading={isLoading}

@@ -55,6 +55,7 @@
 }
 
 .sign-up-welcome {
+    color: black;
     font-size: 2rem;
     width: 250px;
     text-align: center;
@@ -63,6 +64,7 @@
 }
 
 .signing-up-easy {
+    color: #4f4f4f;
     font-size: 1.5rem;
     /* border-bottom: 1px solid rgba(0,0,0, .2); */
     margin-bottom: 50px;
@@ -78,7 +80,8 @@
 
 .sign-up-form label {
     font-size: 10px;
-    color: rgba(128, 128, 128, 0.637);
+    color: rgba(102, 101, 101, 0.829);
+    font-weight: 500;
 }
 
 .last-name, .first-name, .email, .password, .confirm-password {
@@ -99,13 +102,20 @@
     height: 35px;
     width: 250px;
     border-radius: 20px;
+    color: rgb(0,0,0,0.7);
     border: 1px solid black;
     transition: background-color 250ms ease-in-out;
+    font-size: 18px;
+    /* transform: translate(20px, 50px) */
 }
 
 .sign-up-button:hover {
     background-color:  #eb7a10ce;
     cursor: pointer;
+}
+
+.sign-up-button:active {
+    transform: translate(2px, 1px)
 }
 
 .login-redirect {
@@ -138,5 +148,5 @@
     min-height: 20px;
     color: rgb(196, 31, 31);
     position: absolute;
-top: 28%;
+    top: 28%;
 }

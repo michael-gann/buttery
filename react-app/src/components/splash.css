@@ -1,5 +1,4 @@
 .splashpage-container {
-    /* /* display: flex; */
     flex-direction: column;
     height: calc(100vh - 75px);
     width: 100%;
@@ -14,34 +13,20 @@
 
 
 .splashpage-text-container {
-    /* justify-content: center; */
-    /* align-items: center; */
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 100%;
 }
 
-/* .buttery-welcome {
-height: 10vw;
-font-size: 3rem;
-width: 100%;
-text-align: center;
-min-height: 150px;
-background-color: #DE9E44;
-color: white;
-padding-top: 3%;
-} */
-
 .splash-description-1 {
     display: flex;
     justify-content: center;
     height: 25%;
     width: 50%;
-    margin-bottom: 12.7%;
+    margin-bottom: 16%;
     margin-top: 6.8%;
     margin-left: 10%;
-    /* background-color: #e6c73be0; */
     border-radius: 50px;
 }
 
@@ -52,7 +37,6 @@ padding-top: 3%;
     justify-content: center;
     align-items: center;
     font-weight: 800;
-    /* margin-top: 5%; */
 }
 
 .splash-description-2 {
@@ -60,12 +44,11 @@ padding-top: 3%;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 65%;
+    height: 50%;
     width: 40%;
     margin-left: 57%;
-    /* background-color:rgba(35, 191, 147, 0.863); */
     border-radius: 50px;
-    margin-bottom: 100px;
+    margin-bottom: 0px;
     animation-delay: 2s;
 }
 

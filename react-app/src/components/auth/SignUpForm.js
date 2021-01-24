@@ -142,7 +142,7 @@ const SignUpForm = () => {
                 ></input>
               </div>
               <button className="sign-up-button" type="submit">
-                Sign Up
+                Sign-up
               </button>
               <div className="login-redirect">
                 Already have an account? <NavLink to="/login">Login</NavLink>
