@@ -47,8 +47,6 @@ const PantryMatchIngredients = ({ ingredients }) => {
     (a, b) => a.id - b.id
   );
 
-  console.log(ingredientsInPantryArray);
-
   // TODO: check amounts of recipe against pantry, if would go 0, red, if would get close
   // to being out, yellow, if not, green. i.e. like the recipe badges
   // const isClose =

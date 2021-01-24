@@ -1,34 +1,21 @@
 import React from "react";
 import { useSelector, shallowEqual } from "react-redux";
-// import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import { ImPlus } from "react-icons/im";
 
 import RecipeCard from "./RecipeCard";
 
-const HomeRecipe = ({ isHomepage, setIsHomepage, handleClick }) => {
-  // const history = useHistory();
-
-  // const dispatch = useDispatch();
-  // const user = useSelector((state) => state.users.sessionUser);
-  // const [toShop, setToShop] = useState(false);
+const HomeRecipe = ({ isHomepage, setIsHomepage }) => {
+  const history = useHistory();
 
   const recipeIds = useSelector(
     (state) => state.recipes.recipes.map((r) => Object.keys(r)[0]),
     shallowEqual
   );
 
-  // const handleClick = () => {
-  //   return history.push(`/new-recipe`);
-  // };
-
-  // const addToShop = () => {
-  //   const form = new FormData();
-
-  //   // form.set("recipe_id", id);
-  //   // form.set("user_id", user.id);
-
-  //   dispatch(cookingListActions.addToShoppingList(form));
-  //   setToShop(true);
-  // };
+  const handleClick = () => {
+    return history.push(`/new-recipe`);
+  };
 
   return (
     <>
@@ -52,6 +39,16 @@ const HomeRecipe = ({ isHomepage, setIsHomepage, handleClick }) => {
               </div>
             );
           })}
+        {!isHomepage ? (
+          <div className="add-recipe-container">
+            <button className="add-recipe-button" onClick={handleClick}>
+              <div className="plus-button">
+                <ImPlus />
+              </div>
+              Add New Recipe
+            </button>
+          </div>
+        ) : null}
       </div>
     </>
   );

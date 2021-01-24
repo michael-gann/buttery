@@ -5,7 +5,7 @@ ol, li, dl, dt, dd, form, a, fieldset, input, th, td, button {
     border: 0;
     outline: none;
     box-sizing: border-box;
-    color: #4B0908;
+    color: rgb(83, 83, 83);
 }
 
 a {

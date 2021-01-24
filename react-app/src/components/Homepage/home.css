@@ -22,6 +22,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    color: black;
 }
 
 .recipes-header {
@@ -31,21 +32,7 @@
     /* width: 80%; */
     /* align-self: center; */
     margin: 20px 0px 20px 0px;
-}
-
-.add-recipe-button {
-    /* position: absolute; */
-    /* top: 6%; */
-    /* right: 38%; */
-    font-size: 1.2em;
-    /* height: 20px; */
-    background-color: white;
-    transition: color 300ms ease-in-out;
-}
-
-.add-recipe-button:hover {
-    color: #23bf93;
-    cursor: pointer;
+    color: black;
 }
 
 .recipecard-main-containers {
@@ -65,7 +52,7 @@
 .recipecard-main-containers:hover {
     background-color: rgba(0, 0, 0, 0.1);
     border: 1px solid rgba(0, 0, 0, 0.3);
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 
 .recipecard-main-containers a:hover {
@@ -95,6 +82,7 @@
     width: 80%;
     align-self: center;
     margin: 20px 0px 20px 0px;
+    color: black;
 }
 
 .home-pantry-container {
@@ -122,6 +110,7 @@
     width: 80%;
     align-self: center;
     margin: 20px 0px 20px 0px;
+    color: black;
 }
 
 .pantry-ingredients-container {
@@ -153,7 +142,8 @@
     border-radius: 50px;
     margin-top: 2%;
     margin-right: 200px;
-    min-height: calc(100vh - 100px)
+    min-height: calc(100vh - 100px);
+    border: 1px solid rgba(129, 127, 127, 0.2);
 }
 
 .shopping-list-header-container {
@@ -170,6 +160,7 @@
     width: 80%;
     align-self: center;
     margin: 20px 0px 20px 0px; */
+    color: black;
 }
 
 .shopping-for {
@@ -178,12 +169,12 @@
 }
 
 .shopping-list-items-container {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
+    /* display: flex; */
+    /* flex-wrap: wrap; */
+    /* flex-direction: column; */
     /* align-items: center; */
-    margin-bottom: 20px;
-    margin-left: 20%;
+    /* margin-bottom: 20px; */
+    /* margin-left: 20%; */
 }
 
 .shopping-list-item {
@@ -192,6 +183,12 @@
     width: 50%;
     /* text-align: center; */
     margin: 3px 0;
+}
+
+.shopping-list-individual-items {
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-bottom: 2%;
 }
 
 .circle-yes {
@@ -224,6 +221,7 @@
     font-size: 1.2rem;
     background-color: white;
     transition: color 300ms ease-in-out;
+    color: black;
 }
 
 

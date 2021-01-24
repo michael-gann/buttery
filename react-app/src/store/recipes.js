@@ -136,6 +136,7 @@ const recipesReducer = (
       newState = _.cloneDeep(state);
       newState.loading = false;
       newState.recipes = action.payload;
+      console.log("PAYLOAD", action.payload);
       return newState;
     case ADD_RECIPE_BEGIN:
       newState = _.cloneDeep(state);

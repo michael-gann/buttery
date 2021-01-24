@@ -77,22 +77,31 @@
     font-size: 1.5em;
     font-weight: bold;
     margin-bottom: 3%;
+
 }
 
 .add-new-recipe-ingredient-button button {
-    color: black;
-    background-color: white;
-    /* height: 30px;
-    width: 30px; */
-    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(0,0,0,0.7);
+    background-color: #23bf93;
+    height: 45px;
+    width: 300px;
+    border-radius: 20px;
+    font-size: 1.2rem;
     margin-left: 10px;
-    /* border: 1px solid rgba(0, 0, 0, .2) */
-    transition: color 150ms ease-in-out;
+    border: 1px solid rgba(0, 0, 0, .2);
+    transition: background-color 150ms ease-in-out;
 }
 
 .add-new-recipe-ingredient-button button:hover {
-    color: #23bf93;
+    background-color:  #eb7a10d0;
     cursor: pointer;
+}
+
+.add-new-recipe-ingredient-button button:active {
+    transform: translate(2px, 1px);
 }
 
 .recipe-ingredients {
@@ -170,6 +179,10 @@ recipe-form-quantity label {
     cursor: pointer;
 }
 
+.recipe-ingredient-remove-button button:active {
+    transform: translate(2px, 1px);
+}
+
 .add-step-button {
     display: flex;
     justify-content: center;
@@ -180,19 +193,27 @@ recipe-form-quantity label {
 }
 
 .add-step-button button {
-    color: black;
-    background-color: white;
-    /* height: 30px;
-    width: 30px; */
-    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    color: rgb(0,0,0,0.7);
+    background-color: #23BF93;
+    border: 1px solid rgba(0, 0, 0, .2);
+    height: 45px;
+    width: 250px;
+    font-size: 1.2rem;
     margin-left: 10px;
-    /* border: 1px solid rgba(0, 0, 0, .2) */
     transition: color 150ms ease-in-out;
 }
 
 .add-step-button button:hover {
-    color: #23BF93;
+    background-color:  #eb7a10d0;
     cursor: pointer;
+}
+
+.add-step-button button:active {
+    transform: translate(2px, 1px);
 }
 
 .recipe-steps {
@@ -227,15 +248,22 @@ recipe-form-quantity label {
 }
 
 .recipe-submit-button button {
+    color: rgb(0,0,0,0.7);
     width: 400px;
     height: 40px;
     border-radius: 50px;
     background-color: #23BF93;
+    border: 1px solid rgba(0, 0, 0, .2);
+    font-size: 1.2rem;
 }
 
 .recipe-submit-button button:hover {
     background-color: #EB7910;
     cursor: pointer;
+}
+
+.recipe-submit-button button:active {
+    transform: translate(2px, 1px);
 }
 
 .step-remove-button {
@@ -245,6 +273,10 @@ recipe-form-quantity label {
 .step-remove-button button:hover {
     color: #F39C9F;
     cursor: pointer;
+}
+
+.step-remove-button button:active {
+    transform: translate(2px, 1px);
 }
 
 .step-remove-button button {

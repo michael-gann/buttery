@@ -52,6 +52,7 @@ form {
 }
 
 .welcome {
+    color: black;
     font-size: 2rem;
     width: 250px;
     text-align: center;
@@ -85,7 +86,8 @@ form {
 
 .loginform label {
     font-size: 10px;
-    color: rgba(128, 128, 128, 0.637);
+    color: rgba(102, 101, 101, 0.829);
+    font-weight: 500;
 }
 
 .email, .password {
@@ -103,6 +105,8 @@ form {
 
 .login-button {
     background-color: #23bf93;
+    color: rgb(0,0,0,0.7);
+    font-size: 18px;
     height: 35px;
     width: 250px;
     border-radius: 20px;
@@ -114,6 +118,10 @@ form {
 .login-button:hover {
     background-color:  #eb7a10ce;
     cursor: pointer;
+}
+
+.login-button:active {
+    transform: translate(2px, 1px)
 }
 
 .sign-up-redirect {
@@ -149,6 +157,8 @@ form {
 
 .demo-login-button {
     background-color: #23bf93;
+    color: rgb(0,0,0,0.7);
+    font-size: 18px;
     height: 35px;
     width: 250px;
     border-radius: 20px;
@@ -160,4 +170,8 @@ form {
 .demo-login-button:hover {
     background-color:  #eb7a10ce;
     cursor: pointer;
+}
+
+.demo-login-button:active {
+    transform: translate(2px, 1px)
 }

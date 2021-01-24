@@ -56,7 +56,6 @@ const RecipeForm = ({ isEditing, recipeToEdit, handleEditRecipe }) => {
     });
   }
 
-  const [displayContent, setDisplayContent] = useState(false);
   const [recipe, setRecipe] = useState(
     isEditing ? editingRecipe[`${recipeToEdit}`].name : ""
   );
@@ -211,7 +210,6 @@ const RecipeForm = ({ isEditing, recipeToEdit, handleEditRecipe }) => {
             <RecipeContent
               recipeContent={recipeContent}
               setRecipeContent={setRecipeContent}
-              displayContent={displayContent}
             ></RecipeContent>
           </div>
           <div className="recipe-ingredients">
