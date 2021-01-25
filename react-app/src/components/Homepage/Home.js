@@ -7,14 +7,12 @@ import Badge from "@material-ui/core/Badge";
 import HomeRecipe from "../RecipeComponents/HomeRecipe";
 import HomePantry from "../PantryComponents/HomePantry";
 import ShoppingList from "../ShoppingListComponents/ShoppingList";
-// import { FiPlusSquare } from "react-icons/fi";
-// import { ImPlus } from "react-icons/im";
+// import { pretendPantry } from "../RecipeComponents/RecipeCard";
 
 import "./home.css";
 
 import styled, { keyframes } from "styled-components";
 import { slideInLeft } from "react-animations";
-// import { makeStyles } from "@material-ui/core";
 
 const slideInLeftAnimation = keyframes`${slideInLeft}`;
 
@@ -37,6 +35,12 @@ const Home = () => {
   const numberOfRecipesToShop = useSelector(
     (state) => state.cookingLists.recipesToShop.length
   );
+
+  // const recipeIngredients = useSelector(state.recipes.recipes.map(r => Object.keys(r)))
+  // const pantryIngredients = useSelector((state) => state.pantries.pantries);
+  // const shoppingList = useSelector((state) =>
+  //   Object.values(state.cookingLists.shoppingList)
+  // );
 
   useEffect(() => {
     setIsHomepage(true);

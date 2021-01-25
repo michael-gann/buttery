@@ -13,9 +13,6 @@
 // const pantryIngredients = useSelector((state) => state.pantries.pantries);
 
 // map of ingredients in shopping list
-// const shoppingList = useSelector((state) =>
-//   Object.values(state.cookingLists.shoppingList)
-// );
 
 // const recipesToShopFor = useSelector(
 //     (state) => state.cookingLists.recipesToShop
@@ -43,16 +40,16 @@
 //     // const ingredientsShopCopy = _.cloneDeep(ingredientsToShop);
 //     // setIngredientsToShopCopy(ingredientsShopCopy);
 
-//     const recipesToShopForMap = {};
-//     for (const r of recipesToShopFor) {
-//       if (!recipesToShopForMap[r.recipe_id]) {
-//         recipesToShopForMap[r.recipe_id] = r;
-//       }
+// const recipesToShopForMap = {};
+//   for (const r of recipesToShopFor) {
+//     if (!recipesToShopForMap[r.recipe_id]) {
+//       recipesToShopForMap[r.recipe_id] = r;
 //     }
+//   }
 
-//     const recipesMap = Object.assign({}, ...allRecipeObjects);
+//   const recipesMap = Object.assign({}, ...allRecipeObjects);
 
-//     const recipeIdsInMap = allRecipes.filter(
+//   const recipeIdsInMap = allRecipes.filter(
 //       (r) => recipesToShopForMap[r] !== undefined
 //     );
 
@@ -65,37 +62,6 @@
 
 //       const shoppingListCopy = _.cloneDeep(shoppingList);
 
-//       const pantryIngredientsMap = {};
-
-//       for (const pi of pantryIngredientsEstimate) {
-//         if (!pantryIngredientsMap[pi.ingredient_id]) {
-//           pantryIngredientsMap[pi.ingredient_id] = pi;
-//         }
-//       }
-
-//       for (const si of shoppingListCopy) {
-//         if (pantryIngredientsMap[si.ingredient_id] && si.quantity > 0) {
-//           pantryIngredientsMap[si.ingredient_id].quantity += si.quantity;
-//         } else {
-//           pantryIngredientsMap[si.ingredient_id] = si;
-//         }
-//       }
-//       console.log("inuseeffect");
-//       console.log(
-//         "recipe ingredients shopping for",
-//         recipeIngredientsShoppingFor
-//       );
-//       if (recipeIngredientsShoppingFor !== []) {
-//         for (const r of recipeIngredientsShoppingFor[0]) {
-//           // console.log("rrrrrrr", r);
-//           if (
-//             pantryIngredientsMap[r.ingredient_id] !== undefined &&
-//             pantryIngredientsMap[r.ingredient_id]
-//           ) {
-//             pantryIngredientsMap[r.ingredient_id].quantity -= r.quantity;
-//           }
-//         }
-//       }
 // console.log("pantry map fake", pantryIngredientsMap);
 //  setFakePantry(pantryIngredientsMap);
 // }

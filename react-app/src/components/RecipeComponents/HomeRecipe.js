@@ -2,16 +2,30 @@ import React from "react";
 import { useSelector, shallowEqual } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { ImPlus } from "react-icons/im";
+import _ from "lodash";
 
 import RecipeCard from "./RecipeCard";
 
 const HomeRecipe = ({ isHomepage, setIsHomepage }) => {
   const history = useHistory();
 
-  const recipeIds = useSelector(
-    (state) => state.recipes.recipes.map((r) => Object.keys(r)[0]),
-    shallowEqual
-  );
+  const recipeObjects = useSelector((state) => state.recipes.recipes);
+
+  const recipeIdsCopy = _.cloneDeep(recipeObjects);
+
+  const recipeIds = recipeIdsCopy
+    .sort((a, b) => {
+      const firstKey = Object.keys(a)[0];
+      const secondKey = Object.keys(b)[0];
+      const result =
+        parseInt(a[firstKey].recipeDistance) -
+        parseInt(b[secondKey].recipeDistance);
+      console.log(result);
+      return result;
+    })
+    .map((r) => Object.keys(r)[0]);
+
+  console.log(recipeIds);
 
   const handleClick = () => {
     return history.push(`/new-recipe`);
