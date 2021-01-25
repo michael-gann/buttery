@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Badge from "@material-ui/core/Badge";
@@ -8,6 +8,8 @@ import HomeRecipe from "../RecipeComponents/HomeRecipe";
 import HomePantry from "../PantryComponents/HomePantry";
 import ShoppingList from "../ShoppingListComponents/ShoppingList";
 // import { pretendPantry } from "../RecipeComponents/RecipeCard";
+
+import * as pantryActions from "../../store/pantries";
 
 import "./home.css";
 
@@ -30,11 +32,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Home = () => {
+  const dispatch = useDispatch();
   const history = useHistory();
   const [isHomepage, setIsHomepage] = useState(false);
   const numberOfRecipesToShop = useSelector(
     (state) => state.cookingLists.recipesToShop.length
   );
+
+  const sessionUser = useSelector((state) => state.users.sessionUser);
 
   // const recipeIngredients = useSelector(state.recipes.recipes.map(r => Object.keys(r)))
   // const pantryIngredients = useSelector((state) => state.pantries.pantries);
@@ -44,6 +49,7 @@ const Home = () => {
 
   useEffect(() => {
     setIsHomepage(true);
+    dispatch(pantryActions.getUserPantryItems(sessionUser.id));
   }, []);
 
   const handleClick = () => {

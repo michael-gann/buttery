@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector, shallowEqual } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { ImPlus } from "react-icons/im";
@@ -25,8 +25,6 @@ const HomeRecipe = ({ isHomepage, setIsHomepage }) => {
     })
     .map((r) => Object.keys(r)[0]);
 
-  console.log(recipeIds);
-
   const handleClick = () => {
     return history.push(`/new-recipe`);
   };
@@ -45,7 +43,6 @@ const HomeRecipe = ({ isHomepage, setIsHomepage }) => {
             return (
               <div className="recipecard-main-containers" key={id}>
                 <RecipeCard
-                  // addToShop={addToShop}
                   isHomepage={isHomepage}
                   setIsHomepage={setIsHomepage}
                   id={id}

@@ -103,6 +103,8 @@ const RecipeCard = ({ id, isEditing, handleEditRecipe, isHomepage }) => {
     (r) => parseInt(r.recipe_id) === parseInt(id)
   );
 
+  console.log("already shopping", alreadyShopping);
+
   const recipeIngredients = Object.values(recipe)[0]
     ? Object.values(recipe)[0].ingredients
     : [];
@@ -114,6 +116,13 @@ const RecipeCard = ({ id, isEditing, handleEditRecipe, isHomepage }) => {
   const [fakePantry, setFakePantry] = useState(
     pretendPantry(recipeIngredients, shoppingList, pantryIngredients)
   );
+  const [isHovering, setIsHovering] = useState(false);
+
+  const result = _.differenceWith(
+    recipeIngredients,
+    fakePantry,
+    (x, y) => x.ingredient_id === y.ingredient_id && x.quantity - y.quantity < 0
+  );
 
   useEffect(() => {
     setFakePantry(
@@ -123,28 +132,13 @@ const RecipeCard = ({ id, isEditing, handleEditRecipe, isHomepage }) => {
 
   useEffect(() => {
     dispatch(recipeActions.setRecipeDistance(result.length, id));
-  }, []);
-  const result = _.differenceWith(
-    recipeIngredients,
-    fakePantry,
-    (x, y) => x.ingredient_id === y.ingredient_id && x.quantity - y.quantity < 0
-  );
+    setToShop(alreadyShopping ? true : false);
+  }, [dispatch, result.length, id, alreadyShopping]);
 
   const isClose = result.length > 0 && result.length <= 3;
   const canMake = result.length === 0;
 
   const addToShop = () => {
-    // setFakePantry(
-    //   pretendPantry(recipeIngredients, shoppingList, pantryIngredients)
-    // );
-    // if (!copyOfPantry) {
-    // dispatch(pantryActions.pantryCopy());
-    // }
-
-    // function
-    // inputs recipe list, shopping list, pantry
-    // takes pantry + shopping ingredients - recipe ingredients
-
     const form = new FormData();
 
     form.set("recipe_id", id);
@@ -154,22 +148,18 @@ const RecipeCard = ({ id, isEditing, handleEditRecipe, isHomepage }) => {
       dispatch(cookingListActions.getShoppingList(user.id))
     );
     setToShop(true);
-    // localStorage.setItem(`recipe-${id}`, true);
   };
 
   const removeFromShop = () => {
-    // setFakePantry(
-    //   pretendPantry(recipeIngredients, shoppingList, pantryIngredients)
-    // );
-    // if (cookingList.length === 1) {
-    // dispatch(pantryActions.resetPantry())
-    // }
     dispatch(cookingListActions.removeRecipe(id)).then(() =>
       dispatch(cookingListActions.getShoppingList(user.id))
     );
     setToShop(false);
-    // localStorage.removeItem(`recipe-${id}`);
   };
+
+  // const handleHover = (e) => {
+  //   setIsHovering(!isHovering);
+  // };
 
   return (
     <>
@@ -184,11 +174,16 @@ const RecipeCard = ({ id, isEditing, handleEditRecipe, isHomepage }) => {
           {isHomepage ? (
             <>
               <div className="home-recipe-title">
-                <MetroSpinner size={40} color="#3ce50f" loading={isLoading} />
-                <RecipeTitle
-                  title={recipe[`${id}`] ? recipe[`${id}`].name : "loading..."}
-                  id={id}
-                ></RecipeTitle>
+                {isLoading ? (
+                  <MetroSpinner size={50} color="#3ce50f" loading={isLoading} />
+                ) : (
+                  <RecipeTitle
+                    title={
+                      recipe[`${id}`] ? recipe[`${id}`].name : "loading..."
+                    }
+                    id={id}
+                  ></RecipeTitle>
+                )}
               </div>
               {toShop ? (
                 <button
@@ -221,7 +216,6 @@ const RecipeCard = ({ id, isEditing, handleEditRecipe, isHomepage }) => {
             </>
           ) : (
             <>
-              <MetroSpinner size={40} color="#3ce50f" loading={isLoading} />
               <Badge
                 showZero={true}
                 badgeContent={result.length}
@@ -235,16 +229,20 @@ const RecipeCard = ({ id, isEditing, handleEditRecipe, isHomepage }) => {
                 }
               >
                 <div className="home-recipe-title">
-                  <RecipeTitle
-                    title={
-                      recipe[`${id}`] ? recipe[`${id}`].name : "loading..."
-                    }
-                    id={id}
-                  />
+                  <RecipeTitle title={recipe[`${id}`].name} id={id} />
                 </div>
+                <MetroSpinner size={100} color="#3ce50f" loading={isLoading} />
               </Badge>
               <div className="home-recipe-content">
                 {recipe[`${id}`].content}
+              </div>
+              <div className={isHovering ? "buttons-container" : "hidden"}>
+                <div className="want-to-make-button">
+                  <button>+ Want To Make</button>
+                </div>
+                <div className="made-button">
+                  <button>Made Recipe</button>
+                </div>
               </div>
             </>
           )}

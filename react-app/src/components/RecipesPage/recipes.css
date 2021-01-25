@@ -12,7 +12,8 @@
     align-items: center;
     min-width: 25%;
     max-width: 45%;
-    /* border: 1px solid black; */
+    border: 1px solid rgba(0, 0, 0, 0.0.32);
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.3);
     padding: 4px;
     margin: 10px;
     border-radius: 5px;
@@ -83,7 +84,64 @@
     margin-top: 5px;
 }
 
+.want-to-make-button {
+    margin: 10px 10px;
+}
 
+.want-to-make-button button {
+    height: 25px;
+    width: 200px;
+    border-radius: 20px;
+    background-color:  #23bf93;
+    transition: background-color 150ms ease-in-out;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    color: white;
+    font-size: 16px;
+}
+
+.want-to-make-button button:hover {
+    background-color:  #eb7a10ce;
+    cursor: pointer;
+}
+
+.want-to-make-button button:active {
+    transform: translate(2px, 1px);
+    border: 1px solid rgba(0, 0, 0, 0.7)
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.hidden {
+    display: none;
+    transition: display 150ms ease-in;
+}
+
+.made-button {
+    margin: 10px 10px;
+}
+.made-button button {
+    height: 25px;
+    width: 200px;
+    border-radius: 20px;
+    background-color:  #23bf93;
+    transition: background-color 150ms ease-in-out;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    color: white;
+    font-size: 16px;
+}
+.made-button button:hover {
+    background-color:  #eb7a10ce;
+    cursor: pointer;
+}
+
+.made-button button:active {
+    transform: translate(2px, 1px);
+    border: 1px solid rgba(0, 0, 0, 0.7);
+}
 
 
 
