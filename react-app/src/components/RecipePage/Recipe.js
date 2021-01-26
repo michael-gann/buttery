@@ -17,6 +17,7 @@ const Recipe = () => {
   const [isEditing, setIsEditing] = useState(false);
   // const [deletion, setDeletion] = useState(false);
   const { id } = useParams();
+  const [notInPantry, setNotInPantry] = useState(0);
 
   const isLoading = useSelector((state) => state.recipes.loading);
   const recipe = useSelector((state) =>
@@ -32,7 +33,7 @@ const Recipe = () => {
   //     method: "DELETE",
   //   });
   // might need to render recipe ? recipe : null
-  // TODO: add action here for deletion status?
+  // TODO: add action here for deletion status
 
   //   const data = await res.json();
 
@@ -44,7 +45,9 @@ const Recipe = () => {
 
   return (
     <div className="recipe-page-container">
-      <MetroSpinner size={40} color="#3ce50f" loading={isLoading} />
+      <div className={isLoading ? "spinner-container" : "hidden"}>
+        <MetroSpinner size={100} color="#3ce50f" loading={isLoading} />
+      </div>
       {/* <button onClick={handleDeleteRecipe}>Delete Recipe</button> */}
       <>
         {isEditing ? (
@@ -81,6 +84,7 @@ const Recipe = () => {
                     </div>
                     <div className="pantry-ingredients-for-recipe">
                       <PantryMatchIngredients
+                        setNotInPantry={setNotInPantry}
                         ingredients={recipe[`${id}`].ingredients}
                       ></PantryMatchIngredients>
                     </div>

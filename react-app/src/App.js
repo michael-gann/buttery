@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router";
 
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
@@ -14,32 +15,20 @@ import Recipes from "./components/RecipesPage/Recipes";
 import Recipe from "./components/RecipePage/Recipe";
 import Pantry from "./components/PantryPage/Pantry";
 
-import * as ingredientActions from "./store/ingredients";
-import * as measurementActions from "./store/measurements";
-import * as userActions from "./store/users";
-import * as categoryActions from "./store/categories";
 import * as recipeActions from "./store/recipes";
 import * as pantryActions from "./store/pantries";
-import * as cookingListActions from "./store/cookingLists";
 
 function App() {
+  const history = useHistory();
   const dispatch = useDispatch();
   const [loaded, setLoaded] = useState(false);
   const sessionUser = useSelector((state) => state.users.sessionUser);
 
   useEffect(() => {
-    if (!sessionUser) {
-      dispatch(userActions.authenticateUser());
-    }
-    setLoaded(true);
     if (sessionUser) {
-      dispatch(ingredientActions.ingredients());
-      dispatch(measurementActions.measurements());
-      dispatch(categoryActions.categories());
-      dispatch(recipeActions.getAllRecipes(sessionUser.id));
+      setLoaded(true);
       dispatch(pantryActions.getUserPantryItems(sessionUser.id));
-      dispatch(cookingListActions.getCookingList(sessionUser.id));
-      dispatch(cookingListActions.getShoppingList(sessionUser.id));
+      dispatch(recipeActions.getAllRecipes(sessionUser.id));
     }
   }, [dispatch, sessionUser]);
 

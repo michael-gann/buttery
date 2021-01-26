@@ -15,24 +15,29 @@ import * as cookingListActions from "../../store/cookingLists";
 
 const ShoppingList = () => {
   const dispatch = useDispatch();
-  const numberOfRecipesToShop = useSelector(
-    (state) => state.cookingLists.recipesToShop.length
-  );
+
   const ingredientsToShop = useSelector((state) =>
     Object.values(state.cookingLists.shoppingList).filter((i) => i.quantity > 0)
   );
 
+  // if (!ingredientsToShop) {
+  //         dispatch(cookingListActions.getShoppingList(sessionUser.id));
+  // }
+
+  console.log("--INGREDIENTS IN SHOPPING LIST--", ingredientsToShop);
+
   const sessionUser = useSelector((state) => state.users.sessionUser);
 
   useEffect(() => {
+    dispatch(cookingListActions.getCookingList(sessionUser.id));
     dispatch(cookingListActions.getShoppingList(sessionUser.id));
-  }, [dispatch, numberOfRecipesToShop, sessionUser.id]);
+  }, [dispatch, sessionUser.id]);
 
   return (
     <>
       <div className="shopping-list-items-container">
         {/* <div className="shopping-for">
-          You are shopping for {numberOfRecipesToShop} recipes
+          You are shopping for} recipes
         </div> */}
         {ingredientsToShop ? (
           ingredientsToShop.map((i, idx) => {

@@ -107,7 +107,8 @@ nav {
 }
 
 .nav-logout-button:hover {
-    background-color: #3e400f
+    /* background-color: #3e400f */
+    background-color: rgb(245, 35, 35);
 }
 
 .nav-logout-button button {
@@ -117,4 +118,5 @@ nav {
     height: 75px;
     text-align: center;
     width: 100px;
+    color: black;
 }

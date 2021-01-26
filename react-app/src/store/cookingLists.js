@@ -119,35 +119,35 @@ export const removeRecipe = (id) => async (dispatch) => {
   return res;
 };
 
-const updateShoppingList = (oldState, newState) => {
-  // const copyState = Object.assign(oldState, {});
+// const updateShoppingList = (oldState, newState) => {
+//   // const copyState = Object.assign(oldState, {});
 
-  if (Object.keys(newState).length === 0) {
-    return {};
-  }
+//   if (Object.keys(newState).length === 0) {
+//     return {};
+//   }
 
-  if (Object.keys(oldState).length > Object.keys(newState).length) {
-    return newState;
-  }
+//   if (Object.keys(oldState).length > Object.keys(newState).length) {
+//     return newState;
+//   }
 
-  const mergedState = { ...oldState, ...newState };
+//   const mergedState = { ...oldState, ...newState };
 
-  for (const key in mergedState) {
-    if (newState[key] === undefined) {
-      continue;
-    } else if (mergedState[key].name === newState[key].name) {
-      mergedState[key] = { ...mergedState[key], ...newState[key] };
-    }
+//   for (const key in mergedState) {
+//     if (newState[key] === undefined) {
+//       continue;
+//     } else if (mergedState[key].name === newState[key].name) {
+//       mergedState[key] = { ...mergedState[key], ...newState[key] };
+//     }
 
-    for (const key in newState) {
-      if (mergedState[key] === undefined) {
-        mergedState[key] = { ...newState[key] };
-      }
-    }
-  }
+//     for (const key in newState) {
+//       if (mergedState[key] === undefined) {
+//         mergedState[key] = { ...newState[key] };
+//       }
+//     }
+//   }
 
-  return mergedState;
-};
+//   return mergedState;
+// };
 
 const cookingListsReducer = (
   state = { shoppingList: {}, recipesToShop: [], loading: false },
@@ -180,10 +180,11 @@ const cookingListsReducer = (
     case GET_SHOPPING_LIST_SUCCESS:
       newState = _.cloneDeep(state);
       newState.loading = false;
-      newState.shoppingList = updateShoppingList(
-        newState.shoppingList,
-        action.payload
-      );
+      // newState.shoppingList = updateShoppingList(
+      //   newState.shoppingList,
+      //   action.payload
+      // );
+      newState.shoppingList = action.payload;
       return newState;
     case REMOVE_SHOPPING_LIST_ITEM_BEGIN:
       newState = _.cloneDeep(state);

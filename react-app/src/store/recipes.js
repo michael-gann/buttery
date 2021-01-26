@@ -1,7 +1,7 @@
 import _ from "lodash";
 
 const GET_ALL_RECIPES_SUCCESS = "GET_ALL_RECIPES_SUCCESS";
-const GET_ALL_RECIPES_BEGIN = "GET_ALL_Recipes_BEGIN";
+const GET_ALL_RECIPES_BEGIN = "GET_ALL_RECIPES_BEGIN";
 // const GET_ALL_RECIPES_FAILURE = "GET_ALL_Recipes_FAILURE";
 
 const ADD_RECIPE_BEGIN = "ADD_RECIPE_BEGIN";
@@ -11,6 +11,8 @@ const ADD_RECIPE_FAILURE = "ADD_RECIPE_FAILURE";
 const EDIT_RECIPE_BEGIN = "EDIT_RECIPE_BEGIN";
 const EDIT_RECIPE_SUCCESS = "EDIT_RECIPE_SUCCESS";
 // const EDIT_RECIPE_FAILURE = "EDIT_RECIPE_FAILURE"
+
+const SET_RECIPE_DISTANCE = "SET_RECIPE_DISTANCE";
 
 const getRecipesBegin = () => {
   return {
@@ -55,6 +57,13 @@ const editRecipeSuccess = (updatedRecipe) => {
   return {
     type: EDIT_RECIPE_SUCCESS,
     payload: updatedRecipe,
+  };
+};
+
+const setDistance = (distance, id) => {
+  return {
+    type: SET_RECIPE_DISTANCE,
+    payload: { distance, key: id },
   };
 };
 
@@ -104,6 +113,12 @@ export const editRecipe = (form) => async (dispatch) => {
   }
 };
 
+export const setRecipeDistance = (distance, id) => (dispatch) => {
+  dispatch(setDistance(distance, id));
+
+  return;
+};
+
 const updateState = (oldState, payload) => {
   const stateCopy = oldState.slice();
 
@@ -136,7 +151,6 @@ const recipesReducer = (
       newState = _.cloneDeep(state);
       newState.loading = false;
       newState.recipes = action.payload;
-      console.log("PAYLOAD", action.payload);
       return newState;
     case ADD_RECIPE_BEGIN:
       newState = _.cloneDeep(state);
@@ -161,6 +175,13 @@ const recipesReducer = (
       newState.loading = false;
       const updatedState = updateState(newState.recipes, action.payload);
       newState.recipes = updatedState;
+      return newState;
+    case SET_RECIPE_DISTANCE:
+      newState = _.cloneDeep(state);
+      const target = newState.recipes.find((r) =>
+        Object.keys(r).includes(action.payload.key)
+      );
+      target[action.payload.key].recipeDistance = action.payload.distance;
       return newState;
     default:
       return state;

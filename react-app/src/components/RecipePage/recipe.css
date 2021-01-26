@@ -7,6 +7,13 @@
     margin-top: 1%;
 }
 
+.recipe-page-container a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2%;
+}
+
 .edit-recipe-button-container {
     align-self: flex-end;
 }
@@ -21,6 +28,7 @@
     transition: background-color 150ms ease-in-out,
     color 150ms ease-in-out,
     transform 50ms ease-out;
+    margin-top: 2%;
 }
 
 .edit-recipe-button:hover {
@@ -33,13 +41,13 @@
     transform: translate(1px, 1px);
 }
 
-.recipe-page-container span  > .home-recipe-title {
+.recipe-page-container a span > .home-recipe-title {
     font-size: 3.5rem;
     text-align: center;
     margin-bottom: 15px;
 }
 
-.recipe-page-container > .home-recipe-content {
+.recipe-page-container > a > .home-recipe-content {
     /* margin-bottom: 30px; */
     text-align: center;
     max-width: 80%;
@@ -98,6 +106,7 @@
 .recipe-page-container > .home-ingredients-container > .new-ingredients-container > .pantry-ingredients-for-recipe > .recipe-pantry-ingredient-container > .pantry-ingredients-container > .pantry-quantity {
     margin-right: 0px;
     min-width: 60px;
+    margin-left: 15px;
 }
 
 .recipe-page-container > .home-ingredients-container > .new-ingredients-container > .pantry-ingredients-for-recipe > .recipe-pantry-ingredient-container > .pantry-ingredients-container > .pantry-measurement-name {
@@ -153,9 +162,27 @@
 .do-not-have {
     background-color: #F39C9F;
     border-radius: 8px;
+
 }
 
 .will-run-out {
     background-color: #E6C73B;
     border-radius: 8px;
+}
+
+.spinner-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    margin-top: 15%;
+}
+
+.hidden {
+    display: none;
+}
+
+.recipe-page-container > .home-ingredients-container > .new-ingredients-container > .pantry-ingredients-for-recipe > .recipe-pantry-ingredient-container > .pantry-ingredients-container {
+    width: calc(100% + 25px);
 }

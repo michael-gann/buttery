@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 
 import Ingredient from "./Ingredient";
 
-const PantryMatchIngredients = ({ ingredients }) => {
+const PantryMatchIngredients = ({ ingredients, setNotInPantry }) => {
   const pantryIngredients = useSelector((state) => state.pantries.pantries);
   const isInPantry = true;
   let pantryIngredientByIngredientId = {};
@@ -46,13 +46,6 @@ const PantryMatchIngredients = ({ ingredients }) => {
   const ingredientsInPantryArray = Object.values(ingredientsInPantry).sort(
     (a, b) => a.id - b.id
   );
-
-  // TODO: check amounts of recipe against pantry, if would go 0, red, if would get close
-  // to being out, yellow, if not, green. i.e. like the recipe badges
-  // const isClose =
-  // ingredient.quantity - pantryIngredient.quantity > 0 &&
-  // ingredient.quantity - pantryIngredient.quantity <= 3;
-  //   const willRunOut = ingredient.quantity - pantryIngredient.quantity === 0;
 
   return (
     <>
