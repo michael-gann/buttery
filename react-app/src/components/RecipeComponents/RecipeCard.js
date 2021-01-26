@@ -277,18 +277,18 @@ const RecipeCard = ({
                   >
                     {toShop ? (
                       <button onClick={removeFromShop}>
-                        <i className="fas fa-minus"></i> Remove recipe
+                        <i className="fas fa-minus"></i> Remove
                       </button>
                     ) : (
                       <>
                         <button onClick={addToShop}>
-                          <i className="fas fa-plus"></i> Add recipe
+                          <i className="fas fa-plus"></i> Shop
                         </button>
                       </>
                     )}
                   </div>
                   <div className="made-button">
-                    <button>Made Recipe</button>
+                    <button>Cooked</button>
                   </div>
                 </div>
               </NavLink>

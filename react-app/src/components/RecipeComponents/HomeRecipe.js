@@ -1,20 +1,12 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { ImPlus } from "react-icons/im";
+
 import _ from "lodash";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
-import { makeStyles } from "@material-ui/core/styles";
 
 import RecipeCard from "./RecipeCard";
-
-const snackbarSuccessStyles = makeStyles((theme) => ({
-  root: {
-    backgroundColor: "#23bf93",
-    color: "white",
-  },
-}));
 
 const HomeRecipe = ({ isHomepage, setIsHomepage }) => {
   const history = useHistory();
@@ -41,7 +33,6 @@ const HomeRecipe = ({ isHomepage, setIsHomepage }) => {
   };
 
   const handleShowSuccess = (e) => {
-    // e.preventDefault();
     setShowSuccess(true);
   };
 
@@ -88,7 +79,6 @@ const HomeRecipe = ({ isHomepage, setIsHomepage }) => {
         onClose={handleShowSuccessClose}
       >
         <MuiAlert
-          classes={{ root: snackbarSuccessStyles.root }}
           onClose={handleShowSuccessClose}
           severity="success"
           variant="filled"

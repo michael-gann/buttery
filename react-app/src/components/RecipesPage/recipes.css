@@ -20,13 +20,13 @@
     min-width: 25%;
     max-width: 45;
     border: 1px solid rgba(0, 0, 0, 0.05);
-    box-shadow: 0px 2px 2px 0px  rgba(17, 83, 61, 0.1),
-                0px 4px 4px 0px  rgba(17, 83, 61, 0.1),
-                0px 8px 8px 0px  rgba(17, 83, 61, 0.1);
-                /* 0px 16px 16px 0px  rgba(10, 139, 96, 0.16); */
+    box-shadow: 0px 2px 2px 0px  rgba(17, 83, 61, 0.12),
+                0px 4px 4px 0px  rgba(17, 83, 61, 0.08),
+                0px 8px 8px 0px  rgba(17, 83, 61, 0.06),
+                0px 16px 16px 0px  rgba(10, 139, 96, 0.04);
     padding: 4px;
     margin: 2%;
-    border-radius: 15px;
+    border-radius: 8px;
     width: 100%;
     min-height: 150px;
     transition: box-shadow 300ms ease-in-out,
@@ -37,8 +37,8 @@
 
 .recipe-page-recipecard-container > .recipe-card > .recipecard-main-containers:hover {
     box-shadow: 0px 8px 8px 0px rgba(17, 83, 61, 0.2),
-                0px 12px 12px 0px rgba(17, 83, 61, 0.2),
-                0px 14px 14px 0px rgba(17, 83, 61, 0.2);
+                0px 12px 12px 0px rgba(17, 83, 61, 0.12),
+                0px 14px 14px 0px rgba(17, 83, 61, 0.08);
     transform: translate(0px, -6px);
     border: 1px solid rgba(0, 0, 0, 0.1);
     background-color: white;
@@ -135,14 +135,43 @@
     margin-top: 5px;
 }
 
-.want-to-make-button {
-    /* margin: 10px 10px; */
-}
-
-.want-to-make-button button, .made-button button, .remove-from-shop-button button {
+.remove-from-shop-button button {
     height: 40px;
     width: 125px;
-    border-radius: 5px;
+   border-radius: 8px;
+    background-color: white;
+    transition: background-color 300ms ease-in-out,
+                font-size 300ms ease,
+                color 300ms ease-in-out,
+                box-shadow 300ms ease;
+    border: 1px solid#F39C9F;
+    color: #F39C9F;
+    font-size: 14px;
+    margin: 20px 20px;
+}
+
+.remove-from-shop-button button:hover {
+    background-color: #F39C9F;
+    cursor: pointer;
+    color: white;
+}
+.hovering > .remove-from-shop-button button {
+    font-size: 15px;
+    color: #F39C9F;
+}
+
+.remove-from-shop-button button:hover {
+    color: white;
+    box-shadow: 0px 2px 2px 0px rgba(165, 72, 72, 0.16),
+    0px 3px 3px 0px rgba(165, 72, 72, 0.16),
+    0px 4px 4px 0px rgba(165, 72, 72, 0.16),
+    0px 6px 6px 0px rgba(165, 72, 72, 0.16);
+}
+
+.want-to-make-button button, .made-button button  {
+    height: 40px;
+    width: 125px;
+   border-radius: 8px;
     background-color: white;
     transition: background-color 300ms ease-in-out,
                 font-size 300ms ease,
@@ -154,18 +183,19 @@
     margin: 20px 20px;
 }
 
-.want-to-make-button button:hover, .made-button button:hover, .remove-from-shop-button button:hover {
+.want-to-make-button button:hover, .made-button button:hover {
     background-color:#23bf93;
     cursor: pointer;
     color: white;
 }
 
-.hovering > .want-to-make-button button, .hovering > .made-button button, .hovering > .remove-from-shop-button button {
+
+.hovering > .want-to-make-button button, .hovering > .made-button button{
     font-size: 15px;
     color: #23af87;
 }
 
-.hovering > .want-to-make-button button:hover, .hovering > .made-button button:hover, .remove-from-shop-button button:hover {
+.hovering > .want-to-make-button button:hover, .hovering > .made-button button:hover {
     color: white;
     box-shadow: 0px 2px 2px 0px rgba(10, 139, 96, 0.16),
     0px 3px 3px 0px rgba(10, 139, 96, 0.16),
@@ -175,7 +205,7 @@
 
 .want-to-make-button button:active, .made-button button:active, .remove-from-shop-button button:active {
     transform: translate(2px, 1px);
-    border: 1px solid rgba(0, 0, 0, 0.7)
+    border: 1px solid rgba(133, 132, 132, 0.404)
 }
 
 .hovering {
@@ -207,6 +237,14 @@
     margin-right: 2%;
 }
 
+#root > .MuiSnackbar-root > .MuiPaper-root {
+    background-color: #23bf93;
+    border: 1px solid #238d6f
+}
+
+.MuiPaper-root > .MuiAlert-message, .MuiPaper-root > .MuiAlert-icon, .MuiPaper-root > .MuiAlert-action {
+    color: white;
+}
 
 /* .recipe-page-recipecard-container > .recipecard-main-containers > .home-ingredients-container > .home-ingredient-container {}
 .recipe-page-recipecard-container > .recipecard-main-containers > .home-ingredients-container > .home-ingredient-container > .quantity{}
