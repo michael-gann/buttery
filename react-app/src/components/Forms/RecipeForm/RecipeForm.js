@@ -63,9 +63,21 @@ const RecipeForm = ({ isEditing, recipeToEdit, handleEditRecipe }) => {
     isEditing ? editingRecipe[`${recipeToEdit}`].content : ""
   );
   const [ingredientFields, setIngredientFields] = useState(
-    isEditing ? editIngredients : []
+    isEditing
+      ? editIngredients
+      : [
+          {
+            qty: 0,
+            measurement: { value: -1, label: "" },
+            ingredient: { value: -1, label: "" },
+            measurementInput: "",
+            ingredientInput: "",
+          },
+        ]
   );
-  const [stepFields, setStepFields] = useState(isEditing ? editSteps : []);
+  const [stepFields, setStepFields] = useState(
+    isEditing ? editSteps : [{ value: null }]
+  );
 
   const handleChange = (i, event) => {
     const values = [...stepFields];

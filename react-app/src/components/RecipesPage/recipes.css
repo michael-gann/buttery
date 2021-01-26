@@ -1,15 +1,24 @@
 .recipe-page-recipecard-container {
-   display: flex;
-   flex-wrap: wrap;
-   justify-content: center;
-   margin-top: 3%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 3%;
 }
 
-.recipe-page-recipecard-container > .recipecard-main-containers {
+.recipe-page-recipecard-container > .recipe-card {
+    display: flex;
+    min-width: 25%;
+    max-width: 48%;
+    justify-content: center;
+    min-height: 300px;
+}
+
+
+.recipe-page-recipecard-container > .recipe-card > .recipecard-main-containers {
     display: flex;
     flex-direction: column;
     min-width: 25%;
-    max-width: 45%;
+    max-width: 45;
     border: 1px solid rgba(0, 0, 0, 0.05);
     box-shadow: 0px 2px 2px 0px  rgba(17, 83, 61, 0.1),
                 0px 4px 4px 0px  rgba(17, 83, 61, 0.1),
@@ -19,13 +28,14 @@
     margin: 2%;
     border-radius: 15px;
     width: 100%;
-    min-height: 120px;
+    min-height: 150px;
     transition: box-shadow 300ms ease-in-out,
                 transform 200ms ease-in-out,
                 border 200ms ease-in-out;
+    width: 100%;
 }
 
-.recipe-page-recipecard-container > .recipecard-main-containers:hover {
+.recipe-page-recipecard-container > .recipe-card > .recipecard-main-containers:hover {
     box-shadow: 0px 8px 8px 0px rgba(17, 83, 61, 0.2),
                 0px 12px 12px 0px rgba(17, 83, 61, 0.2),
                 0px 14px 14px 0px rgba(17, 83, 61, 0.2);
@@ -35,7 +45,7 @@
     cursor: pointer;
 }
 
-.recipe-page-recipecard-container > .recipecard-main-containers > a {
+.recipe-page-recipecard-container > .recipe-card > .recipecard-main-containers > a {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -45,7 +55,7 @@
 }
 
 
-.recipe-page-recipecard-container > .recipecard-main-containers > a > span > .home-recipe-title {
+.recipe-page-recipecard-container > .recipe-card > .recipecard-main-containers > a > span > .home-recipe-title {
     width: 100%;
     text-align: center;
     font-weight: bold;
@@ -55,11 +65,11 @@
     font-size: 32px;
 }
 
-.recipe-page-recipecard-container > .recipecard-main-containers > a > span {
+.recipe-page-recipecard-container > .recipe-card > .recipecard-main-containers > a > span {
     margin-top: 3%;
 }
 
-.recipe-page-recipecard-container > .recipecard-main-containers > a >  .home-recipe-content {
+.recipe-page-recipecard-container > .recipe-card > .recipecard-main-containers > a >  .home-recipe-content {
     height: 80%;
     text-align: center;
     font-size: 16px;
@@ -126,57 +136,66 @@
 }
 
 .want-to-make-button {
-    margin: 10px 10px;
+    /* margin: 10px 10px; */
 }
 
-.want-to-make-button button {
-    height: 25px;
-    width: 200px;
-    border-radius: 20px;
-    background-color:  #23bf93;
-    transition: background-color 150ms ease-in-out;
-    border: 1px solid rgba(0, 0, 0, 0.3);
-    color: white;
-    font-size: 16px;
+.want-to-make-button button, .made-button button, .remove-from-shop-button button {
+    height: 40px;
+    width: 125px;
+    border-radius: 5px;
+    background-color: white;
+    transition: background-color 300ms ease-in-out,
+                font-size 300ms ease,
+                color 300ms ease-in-out,
+                box-shadow 300ms ease;
+    border: 1px solid#23bf93;
+    color: #23bf93;
+    font-size: 14px;
+    margin: 20px 20px;
 }
 
-.want-to-make-button button:hover {
-    background-color:  #eb7a10ce;
+.want-to-make-button button:hover, .made-button button:hover, .remove-from-shop-button button:hover {
+    background-color:#23bf93;
     cursor: pointer;
+    color: white;
 }
 
-.want-to-make-button button:active {
+.hovering > .want-to-make-button button, .hovering > .made-button button, .hovering > .remove-from-shop-button button {
+    font-size: 15px;
+    color: #23af87;
+}
+
+.hovering > .want-to-make-button button:hover, .hovering > .made-button button:hover, .remove-from-shop-button button:hover {
+    color: white;
+    box-shadow: 0px 2px 2px 0px rgba(10, 139, 96, 0.16),
+    0px 3px 3px 0px rgba(10, 139, 96, 0.16),
+    0px 4px 4px 0px rgba(10, 139, 96, 0.16),
+    0px 6px 6px 0px rgba(10, 139, 96, 0.16);
+}
+
+.want-to-make-button button:active, .made-button button:active, .remove-from-shop-button button:active {
     transform: translate(2px, 1px);
     border: 1px solid rgba(0, 0, 0, 0.7)
 }
 
-.buttons-container {
+.hovering {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
 }
 
-/* .hidden {
-    display: none;
-    transition: display 150ms ease-in;
-} */
 
-.made-button {
-    margin: 10px 10px;
+
+.buttons-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 }
-.made-button button {
-    height: 25px;
-    width: 200px;
-    border-radius: 20px;
-    background-color:  #23bf93;
-    transition: background-color 150ms ease-in-out;
-    border: 1px solid rgba(0, 0, 0, 0.3);
-    color: white;
-    font-size: 16px;
-}
-.made-button button:hover {
-    background-color:  #eb7a10ce;
-    cursor: pointer;
+
+.hidden {
+    display: none;
 }
 
 .made-button button:active {
@@ -185,7 +204,7 @@
 }
 
 .fa-plus {
-    margin-right: 6px;
+    margin-right: 2%;
 }
 
 

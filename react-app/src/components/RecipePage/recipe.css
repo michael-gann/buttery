@@ -179,10 +179,6 @@
     margin-top: 15%;
 }
 
-.hidden {
-    display: none;
-}
-
 .recipe-page-container > .home-ingredients-container > .new-ingredients-container > .pantry-ingredients-for-recipe > .recipe-pantry-ingredient-container > .pantry-ingredients-container {
     width: calc(100% + 25px);
 }

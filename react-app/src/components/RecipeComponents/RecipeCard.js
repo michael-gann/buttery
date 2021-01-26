@@ -8,6 +8,8 @@ import { ImPlus } from "react-icons/im";
 import { ImMinus } from "react-icons/im";
 import { makeStyles } from "@material-ui/core/styles";
 import Badge from "@material-ui/core/Badge";
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert from "@material-ui/lab/Alert";
 
 import RecipeForm from "../Forms/RecipeForm/RecipeForm";
 import RecipeTitle from "./RecipeTitle";
@@ -89,6 +91,9 @@ const RecipeCard = ({
   handleEditRecipe,
   isHomepage,
   isRecipePage,
+  showSuccess,
+  setShowSuccess,
+  handleShowSuccess,
 }) => {
   const classes = useStyles();
   const classes2 = useStyles2();
@@ -117,6 +122,7 @@ const RecipeCard = ({
     : [];
   const pantryIngredients = useSelector((state) => state.pantries.pantries);
   const dispatch = useDispatch();
+
   // const isLoading = useSelector((state) => state.recipes.loading);
   const user = useSelector((state) => state.users.sessionUser);
   const [toShop, setToShop] = useState(alreadyShopping ? true : false);
@@ -145,7 +151,9 @@ const RecipeCard = ({
   const isClose = result.length > 0 && result.length <= 3;
   const canMake = result.length === 0;
 
-  const addToShop = () => {
+  const addToShop = (e) => {
+    e.preventDefault();
+    handleShowSuccess();
     const form = new FormData();
 
     form.set("recipe_id", id);
@@ -157,15 +165,26 @@ const RecipeCard = ({
     setToShop(true);
   };
 
-  const removeFromShop = () => {
+  const removeFromShop = (e) => {
+    e.preventDefault();
     dispatch(cookingListActions.removeRecipe(id)).then(() =>
       dispatch(cookingListActions.getShoppingList(user.id))
     );
     setToShop(false);
   };
 
-  // const handleHover = (e) => {
-  //   setIsHovering(!isHovering);
+  const handleHover = (e) => {
+    setIsHovering(!isHovering);
+  };
+
+  // const handleShowSuccess = (e) => {
+  //   e.preventDefault();
+  //   setShowSuccess(true);
+  // };
+
+  // const handleShowSuccessClose = (e) => {
+  //   e.preventDefault();
+  //   setShowSuccess(false);
   // };
 
   return (
@@ -179,7 +198,7 @@ const RecipeCard = ({
       ) : (
         <>
           {isHomepage ? (
-            <>
+            <div className="recipecard-main-containers">
               <div className="home-recipe-title">
                 <RecipeTitle
                   title={recipe[`${id}`] ? recipe[`${id}`].name : "loading..."}
@@ -214,9 +233,13 @@ const RecipeCard = ({
                   </Badge>
                 </button>
               )}
-            </>
+            </div>
           ) : (
-            <>
+            <div
+              className="recipecard-main-containers"
+              onMouseEnter={handleHover}
+              onMouseLeave={handleHover}
+            >
               <NavLink to={`/recipes/${id}`}>
                 <Badge
                   showZero={true}
@@ -246,16 +269,30 @@ const RecipeCard = ({
                       : recipe[`${id}`].content}
                   </div>
                 )}
-                <div className={isHovering ? "buttons-container" : "hidden"}>
-                  <div className="want-to-make-button">
-                    <button>+ Want To Make</button>
+                <div className={isHovering ? "hovering" : "buttons-container"}>
+                  <div
+                    className={
+                      toShop ? "remove-from-shop-button" : "want-to-make-button"
+                    }
+                  >
+                    {toShop ? (
+                      <button onClick={removeFromShop}>
+                        <i className="fas fa-minus"></i> Remove recipe
+                      </button>
+                    ) : (
+                      <>
+                        <button onClick={addToShop}>
+                          <i className="fas fa-plus"></i> Add recipe
+                        </button>
+                      </>
+                    )}
                   </div>
                   <div className="made-button">
                     <button>Made Recipe</button>
                   </div>
                 </div>
               </NavLink>
-            </>
+            </div>
           )}
         </>
       )}

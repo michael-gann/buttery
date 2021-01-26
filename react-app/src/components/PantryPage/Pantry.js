@@ -4,13 +4,12 @@ import { useHistory } from "react-router-dom";
 
 import Categories from "../PantryComponents/Categories";
 import { MetroSpinner } from "react-spinners-kit";
-import { ImPlus } from "react-icons/im";
 
 import "./pantry.css";
 
 const Pantry = () => {
   const history = useHistory();
-  const isLoading = useSelector((state) => state.categories.loading);
+  const isLoading = useSelector((state) => state.pantries.loading);
 
   const categoryIds = useSelector((state) =>
     state.categories.categories.map((c) => c.id)
@@ -18,19 +17,27 @@ const Pantry = () => {
   const isPantry = true;
   return (
     <>
-      <div className="pantry-page-header-container">
-        <div className="pantry-page-header">PANTRY</div>
-        <button
-          className="add-pantry-item"
-          type="button"
-          onClick={() => history.push("/add-to-pantry")}
-        >
-          <ImPlus />
-        </button>
-      </div>
-      <MetroSpinner size={50} color="#23bf93" loading={isLoading} />
-
-      <Categories isPantry={isPantry} categories={categoryIds}></Categories>
+      {isLoading ? (
+        <div className="spinner-container">
+          <MetroSpinner size={80} color="#23bf93" loading={isLoading} />
+        </div>
+      ) : (
+        <>
+          <div className="pantry-page-header-container">
+            <div className="pantry-page-header">Pantry Stock</div>
+          </div>
+          <Categories isPantry={isPantry} categories={categoryIds}></Categories>
+          <div className="add-to-pantry-button-container">
+            <button
+              className="add-pantry-item"
+              type="button"
+              onClick={() => history.push("/add-to-pantry")}
+            >
+              <i className="fas fa-plus"></i> Add to pantry
+            </button>
+          </div>
+        </>
+      )}
     </>
   );
 };

@@ -39,16 +39,40 @@
 
 }
 .pantry-form-container > .pantry-form-holder > .pantry-form > .add-new-pantry-ingredient-button button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    background-color: #23bf93;
+    transition: background-color 150ms ease-in-out,
+                transform 150ms ease-in-out,
+                color 150ms ease-in-out,
+                box-shadow 150ms ease-in-out;
+    height: 40px;
+    width: 300px;
+    border-radius: 25px;
+    margin-top: 5%;
+    margin-bottom: 3%;
     color: black;
-    background-color: white;
-    font-size: 1.5rem;
-    margin-left: 10px;
-    transition: color 150ms ease-in-out;
+    border: 1px solid gray;
+    box-shadow: 0px 2px 2px 0px rgba(10, 139, 96, 0.16),
+                0px 3px 3px 0px rgba(10, 139, 96, 0.16),
+                0px 4px 4px 0px rgba(10, 139, 96, 0.16),
+                0px 6px 6px 0px rgba(10, 139, 96, 0.16);
 }
 
 .pantry-form-container > .pantry-form-holder > .pantry-form > .add-new-pantry-ingredient-button button:hover {
-    color: #23bf93;
+    background-color: #1dd4a0;
     cursor: pointer;
+    transform: translate(0px, -2px);
+    color: white;
+    box-shadow: 0px 4px 4px 0px rgba(10, 139, 96, 0.18),
+                0px 6px 6px 0px rgba(10, 139, 96, 0.18),
+                0px 8px 4px 0px rgba(10, 139, 96, 0.18);
+}
+
+.pantry-form-container > .pantry-form-holder > .pantry-form > .add-new-pantry-ingredient-button button:active {
+    transform: translate(2px, 1px);
 }
 
 
@@ -59,13 +83,37 @@
     margin-bottom: 5%;
 }
 .pantry-form-container > .pantry-form-holder > .pantry-form > .pantry-submit-button button {
-    width: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    background-color: #23bf93;
+    transition: background-color 150ms ease-in-out,
+                transform 150ms ease-in-out,
+                color 150ms ease-in-out,
+                box-shadow 150ms ease-in-out;
     height: 40px;
-    border-radius: 50px;
-    background-color: #23BF93;
-    margin-top: 5%;
+    width: 250px;
+    border-radius: 25px;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    color: black;
+    border: 1px solid gray;
+    box-shadow: 0px 2px 2px 0px rgba(10, 139, 96, 0.16),
+                0px 3px 3px 0px rgba(10, 139, 96, 0.16),
+                0px 4px 4px 0px rgba(10, 139, 96, 0.16),
+                0px 6px 6px 0px rgba(10, 139, 96, 0.16);
 }
 .pantry-form-container > .pantry-form-holder > .pantry-form > .pantry-submit-button button:hover {
-    background-color: #EB7910;
+    background-color: #1dd4a0;
     cursor: pointer;
+    transform: translate(0px, -2px);
+    color: white;
+    box-shadow: 0px 4px 4px 0px rgba(10, 139, 96, 0.18),
+                0px 6px 6px 0px rgba(10, 139, 96, 0.18),
+                0px 8px 4px 0px rgba(10, 139, 96, 0.18);
+}
+
+.pantry-form-container > .pantry-form-holder > .pantry-form > .pantry-submit-button button:active {
+    transform: translate(2px, 1px)
 }

@@ -2,7 +2,6 @@ import React from "react";
 import MeasurementSelect from "./MeasurementSelect";
 import Quantity from "./Quantity";
 import Ingredient from "./Ingredient";
-import { ImPlus } from "react-icons/im";
 import { ImMinus } from "react-icons/im";
 
 const RecipeIngredient = ({

@@ -35,7 +35,7 @@
     color: black;
 }
 
-.recipecard-main-containers {
+.home-main-container > .recipes > .home-recipecard-container > .recipe-card > .recipecard-main-containers {
     display: flex;
     min-width: 50%;
     max-width: 50%;

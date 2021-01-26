@@ -1,14 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { ImPlus } from "react-icons/im";
 import _ from "lodash";
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert from "@material-ui/lab/Alert";
+import { makeStyles } from "@material-ui/core/styles";
 
 import RecipeCard from "./RecipeCard";
 
+const snackbarSuccessStyles = makeStyles((theme) => ({
+  root: {
+    backgroundColor: "#23bf93",
+    color: "white",
+  },
+}));
+
 const HomeRecipe = ({ isHomepage, setIsHomepage }) => {
   const history = useHistory();
-
+  const [showSuccess, setShowSuccess] = useState(false);
   const recipeObjects = useSelector((state) => state.recipes.recipes);
 
   const recipeIdsCopy = _.cloneDeep(recipeObjects);
@@ -25,8 +35,18 @@ const HomeRecipe = ({ isHomepage, setIsHomepage }) => {
     })
     .map((r) => Object.keys(r)[0]);
 
-  const handleClick = () => {
+  const handleClick = (e) => {
+    e.preventDefault();
     return history.push(`/new-recipe`);
+  };
+
+  const handleShowSuccess = (e) => {
+    // e.preventDefault();
+    setShowSuccess(true);
+  };
+
+  const handleShowSuccessClose = (e) => {
+    setShowSuccess(false);
   };
 
   return (
@@ -41,8 +61,12 @@ const HomeRecipe = ({ isHomepage, setIsHomepage }) => {
         {recipeIds &&
           recipeIds.map((id) => {
             return (
-              <div className="recipecard-main-containers" key={id}>
+              <div className="recipe-card" key={id}>
                 <RecipeCard
+                  handleShowSuccess={handleShowSuccess}
+                  handleShowSuccessClose={handleShowSuccessClose}
+                  showSuccess={showSuccess}
+                  setShowSuccess={setShowSuccess}
                   isHomepage={isHomepage}
                   setIsHomepage={setIsHomepage}
                   id={id}
@@ -58,6 +82,21 @@ const HomeRecipe = ({ isHomepage, setIsHomepage }) => {
           </div>
         ) : null}
       </div>
+      <Snackbar
+        open={showSuccess}
+        autoHideDuration={5000}
+        onClose={handleShowSuccessClose}
+      >
+        <MuiAlert
+          classes={{ root: snackbarSuccessStyles.root }}
+          onClose={handleShowSuccessClose}
+          severity="success"
+          variant="filled"
+          color="success"
+        >
+          Recipe Added!
+        </MuiAlert>
+      </Snackbar>
     </>
   );
 };

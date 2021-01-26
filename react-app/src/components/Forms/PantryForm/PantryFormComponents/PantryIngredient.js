@@ -1,5 +1,5 @@
 import React from "react";
-import { ImPlus } from "react-icons/im";
+import { ImMinus } from "react-icons/im";
 
 import Ingredient from "../../RecipeForm/RecipeFormComponents/Ingredient";
 import MeasurementSelect from "../../RecipeForm/RecipeFormComponents/MeasurementSelect";
@@ -16,9 +16,9 @@ const PantryIngredient = ({
   return (
     <>
       <div className="add-new-pantry-ingredient-button">
-        Ingredients
         <button type="button" onClick={() => handleIngredientAdd()}>
-          <ImPlus />
+          <i className="fas fa-plus"></i>
+          Add new ingredient
         </button>
       </div>
       {ingredientFields.map((field, idx) => {
@@ -41,10 +41,9 @@ const PantryIngredient = ({
               ingredients={ingredients}
               handleUpdateIngredient={handleUpdateIngredient}
             />
-            <button
-              type="button"
-              onClick={() => handleIngredientRemove(idx)}
-            ></button>
+            <button type="button" onClick={() => handleIngredientRemove(idx)}>
+              <ImMinus />
+            </button>
           </div>
         );
       })}

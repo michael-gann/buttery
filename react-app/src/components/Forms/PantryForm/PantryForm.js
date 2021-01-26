@@ -12,7 +12,13 @@ import "./pantryform.css";
 const PantryForm = () => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const [ingredientFields, setIngredientFields] = useState([]);
+  const [ingredientFields, setIngredientFields] = useState([
+    {
+      qty: 0,
+      ingredient: { value: -1, label: " " },
+      ingredientInput: "",
+    },
+  ]);
 
   const user = useSelector((state) => state.users.sessionUser);
   const ingredients = useSelector((state) => state.ingredients.ingredients);
@@ -126,7 +132,11 @@ const PantryForm = () => {
             ingredientFields={ingredientFields}
           />
           <div className="pantry-submit-button">
-            <button onClick={handleSubmit}>Add Ingredient</button>
+            <button onClick={handleSubmit}>
+              {ingredientFields.length === 1 || ingredientFields.length === 0
+                ? "Submit ingredient"
+                : "Submit ingredients"}
+            </button>
           </div>
         </div>
       </div>
