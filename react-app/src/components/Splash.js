@@ -30,7 +30,7 @@ const Splash = () => {
     <>
       {isLoading ? (
         <div className={isLoading ? "spinner-container" : "hidden"}>
-          <MetroSpinner size={100} color="#3ce50f" loading={isLoading} />
+          <MetroSpinner size={100} color="#23bf93;" loading={isLoading} />
         </div>
       ) : (
         <div className="splashpage-container">

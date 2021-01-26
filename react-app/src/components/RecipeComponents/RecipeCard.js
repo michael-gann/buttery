@@ -83,7 +83,13 @@ const useStyles3 = makeStyles((theme) => ({
   },
 }));
 
-const RecipeCard = ({ id, isEditing, handleEditRecipe, isHomepage }) => {
+const RecipeCard = ({
+  id,
+  isEditing,
+  handleEditRecipe,
+  isHomepage,
+  isRecipePage,
+}) => {
   const classes = useStyles();
   const classes2 = useStyles2();
   const classes3 = useStyles3();
@@ -228,9 +234,18 @@ const RecipeCard = ({ id, isEditing, handleEditRecipe, isHomepage }) => {
                     <RecipeTitle title={recipe[`${id}`].name} id={id} />
                   </div>
                 </Badge>
-                <div className="home-recipe-content">
-                  {recipe[`${id}`].content}
-                </div>
+
+                {isRecipePage ? (
+                  <div className="home-recipe-content">
+                    {recipe[`${id}`].content}
+                  </div>
+                ) : (
+                  <div className="home-recipe-content">
+                    {recipe[`${id}`].content.length > 256
+                      ? recipe[`${id}`].content.slice(0, 256) + "..."
+                      : recipe[`${id}`].content}
+                  </div>
+                )}
                 <div className={isHovering ? "buttons-container" : "hidden"}>
                   <div className="want-to-make-button">
                     <button>+ Want To Make</button>

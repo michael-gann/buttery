@@ -15,7 +15,7 @@ const HomePantry = ({ isHomepage }) => {
 
   return (
     <>
-      <MetroSpinner size={40} color="#3ce50f" loading={isLoading} />
+      <MetroSpinner size={40} color="#23bf93" loading={isLoading} />
       {categoryIds && (
         <Categories
           isHomepage={isHomepage}

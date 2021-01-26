@@ -18,6 +18,7 @@ const Recipe = () => {
   // const [deletion, setDeletion] = useState(false);
   const { id } = useParams();
   const [notInPantry, setNotInPantry] = useState(0);
+  const [isRecipePage, setIsRecipePage] = useState(true);
 
   const isLoading = useSelector((state) => state.recipes.loading);
   const recipe = useSelector((state) =>
@@ -46,7 +47,7 @@ const Recipe = () => {
   return (
     <div className="recipe-page-container">
       <div className={isLoading ? "spinner-container" : "hidden"}>
-        <MetroSpinner size={100} color="#3ce50f" loading={isLoading} />
+        <MetroSpinner size={100} color="#23bf93" loading={isLoading} />
       </div>
       {/* <button onClick={handleDeleteRecipe}>Delete Recipe</button> */}
       <>
@@ -71,6 +72,7 @@ const Recipe = () => {
                 <RecipeCard
                   id={id}
                   isEditing={isEditing}
+                  isRecipePage={isRecipePage}
                   handleEditRecipe={handleEditRecipe}
                 ></RecipeCard>
                 <div className="home-ingredients-container">

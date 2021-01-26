@@ -8,10 +8,8 @@ const RecipeStep = ({ handleAdd, handleChange, handleRemove, stepFields }) => {
     <>
       <div className="add-step-button">
         <button type="button" onClick={() => handleAdd()}>
-          <div className="plus-button">
-            <ImPlus />
-          </div>
-          Add New Step
+          <i className="fas fa-plus"></i>
+          Add new step
         </button>
       </div>
       {stepFields.map((field, idx) => {
@@ -20,7 +18,7 @@ const RecipeStep = ({ handleAdd, handleChange, handleRemove, stepFields }) => {
             {/* {`Step ${idx + 1}`} */}
             <textarea
               type="text"
-              placeholder="new step"
+              placeholder="Preheat oven to 350 degrees. Place a medium suacepan on the stove...."
               value={field.value || ""}
               onChange={(e) => handleChange(idx, e)}
             />

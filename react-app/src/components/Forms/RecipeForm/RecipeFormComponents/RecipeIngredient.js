@@ -17,10 +17,8 @@ const RecipeIngredient = ({
     <>
       <div className="add-new-recipe-ingredient-button">
         <button type="button" onClick={() => handleRecipeIngredientAdd()}>
-          <div className="plus-button">
-            <ImPlus />
-          </div>
-          Add New Ingredient
+          <i className="fas fa-plus"></i>
+          Add new ingredient
         </button>
       </div>
       {ingredientFields.map((field, idx) => {

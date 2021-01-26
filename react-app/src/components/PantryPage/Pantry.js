@@ -28,7 +28,7 @@ const Pantry = () => {
           <ImPlus />
         </button>
       </div>
-      <MetroSpinner size={50} color="#3ce50f" loading={isLoading} />
+      <MetroSpinner size={50} color="#23bf93" loading={isLoading} />
 
       <Categories isPantry={isPantry} categories={categoryIds}></Categories>
     </>

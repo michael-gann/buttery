@@ -7,7 +7,12 @@ const RecipeName = ({ setRecipe, recipe }) => {
     <>
       <label>
         Recipe Name
-        <input type="text" value={recipe} onChange={onChange}></input>
+        <input
+          placeholder="Grandmas Apple Pie"
+          type="text"
+          value={recipe}
+          onChange={onChange}
+        ></input>
       </label>
     </>
   );

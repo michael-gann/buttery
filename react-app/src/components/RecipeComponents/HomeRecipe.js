@@ -53,10 +53,7 @@ const HomeRecipe = ({ isHomepage, setIsHomepage }) => {
         {!isHomepage ? (
           <div className="add-recipe-container">
             <button className="add-recipe-button" onClick={handleClick}>
-              <div className="plus-button">
-                <ImPlus />
-              </div>
-              Add New Recipe
+              <i className="fas fa-plus"></i> Add New Recipe
             </button>
           </div>
         ) : null}

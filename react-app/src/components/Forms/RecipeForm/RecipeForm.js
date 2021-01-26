@@ -231,7 +231,7 @@ const RecipeForm = ({ isEditing, recipeToEdit, handleEditRecipe }) => {
             ></RecipeStep>
           </div>
           <div className="recipe-submit-button">
-            <button onClick={handleSubmit}>Add Recipe</button>
+            <button onClick={handleSubmit}>Submit recipe</button>
           </div>
         </div>
       </div>

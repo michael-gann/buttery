@@ -83,9 +83,9 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: background-color 300ms ease-in-out,
-                color 300ms ease-in-out,
-                transform 300ms ease-in-out,
+    transition: background-color 250ms ease-in-out,
+                color 150ms ease-in-out,
+                transform 300ms ease-in-out;
 }
 
 .nav-home:hover {
@@ -99,16 +99,23 @@ nav {
 }
 
 .nav-recipes:hover {
-    background-color: #eb7910
+    background-color: #eb7910;
+    color: white;
+}
+
+.nav-recipes a:hover, .nav-home a:hover, .nav-pantry a:hover {
+    color: white;
 }
 
 .nav-pantry:hover {
-    background-color: #e6c73b
+    background-color: #e6c73b;
+    color: white;
 }
 
 .nav-logout-button:hover {
     /* background-color: #3e400f */
     background-color: rgb(245, 35, 35);
+    color: white;
 }
 
 .nav-logout-button button {

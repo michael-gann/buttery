@@ -23,13 +23,14 @@ function App() {
   const dispatch = useDispatch();
   const [loaded, setLoaded] = useState(false);
   const sessionUser = useSelector((state) => state.users.sessionUser);
+  const authErrors = useSelector((state) => state.users.authErrors);
 
   useEffect(() => {
     if (sessionUser) {
-      setLoaded(true);
       dispatch(pantryActions.getUserPantryItems(sessionUser.id));
       dispatch(recipeActions.getAllRecipes(sessionUser.id));
     }
+    setLoaded(true);
   }, [dispatch, sessionUser]);
 
   if (!loaded) {

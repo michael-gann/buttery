@@ -28,6 +28,7 @@
     font-size: 3rem;
     text-align: center;
     margin-top: 3%;
+    color: black;
 }
 
 .recipe-name {
@@ -50,6 +51,11 @@
  font-size: 1em;
  margin-left: 5%;
  width: 500px;
+}
+
+.recipe-name input:focus, .recipe-content input:focus {
+    color: #b7a731;
+    border-bottom: 1px solid rgba(0, 0, 0, .5);
 }
 
 .recipe-content {
@@ -82,22 +88,35 @@
 
 .add-new-recipe-ingredient-button button {
     display: flex;
-    align-items: center;
     justify-content: center;
-    color: rgb(0,0,0,0.7);
+    align-items: center;
+    font-size: 1.2rem;
     background-color: #23bf93;
+    transition: background-color 150ms ease-in-out,
+                transform 150ms ease-in-out,
+                color 150ms ease-in-out,
+                box-shadow 150ms ease-in-out;
     height: 45px;
     width: 300px;
-    border-radius: 20px;
-    font-size: 1.2rem;
-    margin-left: 10px;
-    border: 1px solid rgba(0, 0, 0, .2);
-    transition: background-color 150ms ease-in-out;
+    border-radius: 25px;
+    margin-top: 5%;
+    margin-bottom: 3%;
+    color: black;
+    border: 1px solid gray;
+    box-shadow: 0px 2px 2px 0px rgba(10, 139, 96, 0.16),
+                0px 3px 3px 0px rgba(10, 139, 96, 0.16),
+                0px 4px 4px 0px rgba(10, 139, 96, 0.16),
+                0px 6px 6px 0px rgba(10, 139, 96, 0.16);
 }
 
 .add-new-recipe-ingredient-button button:hover {
-    background-color:  #eb7a10d0;
+    background-color: #1dd4a0;
     cursor: pointer;
+    transform: translate(0px, -2px);
+    color: white;
+    box-shadow: 0px 4px 4px 0px rgba(10, 139, 96, 0.18),
+                0px 6px 6px 0px rgba(10, 139, 96, 0.18),
+                0px 8px 4px 0px rgba(10, 139, 96, 0.18);
 }
 
 .add-new-recipe-ingredient-button button:active {
@@ -132,11 +151,6 @@
     font-size: 1em;
 }
 
-
-recipe-form-quantity label {
-    /* margin-left: 3%; */
-}
-
 .recipe-form-quantity {
     margin-right: 3%;
     margin-left: 10%;
@@ -146,20 +160,12 @@ recipe-form-quantity label {
     margin-right: 5%;
 }
 
-.MuiAutocomplete-root {
-    /* background-color: red; */
-}
-
-/* .MuiInput-input {
-    font-size: .5em;
-} */
-
-#measurement-select, #measurement-select-label {
+#measurement-select, #measurement-select-label, #ingredient-select, #ingredient-select-label{
     font-size: 1em;
     transition: color 200ms ease-in-out;
 }
 
-#measurement-select:focus {
+#measurement-select:focus, #ingredient-select:focus {
     color: #b7a731;
 }
 
@@ -196,20 +202,33 @@ recipe-form-quantity label {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 20px;
-    color: rgb(0,0,0,0.7);
-    background-color: #23BF93;
-    border: 1px solid rgba(0, 0, 0, .2);
-    height: 45px;
-    width: 250px;
     font-size: 1.2rem;
-    margin-left: 10px;
-    transition: color 150ms ease-in-out;
+    background-color: #23bf93;
+    transition: background-color 150ms ease-in-out,
+                transform 150ms ease-in-out,
+                color 150ms ease-in-out,
+                box-shadow 150ms ease-in-out;
+    height: 45px;
+    width: 300px;
+    border-radius: 25px;
+    margin-top: 5%;
+    margin-bottom: 3%;
+    color: black;
+    border: 1px solid gray;
+    box-shadow: 0px 2px 2px 0px rgba(10, 139, 96, 0.16),
+                0px 3px 3px 0px rgba(10, 139, 96, 0.16),
+                0px 4px 4px 0px rgba(10, 139, 96, 0.16),
+                0px 6px 6px 0px rgba(10, 139, 96, 0.16);
 }
 
 .add-step-button button:hover {
-    background-color:  #eb7a10d0;
+    background-color: #1dd4a0;
     cursor: pointer;
+    transform: translate(0px, -2px);
+    color: white;
+    box-shadow: 0px 4px 4px 0px rgba(10, 139, 96, 0.18),
+                0px 6px 6px 0px rgba(10, 139, 96, 0.18),
+                0px 8px 4px 0px rgba(10, 139, 96, 0.18);
 }
 
 .add-step-button button:active {
@@ -230,6 +249,7 @@ recipe-form-quantity label {
     height: 50px;
 }
 
+
 .recipe-step textarea {
     /* border-bottom:1px solid rgba(0,0,0, .2); */
     font-size: 1em;
@@ -237,7 +257,17 @@ recipe-form-quantity label {
     height: 50px;
     width: 558px;
     border: 1px solid rgba(0,0,0, .2);
-    border-radius: 5px;
+    border-radius: 10px;
+    background-color:rgba(209, 209, 209, 0.16);
+    padding: 5px 10px;
+}
+
+.recipe-step textarea:focus {
+outline: none;
+box-shadow: 0px 0px 2px 0px rgba(10, 139, 96, 0.18),
+            0px 0px 4px 0px rgba(10, 139, 96, 0.18),
+            0px 0px 6px 0px rgba(10, 139, 96, 0.18),
+            0px 0px 8px 0px rgba(10, 139, 96, 0.18);
 }
 
 .recipe-submit-button {
@@ -248,18 +278,36 @@ recipe-form-quantity label {
 }
 
 .recipe-submit-button button {
-    color: rgb(0,0,0,0.7);
-    width: 400px;
-    height: 40px;
-    border-radius: 50px;
-    background-color: #23BF93;
-    border: 1px solid rgba(0, 0, 0, .2);
-    font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3rem;
+    background-color: #23bf93;
+    transition: background-color 150ms ease-in-out,
+                transform 150ms ease-in-out,
+                color 150ms ease-in-out,
+                box-shadow 150ms ease-in-out;
+    height: 45px;
+    width: 300px;
+    border-radius: 25px;
+    margin-bottom: 50px;
+    margin-top: 5%;
+    color: black;
+    border: 1px solid gray;
+    box-shadow: 0px 2px 2px 0px rgba(10, 139, 96, 0.16),
+                0px 3px 3px 0px rgba(10, 139, 96, 0.16),
+                0px 4px 4px 0px rgba(10, 139, 96, 0.16),
+                0px 6px 6px 0px rgba(10, 139, 96, 0.16);
 }
 
 .recipe-submit-button button:hover {
-    background-color: #EB7910;
+    background-color: #1dd4a0;
     cursor: pointer;
+    transform: translate(0px, -2px);
+    color: white;
+    box-shadow: 0px 4px 4px 0px rgba(10, 139, 96, 0.18),
+                0px 6px 6px 0px rgba(10, 139, 96, 0.18),
+                0px 8px 4px 0px rgba(10, 139, 96, 0.18);
 }
 
 .recipe-submit-button button:active {
@@ -283,4 +331,14 @@ recipe-form-quantity label {
     color: black;
     font-size: 1.5em;
     background-color: white;
+}
+
+button:focus {
+    box-shadow: 0px 0px 2px 0px rgba(10, 139, 96, 0.18),
+            0px 0px 4px 0px rgba(10, 139, 96, 0.18),
+            0px 0px 6px 0px rgba(10, 139, 96, 0.18),
+            0px 0px 8px 0px rgba(10, 139, 96, 0.18),
+            0px 0px 16px 0px rgba(10, 139, 96, 0.18),
+            0px 0px 32px 0px rgba(10, 139, 96, 0.18),
+            0px 0px 64px 0px rgba(10, 139, 96, 0.18);
 }

@@ -7,7 +7,12 @@ const RecipeContent = ({ recipeContent, setRecipeContent }) => {
     <>
       <label>
         Recipe Notes
-        <input type="text" value={recipeContent} onChange={onChange}></input>
+        <input
+          placeholder="Some notes about the recipe..."
+          type="text"
+          value={recipeContent}
+          onChange={onChange}
+        ></input>
       </label>
     </>
   );

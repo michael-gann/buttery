@@ -19,7 +19,7 @@ const PantryIngredients = ({ id }) => {
         pantryIngredients.map((i, idx) => {
           return (
             <>
-              <MetroSpinner size={40} color="#3ce50f" loading={isLoading} />
+              <MetroSpinner size={40} color="#23bf93" loading={isLoading} />
               <div key={id} className="pantry-ingredient-container">
                 <PantryIngredient
                   ingredient={i}
