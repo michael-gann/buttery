@@ -142,10 +142,10 @@
     width: 100%;
 }
 
-.hidden {
+/* .hidden {
     display: none;
     transition: display 150ms ease-in;
-}
+} */
 
 .made-button {
     margin: 10px 10px;
