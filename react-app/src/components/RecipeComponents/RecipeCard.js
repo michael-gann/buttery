@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import _ from "lodash";
 
-import { MetroSpinner } from "react-spinners-kit";
+// import { MetroSpinner } from "react-spinners-kit";
 import { ImPlus } from "react-icons/im";
 import { ImMinus } from "react-icons/im";
 import { makeStyles } from "@material-ui/core/styles";
@@ -110,7 +111,7 @@ const RecipeCard = ({ id, isEditing, handleEditRecipe, isHomepage }) => {
     : [];
   const pantryIngredients = useSelector((state) => state.pantries.pantries);
   const dispatch = useDispatch();
-  const isLoading = useSelector((state) => state.recipes.loading);
+  // const isLoading = useSelector((state) => state.recipes.loading);
   const user = useSelector((state) => state.users.sessionUser);
   const [toShop, setToShop] = useState(alreadyShopping ? true : false);
   const [fakePantry, setFakePantry] = useState(
@@ -174,16 +175,10 @@ const RecipeCard = ({ id, isEditing, handleEditRecipe, isHomepage }) => {
           {isHomepage ? (
             <>
               <div className="home-recipe-title">
-                {isLoading ? (
-                  <MetroSpinner size={50} color="#3ce50f" loading={isLoading} />
-                ) : (
-                  <RecipeTitle
-                    title={
-                      recipe[`${id}`] ? recipe[`${id}`].name : "loading..."
-                    }
-                    id={id}
-                  ></RecipeTitle>
-                )}
+                <RecipeTitle
+                  title={recipe[`${id}`] ? recipe[`${id}`].name : "loading..."}
+                  id={id}
+                ></RecipeTitle>
               </div>
               {toShop ? (
                 <button
@@ -216,34 +211,35 @@ const RecipeCard = ({ id, isEditing, handleEditRecipe, isHomepage }) => {
             </>
           ) : (
             <>
-              <Badge
-                showZero={true}
-                badgeContent={result.length}
-                anchororign={{ vertical: "top", horizontal: "right" }}
-                classes={
-                  isClose
-                    ? { badge: classes2.badge }
-                    : canMake
-                    ? { badge: classes.badge }
-                    : { badge: classes3.badge }
-                }
-              >
-                <div className="home-recipe-title">
-                  <RecipeTitle title={recipe[`${id}`].name} id={id} />
+              <NavLink to={`/recipes/${id}`}>
+                <Badge
+                  showZero={true}
+                  badgeContent={result.length}
+                  anchororign={{ vertical: "top", horizontal: "right" }}
+                  classes={
+                    isClose
+                      ? { badge: classes2.badge }
+                      : canMake
+                      ? { badge: classes.badge }
+                      : { badge: classes3.badge }
+                  }
+                >
+                  <div className="home-recipe-title">
+                    <RecipeTitle title={recipe[`${id}`].name} id={id} />
+                  </div>
+                </Badge>
+                <div className="home-recipe-content">
+                  {recipe[`${id}`].content}
                 </div>
-                <MetroSpinner size={100} color="#3ce50f" loading={isLoading} />
-              </Badge>
-              <div className="home-recipe-content">
-                {recipe[`${id}`].content}
-              </div>
-              <div className={isHovering ? "buttons-container" : "hidden"}>
-                <div className="want-to-make-button">
-                  <button>+ Want To Make</button>
+                <div className={isHovering ? "buttons-container" : "hidden"}>
+                  <div className="want-to-make-button">
+                    <button>+ Want To Make</button>
+                  </div>
+                  <div className="made-button">
+                    <button>Made Recipe</button>
+                  </div>
                 </div>
-                <div className="made-button">
-                  <button>Made Recipe</button>
-                </div>
-              </div>
+              </NavLink>
             </>
           )}
         </>

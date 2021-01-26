@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import { MetroSpinner } from "react-spinners-kit";
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/Navbar/NavBar";
@@ -15,18 +14,15 @@ import Recipes from "./components/RecipesPage/Recipes";
 import Recipe from "./components/RecipePage/Recipe";
 import Pantry from "./components/PantryPage/Pantry";
 
-// import * as ingredientActions from "./store/ingredients";
-// import * as measurementActions from "./store/measurements";
-// import * as userActions from "./store/users";
-// import * as categoryActions from "./store/categories";
 import * as recipeActions from "./store/recipes";
 import * as pantryActions from "./store/pantries";
-// import * as cookingListActions from "./store/cookingLists";
 
 function App() {
   const dispatch = useDispatch();
   const [loaded, setLoaded] = useState(false);
   const sessionUser = useSelector((state) => state.users.sessionUser);
+
+  console.log("HELLLOOOOOO");
 
   useEffect(() => {
     if (sessionUser) {

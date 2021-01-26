@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useSelector, shallowEqual } from "react-redux";
+import React from "react";
+import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { ImPlus } from "react-icons/im";
 import _ from "lodash";
