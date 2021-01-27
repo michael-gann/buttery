@@ -153,19 +153,15 @@
 .remove-from-shop-button button:hover {
     background-color: #F39C9F;
     cursor: pointer;
+    box-shadow: 0px 2px 2px 0px rgba(165, 72, 72, 0.16),
+    0px 3px 3px 0px rgba(165, 72, 72, 0.16),
+    0px 4px 4px 0px rgba(165, 72, 72, 0.16),
+    0px 6px 6px 0px rgba(165, 72, 72, 0.16);
     color: white;
 }
 .hovering > .remove-from-shop-button button {
     font-size: 15px;
     color: #F39C9F;
-}
-
-.remove-from-shop-button button:hover {
-    color: white;
-    box-shadow: 0px 2px 2px 0px rgba(165, 72, 72, 0.16),
-    0px 3px 3px 0px rgba(165, 72, 72, 0.16),
-    0px 4px 4px 0px rgba(165, 72, 72, 0.16),
-    0px 6px 6px 0px rgba(165, 72, 72, 0.16);
 }
 
 .want-to-make-button button, .made-button button  {
@@ -201,6 +197,16 @@
     0px 3px 3px 0px rgba(10, 139, 96, 0.16),
     0px 4px 4px 0px rgba(10, 139, 96, 0.16),
     0px 6px 6px 0px rgba(10, 139, 96, 0.16);
+}
+
+.hovering > .remove-from-shop-button button:hover {
+    background-color: #F39C9F;
+    cursor: pointer;
+    box-shadow: 0px 2px 2px 0px rgba(165, 72, 72, 0.16),
+    0px 3px 3px 0px rgba(165, 72, 72, 0.16),
+    0px 4px 4px 0px rgba(165, 72, 72, 0.16),
+    0px 6px 6px 0px rgba(165, 72, 72, 0.16);
+    color: white;
 }
 
 .want-to-make-button button:active, .made-button button:active, .remove-from-shop-button button:active {

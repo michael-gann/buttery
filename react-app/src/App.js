@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router";
 
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
@@ -19,11 +18,9 @@ import * as recipeActions from "./store/recipes";
 import * as pantryActions from "./store/pantries";
 
 function App() {
-  const history = useHistory();
   const dispatch = useDispatch();
   const [loaded, setLoaded] = useState(false);
   const sessionUser = useSelector((state) => state.users.sessionUser);
-  const authErrors = useSelector((state) => state.users.authErrors);
 
   useEffect(() => {
     if (sessionUser) {

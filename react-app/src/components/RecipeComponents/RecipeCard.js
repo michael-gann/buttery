@@ -3,13 +3,8 @@ import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import _ from "lodash";
 
-// import { MetroSpinner } from "react-spinners-kit";
-import { ImPlus } from "react-icons/im";
-import { ImMinus } from "react-icons/im";
 import { makeStyles } from "@material-ui/core/styles";
 import Badge from "@material-ui/core/Badge";
-import Snackbar from "@material-ui/core/Snackbar";
-import MuiAlert from "@material-ui/lab/Alert";
 
 import RecipeForm from "../Forms/RecipeForm/RecipeForm";
 import RecipeTitle from "./RecipeTitle";
@@ -18,9 +13,9 @@ import * as cookingListActions from "../../store/cookingLists";
 import * as recipeActions from "../../store/recipes";
 
 export const pretendPantry = (
-  recipeIngredients,
-  shoppingIngredients,
-  pantry
+  recipeIngredients, // ingredients for every recipe in the cart already, and this card's recipe
+  shoppingIngredients, // ingredients that are in the shopping cart
+  pantry // the pantry
 ) => {
   // take pantry and add everything from shopping list and subtract recipe ingredients
 
@@ -41,7 +36,7 @@ export const pretendPantry = (
   for (const si of shoppingIngredientsCopy) {
     if (pantryIngredientsMap[si.ingredient_id] && si.quantity > 0) {
       pantryIngredientsMap[si.ingredient_id].quantity += si.quantity;
-    } else {
+    } else if (si.quantity > 0) {
       pantryIngredientsMap[si.ingredient_id] = si;
     }
   }
@@ -61,7 +56,6 @@ export const pretendPantry = (
 const useStyles = makeStyles((theme) => ({
   badge: {
     backgroundColor: "#23BF93",
-    // fontSize: 10,
     right: -10,
     top: -5,
   },
@@ -70,7 +64,6 @@ const useStyles = makeStyles((theme) => ({
 const useStyles2 = makeStyles((theme) => ({
   badge: {
     backgroundColor: "#E6C73B",
-    // fontSize: 10,
     right: -10,
     top: -5,
   },
@@ -79,7 +72,6 @@ const useStyles2 = makeStyles((theme) => ({
 const useStyles3 = makeStyles((theme) => ({
   badge: {
     backgroundColor: "#F39C9F",
-    // fontSize: 10,
     right: -10,
     top: -5,
   },
@@ -91,57 +83,66 @@ const RecipeCard = ({
   handleEditRecipe,
   isHomepage,
   isRecipePage,
-  showSuccess,
-  setShowSuccess,
   handleShowSuccess,
 }) => {
-  const classes = useStyles();
-  const classes2 = useStyles2();
-  const classes3 = useStyles3();
-
   const recipe = useSelector((state) =>
     state.recipes.recipes.find((recipe) => Object.keys(recipe)[0] === id)
   );
-
   const shoppingList = useSelector((state) =>
     Object.values(state.cookingLists.shoppingList)
   );
-
   const recipeShoppingList = useSelector(
     (state) => state.cookingLists.recipesToShop
   );
-
   const alreadyShopping = recipeShoppingList.find(
     (r) => parseInt(r.recipe_id) === parseInt(id)
   );
-
-  console.log("already shopping", alreadyShopping);
-
-  const recipeIngredients = Object.values(recipe)[0]
-    ? Object.values(recipe)[0].ingredients
-    : [];
+  const recipeIdsInShoppingList = useSelector((state) =>
+    state.cookingLists.recipesToShop.map((r) => r.recipe_id)
+  );
+  const recipesInShoppingList = useSelector((state) =>
+    state.recipes.recipes.filter((r) => {
+      return recipeIdsInShoppingList.includes(parseInt(Object.keys(r)[0]));
+    })
+  );
+  const recipeIngredients =
+    Object.values(recipe)[0] &&
+    !recipeIdsInShoppingList.includes(parseInt(Object.keys(recipe)[0]))
+      ? Object.values(recipe)[0].ingredients
+      : [];
+  const recipeIngredientsForPantry = Object.values(recipe)[0].ingredients;
+  const allRecipeIngredients = Object.values(
+    recipesInShoppingList
+      .map((r) => Object.values(r)[0].ingredients)
+      .concat([recipeIngredients])
+      .reduce((map, ingredientList) => {
+        for (const ingredient of ingredientList) {
+          if (map[ingredient.ingredient_id]) {
+            map[ingredient.ingredient_id].quantity += ingredient.quantity;
+          } else {
+            map[ingredient.ingredient_id] = _.cloneDeep(ingredient);
+          }
+        }
+        return map;
+      }, {})
+  );
   const pantryIngredients = useSelector((state) => state.pantries.pantries);
   const dispatch = useDispatch();
-
-  // const isLoading = useSelector((state) => state.recipes.loading);
   const user = useSelector((state) => state.users.sessionUser);
   const [toShop, setToShop] = useState(alreadyShopping ? true : false);
-  const [fakePantry, setFakePantry] = useState(
-    pretendPantry(recipeIngredients, shoppingList, pantryIngredients)
-  );
   const [isHovering, setIsHovering] = useState(false);
 
   const result = _.differenceWith(
     recipeIngredients,
-    fakePantry,
-    (x, y) => x.ingredient_id === y.ingredient_id && x.quantity - y.quantity < 0
+    pretendPantry(allRecipeIngredients, shoppingList, pantryIngredients),
+    (x, y) => x.ingredient_id === y.ingredient_id && y.quantity >= 0
   );
 
-  useEffect(() => {
-    setFakePantry(
-      pretendPantry(recipeIngredients, shoppingList, pantryIngredients)
-    );
-  }, [recipeIngredients, pantryIngredients, shoppingList.length]);
+  const realPantryResult = _.differenceWith(
+    recipeIngredientsForPantry,
+    pantryIngredients,
+    (x, y) => x.ingredient_id === y.ingredient_id && y.quantity >= 0
+  );
 
   useEffect(() => {
     dispatch(recipeActions.setRecipeDistance(result.length, id));
@@ -151,9 +152,19 @@ const RecipeCard = ({
   const isClose = result.length > 0 && result.length <= 3;
   const canMake = result.length === 0;
 
+  const pantryIsClose =
+    realPantryResult.length > 0 && realPantryResult.length <= 3;
+  const pantryCanMake = realPantryResult.length === 0;
+
+  const classes = useStyles();
+  const classes2 = useStyles2();
+  const classes3 = useStyles3();
+
   const addToShop = (e) => {
     e.preventDefault();
-    handleShowSuccess();
+    if (handleShowSuccess) {
+      handleShowSuccess();
+    }
     const form = new FormData();
 
     form.set("recipe_id", id);
@@ -177,16 +188,6 @@ const RecipeCard = ({
     setIsHovering(!isHovering);
   };
 
-  // const handleShowSuccess = (e) => {
-  //   e.preventDefault();
-  //   setShowSuccess(true);
-  // };
-
-  // const handleShowSuccessClose = (e) => {
-  //   e.preventDefault();
-  //   setShowSuccess(false);
-  // };
-
   return (
     <>
       {isEditing ? (
@@ -198,42 +199,44 @@ const RecipeCard = ({
       ) : (
         <>
           {isHomepage ? (
-            <div className="recipecard-main-containers">
-              <div className="home-recipe-title">
-                <RecipeTitle
-                  title={recipe[`${id}`] ? recipe[`${id}`].name : "loading..."}
-                  id={id}
-                ></RecipeTitle>
-              </div>
-              {toShop ? (
-                <button
-                  onClick={removeFromShop}
-                  className="shop-button shop-button-remove"
-                >
-                  <ImMinus />
-                </button>
-              ) : (
-                <button
-                  className="shop-button shop-button-add"
-                  onClick={addToShop}
-                >
-                  <Badge
-                    showZero={true}
-                    badgeContent={result.length}
-                    anchororign={{ vertical: "top", horizontal: "right" }}
-                    classes={
-                      isClose
-                        ? { badge: classes2.badge }
-                        : canMake
-                        ? { badge: classes.badge }
-                        : { badge: classes3.badge }
+            <Badge
+              showZero={true}
+              badgeContent={result.length}
+              anchororign={{ vertical: "top", horizontal: "right" }}
+              classes={
+                isClose
+                  ? { badge: classes2.badge }
+                  : canMake
+                  ? { badge: classes.badge }
+                  : { badge: classes3.badge }
+              }
+            >
+              <div className="recipecard-main-containers">
+                <div className="home-recipe-title">
+                  <RecipeTitle
+                    title={
+                      recipe[`${id}`] ? recipe[`${id}`].name : "loading..."
                     }
-                  >
-                    <ImPlus />
-                  </Badge>
-                </button>
-              )}
-            </div>
+                    id={id}
+                  ></RecipeTitle>
+                </div>
+                <div
+                  className={
+                    toShop ? "remove-from-shop-button" : "want-to-make-button"
+                  }
+                >
+                  {toShop ? (
+                    <button onClick={removeFromShop}>
+                      <i className="fas fa-minus"></i> Remove
+                    </button>
+                  ) : (
+                    <button onClick={addToShop}>
+                      <i className="fas fa-plus"></i> Shop
+                    </button>
+                  )}
+                </div>
+              </div>
+            </Badge>
           ) : (
             <div
               className="recipecard-main-containers"
@@ -243,12 +246,12 @@ const RecipeCard = ({
               <NavLink to={`/recipes/${id}`}>
                 <Badge
                   showZero={true}
-                  badgeContent={result.length}
+                  badgeContent={realPantryResult.length}
                   anchororign={{ vertical: "top", horizontal: "right" }}
                   classes={
-                    isClose
+                    pantryIsClose
                       ? { badge: classes2.badge }
-                      : canMake
+                      : pantryCanMake
                       ? { badge: classes.badge }
                       : { badge: classes3.badge }
                   }

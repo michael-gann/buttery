@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 
 import Ingredient from "./Ingredient";
 
-const PantryMatchIngredients = ({ ingredients, setNotInPantry }) => {
+const PantryMatchIngredients = ({ ingredients }) => {
   const pantryIngredients = useSelector((state) => state.pantries.pantries);
   const isInPantry = true;
   let pantryIngredientByIngredientId = {};

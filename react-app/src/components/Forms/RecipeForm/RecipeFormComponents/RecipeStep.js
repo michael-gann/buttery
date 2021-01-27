@@ -1,9 +1,8 @@
 import React from "react";
-import { ImPlus } from "react-icons/im";
+
 import { ImMinus } from "react-icons/im";
 
 const RecipeStep = ({ handleAdd, handleChange, handleRemove, stepFields }) => {
-  //   const onClick = (e) => {};
   return (
     <>
       <div className="add-step-button">

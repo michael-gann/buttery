@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { NavLink } from "react-router-dom";
 // import styled, { keyframes } from "styled-components";
 // import { fadeInLeft } from "react-animations";
 
@@ -13,18 +14,12 @@ import * as cookingListActions from "../../store/cookingLists";
 // animation: 1s ${fadeInAnimation};
 // `;
 
-const ShoppingList = () => {
+const ShoppingList = ({ handleSubmit }) => {
   const dispatch = useDispatch();
 
   const ingredientsToShop = useSelector((state) =>
     Object.values(state.cookingLists.shoppingList).filter((i) => i.quantity > 0)
   );
-
-  // if (!ingredientsToShop) {
-  //         dispatch(cookingListActions.getShoppingList(sessionUser.id));
-  // }
-
-  console.log("--INGREDIENTS IN SHOPPING LIST--", ingredientsToShop);
 
   const sessionUser = useSelector((state) => state.users.sessionUser);
 
@@ -36,21 +31,23 @@ const ShoppingList = () => {
   return (
     <>
       <div className="shopping-list-items-container">
-        {/* <div className="shopping-for">
-          You are shopping for} recipes
-        </div> */}
-        {ingredientsToShop ? (
+        {ingredientsToShop.length ? (
           ingredientsToShop.map((i, idx) => {
             return (
-              // <FadeInLeft classname="shopping-list-item">
               <div className="shopping-list-individual-items" key={idx}>
                 <ShoppingListItems ingredient={i}></ShoppingListItems>
               </div>
-              // {/* </FadeInLeft> */}
             );
           })
         ) : (
-          <div>There's nothing to shop for!</div>
+          <div className="not-shopping">
+            <div className="sentence-1">
+              Looks like you aren't shopping for anything...
+            </div>
+            <div className="sentence-2">
+              Go find some <NavLink to="/recipes">recipes</NavLink> to make!
+            </div>
+          </div>
         )}
       </div>
     </>

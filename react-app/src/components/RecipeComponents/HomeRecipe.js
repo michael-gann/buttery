@@ -22,7 +22,6 @@ const HomeRecipe = ({ isHomepage, setIsHomepage }) => {
       const result =
         parseInt(a[firstKey].recipeDistance) -
         parseInt(b[secondKey].recipeDistance);
-      console.log(result);
       return result;
     })
     .map((r) => Object.keys(r)[0]);
@@ -75,7 +74,7 @@ const HomeRecipe = ({ isHomepage, setIsHomepage }) => {
       </div>
       <Snackbar
         open={showSuccess}
-        autoHideDuration={5000}
+        autoHideDuration={3000}
         onClose={handleShowSuccessClose}
       >
         <MuiAlert

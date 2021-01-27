@@ -17,7 +17,7 @@ const Recipe = () => {
   const [isEditing, setIsEditing] = useState(false);
   // const [deletion, setDeletion] = useState(false);
   const { id } = useParams();
-  const [notInPantry, setNotInPantry] = useState(0);
+  // eslint-disable-next-line
   const [isRecipePage, setIsRecipePage] = useState(true);
 
   const isLoading = useSelector((state) => state.recipes.loading);
@@ -86,7 +86,6 @@ const Recipe = () => {
                     </div>
                     <div className="pantry-ingredients-for-recipe">
                       <PantryMatchIngredients
-                        setNotInPantry={setNotInPantry}
                         ingredients={recipe[`${id}`].ingredients}
                       ></PantryMatchIngredients>
                     </div>

@@ -40,6 +40,9 @@ const Home = () => {
   );
 
   const sessionUser = useSelector((state) => state.users.sessionUser);
+  const shoppingList = useSelector((state) =>
+    Object.values(state.cookingLists.shoppingList)
+  );
 
   useEffect(() => {
     setIsHomepage(true);
@@ -48,6 +51,35 @@ const Home = () => {
 
   const handleClick = () => {
     return history.push(`/new-recipe`);
+  };
+
+  const handleSubmit = () => {
+    let pantry_ingredients = {};
+
+    shoppingList.forEach((ingredient, i) => {
+      // eslint-disable-next-line
+      for (const key in ingredient) {
+        pantry_ingredients[`pantry_ingredients-${i}-ingredient_id`] =
+          ingredient.ingredient.value;
+        pantry_ingredients[`pantry_ingredients-${i}-measurement_id`] =
+          ingredient.measurement.value;
+        pantry_ingredients[`pantry_ingredients-${i}-quantity`] = ingredient.qty;
+        pantry_ingredients[`pantry_ingredients-${i}-user_id`] = sessionUser.id;
+      }
+    });
+
+    const form = new FormData();
+
+    for (const key in pantry_ingredients) {
+      form.set(key, pantry_ingredients[key]);
+    }
+
+    const submit_form = () => {
+      dispatch(pantryActions.updateUserPantryItems(form));
+      // dispatch(cookingLists.resetShoppingList())
+    };
+
+    submit_form();
   };
 
   const classes = useStyles();
@@ -82,7 +114,11 @@ const Home = () => {
                   <h2 className="shopping-list-header">Shopping List</h2>
                 </Badge>
               </div>
-              <ShoppingList isHomepage={isHomepage}></ShoppingList>
+              <ShoppingList
+                handleSubmit={handleSubmit}
+                isHomepage={isHomepage}
+              ></ShoppingList>
+              <button className="shopped-for-ingredients">Shopped</button>
             </div>
           </div>
           <div className="pantry">
