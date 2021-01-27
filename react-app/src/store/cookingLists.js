@@ -16,6 +16,8 @@ const REMOVE_SHOPPING_LIST_ITEM_BEGIN = "REMOVE_SHOPPING_LIST_ITEM_BEGIN";
 const REMOVE_SHOPPING_LIST_ITEM_SUCCESS = "REMOVE_SHOPPING_LIST_ITEM_SUCCESS";
 // const GET_SHOPPING_LIST_FAILURE = "GET_SHOPPING_LIST_FAILURE"
 
+const RESET_SHOPPING_LIST = "RESET_SHOPPING_LIST";
+
 const getCookingListsBegin = () => {
   return {
     type: GET_COOKING_LISTS_BEGIN,
@@ -68,6 +70,12 @@ const RemoveShoppingListItemSuccess = (recipe) => {
   };
 };
 
+const shoppingListReset = (recipe) => {
+  return {
+    type: RESET_SHOPPING_LIST,
+  };
+};
+
 export const getCookingList = (userId) => async (dispatch) => {
   dispatch(getCookingListsBegin());
 
@@ -117,6 +125,10 @@ export const removeRecipe = (id) => async (dispatch) => {
   dispatch(RemoveShoppingListItemSuccess(resData));
 
   return res;
+};
+
+export const resetShoppingList = () => (dispatch) => {
+  dispatch(shoppingListReset());
 };
 
 // const updateShoppingList = (oldState, newState) => {
@@ -180,10 +192,6 @@ const cookingListsReducer = (
     case GET_SHOPPING_LIST_SUCCESS:
       newState = _.cloneDeep(state);
       newState.loading = false;
-      // newState.shoppingList = updateShoppingList(
-      //   newState.shoppingList,
-      //   action.payload
-      // );
       newState.shoppingList = action.payload;
       return newState;
     case REMOVE_SHOPPING_LIST_ITEM_BEGIN:
@@ -194,6 +202,11 @@ const cookingListsReducer = (
       newState = _.cloneDeep(state);
       newState.loading = false;
       newState.recipesToShop = action.payload;
+      return newState;
+    case RESET_SHOPPING_LIST:
+      newState = _.cloneDeep(state);
+      newState.recipesToShop = [];
+      newState.shoppingList = {};
       return newState;
     default:
       return state;

@@ -10,6 +10,7 @@ import HomePantry from "../PantryComponents/HomePantry";
 import ShoppingList from "../ShoppingListComponents/ShoppingList";
 
 import * as pantryActions from "../../store/pantries";
+import * as cookingListActions from "../../store/cookingLists";
 
 import "./home.css";
 
@@ -24,7 +25,7 @@ const SlideInLeft = styled.div`
 
 const useStyles = makeStyles((theme) => ({
   badge: {
-    backgroundColor: "#EB7910",
+    backgroundColor: "#23bf93",
     right: -5,
     top: 5,
   },
@@ -59,12 +60,16 @@ const Home = () => {
     shoppingList.forEach((ingredient, i) => {
       // eslint-disable-next-line
       for (const key in ingredient) {
-        pantry_ingredients[`pantry_ingredients-${i}-ingredient_id`] =
-          ingredient.ingredient.value;
-        pantry_ingredients[`pantry_ingredients-${i}-measurement_id`] =
-          ingredient.measurement.value;
-        pantry_ingredients[`pantry_ingredients-${i}-quantity`] = ingredient.qty;
-        pantry_ingredients[`pantry_ingredients-${i}-user_id`] = sessionUser.id;
+        if (ingredient.quantity > 0) {
+          pantry_ingredients[`pantry_ingredients-${i}-ingredient_id`] =
+            ingredient.ingredient_id;
+          pantry_ingredients[`pantry_ingredients-${i}-measurement_id`] =
+            ingredient.measurement_id;
+          pantry_ingredients[`pantry_ingredients-${i}-quantity`] =
+            ingredient.quantity;
+          pantry_ingredients[`pantry_ingredients-${i}-user_id`] =
+            sessionUser.id;
+        }
       }
     });
 
@@ -76,7 +81,7 @@ const Home = () => {
 
     const submit_form = () => {
       dispatch(pantryActions.updateUserPantryItems(form));
-      // dispatch(cookingLists.resetShoppingList())
+      dispatch(cookingListActions.resetShoppingList());
     };
 
     submit_form();
@@ -114,11 +119,13 @@ const Home = () => {
                   <h2 className="shopping-list-header">Shopping List</h2>
                 </Badge>
               </div>
-              <ShoppingList
-                handleSubmit={handleSubmit}
-                isHomepage={isHomepage}
-              ></ShoppingList>
-              <button className="shopped-for-ingredients">Shopped</button>
+              <ShoppingList isHomepage={isHomepage}></ShoppingList>
+              <button
+                onClick={handleSubmit}
+                className="shopped-for-ingredients"
+              >
+                Shopped
+              </button>
             </div>
           </div>
           <div className="pantry">

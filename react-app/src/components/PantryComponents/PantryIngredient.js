@@ -19,6 +19,8 @@ const PantryIngredients = ({ ingredient }) => {
     setIsQFloat(isFloat(ingredient.quantity));
   }, [ingredient.quantity]);
 
+  console.log(ingredient.quantity);
+
   return (
     <>
       <div className="pantry-ingredient-quantity">

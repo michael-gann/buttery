@@ -11,7 +11,7 @@ class PantryIngredient(db.Model):
         "ingredients.id"), nullable=False)
     measurement_id = db.Column(db.Integer, db.ForeignKey(
         "measurements.id"), nullable=False)
-    quantity = db.Column(db.Integer, nullable=False)
+    quantity = db.Column(db.Float, nullable=False)
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, server_default=db.func.now(),
                            server_onupdate=db.func.now())

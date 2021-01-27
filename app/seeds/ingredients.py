@@ -14,7 +14,7 @@ def seed_ingredients():
     demo6 = Ingredient(name="Melted Salted Butter", type_id=3)
     demo7 = Ingredient(name="Gelatin", type_id=1)
     demo8 = Ingredient(name="Cinnamon", type_id=2)
-    demo9 = Ingredient(name="Nutmeg", type_id=1)
+    demo9 = Ingredient(name="Nutmeg", type_id=2)
     demo10 = Ingredient(name="Egg", type_id=3)
     demo11 = Ingredient(name="Egg Yolk", type_id=3)
     demo12 = Ingredient(name="Egg White", type_id=3)

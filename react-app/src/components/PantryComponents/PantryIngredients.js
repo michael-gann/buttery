@@ -17,10 +17,11 @@ const PantryIngredients = ({ id }) => {
     <>
       {pantryIngredients &&
         pantryIngredients.map((i, idx) => {
+          console.log(i);
           return (
             <>
               <MetroSpinner size={40} color="#23bf93" loading={isLoading} />
-              <div key={id} className="pantry-ingredient-container">
+              <div key={idx} className="pantry-ingredient-container">
                 <PantryIngredient
                   ingredient={i}
                   isLoading={isLoading}
