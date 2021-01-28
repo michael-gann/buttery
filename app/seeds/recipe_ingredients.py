@@ -7,10 +7,6 @@ def seed_recipe_ingredients():
 
     demo = RecipeIngredient(
         recipe_id=1, ingredient_id=1, measurement_id=16, quantity=12.00)
-    demo1 = RecipeIngredient(
-        recipe_id=1, ingredient_id=2, measurement_id=3, quantity=2.00)
-    demo2 = RecipeIngredient(
-        recipe_id=1, ingredient_id=3, measurement_id=2, quantity=0.25)
     demo3 = RecipeIngredient(
         recipe_id=1, ingredient_id=5, measurement_id=3, quantity=6.00)
     demo4 = RecipeIngredient(
@@ -19,8 +15,6 @@ def seed_recipe_ingredients():
         recipe_id=1, ingredient_id=9, measurement_id=2, quantity=1.00)
     demo6 = RecipeIngredient(
         recipe_id=1, ingredient_id=10, measurement_id=2, quantity=0.25)
-    demo7 = RecipeIngredient(
-        recipe_id=1, ingredient_id=2, measurement_id=4, quantity=0.75)
     demo8 = RecipeIngredient(
         recipe_id=1, ingredient_id=3, measurement_id=2, quantity=0.75)
     demo9 = RecipeIngredient(
@@ -40,11 +34,9 @@ def seed_recipe_ingredients():
     demo16 = RecipeIngredient(
         recipe_id=2, ingredient_id=19, measurement_id=4, quantity=1)
     demo17 = RecipeIngredient(
-        recipe_id=2, ingredient_id=2, measurement_id=3, quantity=2)
+        recipe_id=2, ingredient_id=2, measurement_id=4, quantity=2)
     demo18 = RecipeIngredient(
         recipe_id=2, ingredient_id=44, measurement_id=2, quantity=2)
-    demo19 = RecipeIngredient(
-        recipe_id=2, ingredient_id=3, measurement_id=2, quantity=1)
     demo20 = RecipeIngredient(
         recipe_id=2, ingredient_id=11, measurement_id=17, quantity=1)
     demo21 = RecipeIngredient(
@@ -58,7 +50,7 @@ def seed_recipe_ingredients():
     demo25 = RecipeIngredient(
         recipe_id=3, ingredient_id=3, measurement_id=2, quantity=.5)
     demo26 = RecipeIngredient(
-        recipe_id=3, ingredient_id=2, measurement_id=3, quantity=2)
+        recipe_id=3, ingredient_id=2, measurement_id=4, quantity=2)
     demo27 = RecipeIngredient(
         recipe_id=3, ingredient_id=11, measurement_id=17, quantity=2)
     demo28 = RecipeIngredient(
@@ -67,13 +59,10 @@ def seed_recipe_ingredients():
         recipe_id=3, ingredient_id=5, measurement_id=3, quantity=6)
 
     db.session.add(demo)
-    db.session.add(demo1)
-    db.session.add(demo2)
     db.session.add(demo3)
     db.session.add(demo4)
     db.session.add(demo5)
     db.session.add(demo6)
-    db.session.add(demo7)
     db.session.add(demo8)
     db.session.add(demo9)
     db.session.add(demo10)
@@ -85,7 +74,6 @@ def seed_recipe_ingredients():
     db.session.add(demo16)
     db.session.add(demo17)
     db.session.add(demo18)
-    db.session.add(demo19)
     db.session.add(demo20)
     db.session.add(demo21)
     db.session.add(demo22)

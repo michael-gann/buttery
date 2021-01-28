@@ -11,6 +11,7 @@ import RecipeTitle from "./RecipeTitle";
 
 import * as cookingListActions from "../../store/cookingLists";
 import * as recipeActions from "../../store/recipes";
+import * as pantryActions from "../../store/pantries";
 
 export const pretendPantry = (
   recipeIngredients, // ingredients for every recipe in the cart already, and this card's recipe
@@ -174,19 +175,10 @@ const RecipeCard = ({
     (x, y) => x.ingredient_id === y.ingredient_id && y.quantity >= 0
   );
 
-  console.log(result, realPantryResult);
-
   useEffect(() => {
-    dispatch(recipeActions.setRecipeDistance(result.length, id));
     setToShop(alreadyShopping ? true : false);
-  }, [
-    // shoppingList,
-    dispatch,
-    result.length,
-    id,
-    alreadyShopping,
-    realPantryResult.length,
-  ]);
+    dispatch(recipeActions.setRecipeDistance(realPantryResult.length, id));
+  }, [dispatch, id, alreadyShopping, realPantryResult.length]);
 
   const isClose = result.length > 0 && result.length <= 3;
   const canMake = result.length === 0;
@@ -227,6 +219,18 @@ const RecipeCard = ({
       dispatch(cookingListActions.getShoppingList(user.id))
     );
     setToShop(false);
+  };
+
+  const cookRecipe = (e) => {
+    e.preventDefault();
+    if (e.target.className.includes("disabled")) {
+      return;
+    }
+    dispatch(cookingListActions.cookRecipe(id, user.id)).then(() =>
+      dispatch(pantryActions.getUserPantryItems(user.id)).then(() =>
+        dispatch(recipeActions.setRecipeDistance(realPantryResult.length, id))
+      )
+    );
   };
 
   const handleHover = (e) => {
@@ -351,7 +355,14 @@ const RecipeCard = ({
                       </>
                     )}
                     {isRecipePage ? (
-                      <button className="cooked-button">Cooked</button>
+                      <button
+                        onClick={cookRecipe}
+                        className={`cooked-button ${
+                          realPantryResult.length > 0 ? "disabled" : null
+                        }`}
+                      >
+                        Cooked
+                      </button>
                     ) : null}
                   </div>
                 </div>

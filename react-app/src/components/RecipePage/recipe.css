@@ -74,6 +74,7 @@
     width: 100%;
 }
 
+
 .recipe-page-container > .recipecard-main-containers > a > .buttons-container button,
 .recipe-page-container > .recipecard-main-containers > a > .hovering button {
     font-size: 14px;
@@ -111,6 +112,8 @@
     font-size: 14px;
     opacity: 1;
 }
+
+
 
 .recipe-page-container > .recipecard-main-containers > a > .hovering > .disabled > .cooked-button:hover,
 .recipe-page-container > .recipecard-main-containers > a > .buttons-container > .disabled > .cooked-button:hover,
@@ -150,7 +153,7 @@
 }
 
 .edit-recipe-button-container {
-    align-self: flex-end;
+    align-self: flex-start;
 }
 
 .edit-recipe-button {
@@ -326,4 +329,34 @@
 
 .recipe-page-container > .home-ingredients-container > .new-ingredients-container > .pantry-ingredients-for-recipe > .recipe-pantry-ingredient-container > .pantry-ingredients-container {
     width: calc(100% + 25px);
+}
+
+/* .disabled {
+    opacity: 0.3
+} */
+
+.recipe-page-container > .recipecard-main-containers > a > .buttons-container > .want-to-make-button > .disabled,
+.recipe-page-container > .recipecard-main-containers > a > .hovering > .want-to-make-button > .disabled,
+.recipe-page-container > .recipecard-main-containers > a > .hovering > .remove-from-shop-button > .disabled,
+.recipe-page-container > .recipecard-main-containers > a > .buttons-container > .remove-from-shop-button > .disabled
+{
+    opacity: 0.3;
+}
+
+.recipe-page-container > .recipecard-main-containers > a > .buttons-container > .want-to-make-button > .disabled:hover,
+.recipe-page-container > .recipecard-main-containers > a > .hovering > .want-to-make-button > .disabled:hover,
+.recipe-page-container > .recipecard-main-containers > a > .hovering > .remove-from-shop-button > .disabled:hover,
+.recipe-page-container > .recipecard-main-containers > a > .buttons-container > .remove-from-shop-button > .disabled:hover {
+    background-color: white;
+    box-shadow: none;
+    color: #23bf93;
+    cursor: default;
+}
+
+.recipe-page-container > .recipecard-main-containers > a > .buttons-container > .want-to-make-button > .disabled:active,
+.recipe-page-container > .recipecard-main-containers > a > .hovering > .want-to-make-button > .disabled:active,
+.recipe-page-container > .recipecard-main-containers > a > .hovering > .remove-from-shop-button > .disabled:active,
+.recipe-page-container > .recipecard-main-containers > a > .buttons-container > .remove-from-shop-button > .disabled:active {
+    transform: none;
+    border: 1px solid #23bf93;
 }

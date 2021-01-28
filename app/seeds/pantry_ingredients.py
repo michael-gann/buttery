@@ -8,7 +8,7 @@ def seed_pantry_ingredients():
     demo = PantryIngredient(user_id=1, ingredient_id=19,
                             measurement_id=4, quantity=50)
     demo1 = PantryIngredient(user_id=1, ingredient_id=2,
-                             measurement_id=3, quantity=100)
+                             measurement_id=4, quantity=100)
     demo2 = PantryIngredient(user_id=1, ingredient_id=3,
                              measurement_id=2, quantity=5)
     demo3 = PantryIngredient(user_id=1, ingredient_id=11,

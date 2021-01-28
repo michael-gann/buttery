@@ -26,7 +26,7 @@ const SignUpForm = () => {
   const [repeatPassword, setRepeatPassword] = useState("");
   const [passError, setPassError] = useState("");
 
-  const onSignUp = async (e) => {
+  const onSignUp = (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
       dispatch(
@@ -35,10 +35,11 @@ const SignUpForm = () => {
     } else {
       setPassError("Passwords do not match");
     }
-    if (authenticated) {
-      return <Redirect to="/home"></Redirect>;
-    }
   };
+
+  if (authenticated) {
+    return <Redirect to="/home"></Redirect>;
+  }
 
   const updateFirstName = (e) => {
     setFirstName(e.target.value);

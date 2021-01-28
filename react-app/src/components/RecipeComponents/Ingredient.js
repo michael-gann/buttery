@@ -1,8 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+
+const isFloat = (n) => {
+  if (typeof n == "number" && !isNaN(n)) {
+    if (Number.isInteger(n)) {
+      return false;
+    } else {
+      return true;
+    }
+  } else {
+    return false;
+  }
+};
 
 const Ingredient = ({ ingredient, isInPantry }) => {
+  const [isQFloat, setIsQFloat] = useState(false);
   const willRunOut = ingredient.willRunOut;
   const doNotHave = ingredient.doNotHave;
+
+  useEffect(() => {
+    setIsQFloat(isFloat(ingredient.quantity));
+  }, [ingredient.quantity]);
 
   return (
     <>
@@ -16,7 +33,9 @@ const Ingredient = ({ ingredient, isInPantry }) => {
               : "pantry-ingredients-container"
           }
         >
-          <div className="pantry-quantity">{ingredient.quantity}</div>
+          <div className="pantry-quantity">
+            {isQFloat ? ingredient.quantity.toFixed(2) : ingredient.quantity}
+          </div>
           <div className="pantry-measurement-name">
             {ingredient.measurement.name}
           </div>

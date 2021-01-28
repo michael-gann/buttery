@@ -6,6 +6,7 @@ ol, li, dl, dt, dd, form, a, fieldset, input, th, td, button {
     outline: none;
     box-sizing: border-box;
     color: rgb(83, 83, 83);
+    /* color: white; */
 }
 
 a {
@@ -25,6 +26,7 @@ list-style: none;
 body, html {
     background-color: white;
     font-family: 'Nunito', sans-serif;
+    /* color: white; */
 }
 
 #root {

@@ -18,6 +18,8 @@ const REMOVE_SHOPPING_LIST_ITEM_SUCCESS = "REMOVE_SHOPPING_LIST_ITEM_SUCCESS";
 
 const RESET_SHOPPING_LIST = "RESET_SHOPPING_LIST";
 
+const COOK_RECIPE = "COOK_RECIPE";
+
 const getCookingListsBegin = () => {
   return {
     type: GET_COOKING_LISTS_BEGIN,
@@ -70,7 +72,13 @@ const RemoveShoppingListItemSuccess = (recipe) => {
   };
 };
 
-const shoppingListReset = (recipe) => {
+const shoppingListReset = () => {
+  return {
+    type: RESET_SHOPPING_LIST,
+  };
+};
+
+const cookOneRecipe = () => {
   return {
     type: RESET_SHOPPING_LIST,
   };
@@ -114,7 +122,6 @@ export const getShoppingList = (userId) => async (dispatch) => {
 
 export const removeRecipe = (id) => async (dispatch) => {
   dispatch(RemoveShoppingListItemBegin());
-  // console.log("inside remove recipe dispatch", id);
 
   const res = await fetch("/api/cooking-lists/remove-from-shop", {
     method: "POST",
@@ -130,6 +137,18 @@ export const removeRecipe = (id) => async (dispatch) => {
 
 export const resetShoppingList = () => async (dispatch) => {
   await dispatch(shoppingListReset());
+};
+
+export const cookRecipe = (recipeId, userId) => async (dispatch) => {
+  const res = await fetch(
+    `/api/cooking-lists/cook-recipe?recipeId=${recipeId}&userId=${userId}`,
+    {
+      method: "PATCH",
+    }
+  );
+  await dispatch(cookOneRecipe());
+
+  return res;
 };
 
 // const updateShoppingList = (oldState, newState) => {
@@ -208,6 +227,9 @@ const cookingListsReducer = (
       newState = _.cloneDeep(state);
       newState.recipesToShop = [];
       newState.shoppingList = {};
+      return newState;
+    case COOK_RECIPE:
+      newState = _.cloneDeep(state);
       return newState;
     default:
       return state;

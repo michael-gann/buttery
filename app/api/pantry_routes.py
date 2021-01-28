@@ -33,11 +33,8 @@ def pantry():
 def post_pantry():
     form = PantryItemsForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    print("FORM DATA", form.data)
 
     if form.validate_on_submit():
-
-        print("FORM DATA", form.data)
 
         new_pantry_ingredient_queries = []
         for pantry_ingredient in form.pantry_ingredients.entries:
@@ -81,6 +78,5 @@ def post_pantry():
                 for ingredient in new_pantry_ingredient_queries
             ]
 
-        # print("INGREDIENT DB PANTRY", new_pantry_ingredients)
         return jsonify(new_pantry_ingredients)
     return {'errors': ['Internal Server Error']}, 500

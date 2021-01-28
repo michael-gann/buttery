@@ -1,6 +1,7 @@
 from flask import Blueprint, request, jsonify
 from app.models import RecipeIngredient, PantryIngredient, CookingList, db
 from app.forms.cooking_lists_form import CookingListForm
+from app.forms import PantryItemsForm
 from sqlalchemy.orm import selectinload
 
 
@@ -38,8 +39,6 @@ def get_shopping_list():
     all_ingredient_ids = [
         ri.ingredient_id for ri in all_recipe_ingredients]
 
-    print(recipe_ingredient_totals)
-
     # Ingredients in my pantry that are also in the recipes i want to make
     ingredients_in_pantry = db.session.query(PantryIngredient).filter(
         PantryIngredient.ingredient_id.in_(all_ingredient_ids)).options(selectinload(PantryIngredient.ingredients), selectinload(PantryIngredient.measurements)).all()
@@ -73,8 +72,6 @@ def add_to_shop():
 
     check_exists = db.session.query(CookingList).filter(
         CookingList.recipe_id == form.recipe_id.data).first()
-
-    print("CHECKING IF RECIPE EXISTS, IF SO, SEND ERROR", check_exists)
 
     if check_exists:
         return {"errors": ["recipe ingredients already in your shopping cart!"]}, 500
@@ -128,5 +125,35 @@ def get_cooking_list():
     return jsonify(cooking_list)
 
 
-#         # recipe_ingredients_query = []
-#         # pantry_ingredients_query = []
+@cooking_list_routes.route("/cook-recipe", methods=["PATCH"])
+def cook_recipe():
+    recipe_id = request.args.get("recipeId")
+    user_id = request.args.get("userId")
+
+    # use recipe id to get all recipe ingredients
+    recipe_ingredients = db.session.query(
+        RecipeIngredient).filter_by(recipe_id=recipe_id).all()
+
+    # new_pantry_ingredient_queries = []
+
+    for recipe_ingredient in recipe_ingredients:
+        # find each pantry ingredient and subtract the recipe ingredient from pantry.
+        db_pantry_ingredient = PantryIngredient.query.filter_by(
+            user_id=user_id
+        ).filter_by(ingredient_id=recipe_ingredient.ingredient_id
+                    ).filter_by(measurement_id=recipe_ingredient.measurement_id
+                                ).first()
+
+        if db_pantry_ingredient is None:
+            return {'errors': ["You don't have the required ingredient(s)"]}, 500
+        else:
+            if db_pantry_ingredient.quantity - recipe_ingredient.quantity == 0:
+                db.session.delete(db_pantry_ingredient)
+                # db.session.commit()
+            else:
+                db_pantry_ingredient.quantity -= recipe_ingredient.quantity
+                db.session.add(db_pantry_ingredient)
+
+    db.session.commit()
+
+    return "success"

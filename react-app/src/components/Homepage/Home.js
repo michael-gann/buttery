@@ -85,15 +85,18 @@ const Home = () => {
     }
 
     const submit_form = () => {
-      dispatch(pantryActions.updateUserPantryItems(form));
-      for (const id of alreadyShopping) {
-        dispatch(cookingListActions.removeRecipe(JSON.stringify(id)));
-      }
-      dispatch(cookingListActions.resetShoppingList()).then(() =>
+      dispatch(pantryActions.updateUserPantryItems(form)).then(() =>
         dispatch(cookingListActions.getShoppingList(sessionUser.id))
+          .then(() =>
+            dispatch(pantryActions.getUserPantryItems(sessionUser.id))
+          )
+          .then(() => {
+            for (const id of alreadyShopping) {
+              dispatch(cookingListActions.removeRecipe(JSON.stringify(id)));
+            }
+          })
       );
     };
-
     submit_form();
   };
 

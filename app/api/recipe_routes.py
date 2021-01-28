@@ -70,7 +70,6 @@ def post_recipes():
 
     form['csrf_token'].data = request.cookies['csrf_token']
 
-    print(form.data)
     if form.validate_on_submit():
         is_edit = form.recipe_id.data is not None
 
@@ -129,8 +128,6 @@ def post_recipes():
             editted_recipe = {
                 editted_recipe_expanded["id"]: editted_recipe_expanded}
 
-            print(editted_recipe)
-
             return editted_recipe
 
         recipe = Recipe(
@@ -159,10 +156,8 @@ def post_recipes():
 
             db.session.add(step)
         db.session.commit()
-        print("RUNNING THE QUERY")
         new_recipe_query = Recipe.query.options(selectinload(
             Recipe.recipe_ingredients), selectinload(Recipe.recipe_steps)).get(recipe.id)
-        print("AFTER THE QUERY")
         new_recipe = {**new_recipe_query.to_dict(),
                       "ingredients": [
             {**i.to_dict(),
