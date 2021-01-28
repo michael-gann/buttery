@@ -5,9 +5,11 @@ from app.models import db, Recipe
 
 def seed_recipes():
 
-    demo = Recipe(user_id=1, name="Pumpkin Chiffon Pie")
-    demo1 = Recipe(user_id=1, name="Basic Pancakes")
-    demo2 = Recipe(user_id=1, name="Fluffy Homemade Waffles")
+    demo = Recipe(user_id=1, name="Pumpkin Chiffon Pie", content="This light-as-can-be pumpkin chiffon pie gets its cloudlike texture from the addition of beaten raw egg whites. Be sure to take them all the way to stiff peaks for a slice of pie that can hold its shape. Parbaking the graham cracker crust at a relatively low temperature for a longer period of time ensures a crisp and deeply fragrant crust that won’t become soggy once the pumpkin filling is added.")
+    demo1 = Recipe(user_id=1, name="Basic Pancakes",
+                   content="These basic pancakes might seem basic, but once you make them they're sure to change your mind!")
+    demo2 = Recipe(user_id=1, name="Fluffy Homemade Waffles",
+                   content="These waffles are fantastic. Add some strawberries and whipped cream for a decadent breakfast.")
     # demo = Recipe(user_id=1, name="Pumpkin Chiffon Pie")
     # demo = Recipe(user_id=1, name="Pumpkin Chiffon Pie")
 

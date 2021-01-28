@@ -49,7 +49,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
     min-height: 100%;
     margin-bottom: 20px;
 }
@@ -63,6 +63,7 @@
     margin-bottom: 8px;
     color: black;
     font-size: 32px;
+    margin-right: 5%;
 }
 
 .recipe-page-recipecard-container > .recipe-card > .recipecard-main-containers > a > span {
@@ -75,6 +76,7 @@
     font-size: 16px;
     line-height: 30px;
     margin: 0 3%;
+    margin-top: 2%;
 }
 
 .add-recipe-container {
@@ -251,6 +253,26 @@
 .MuiPaper-root > .MuiAlert-message, .MuiPaper-root > .MuiAlert-icon, .MuiPaper-root > .MuiAlert-action {
     color: white;
 }
+
+.disabled button{
+    height: 40px;
+    width: 125px;
+   border-radius: 8px;
+    background-color: white;
+    transition: background-color 300ms ease-in-out,
+                font-size 300ms ease,
+                color 300ms ease-in-out,
+                box-shadow 300ms ease;
+    border: 1px solid#23bf93;
+    color: #23bf93;
+    font-size: 14px;
+    margin: 20px 20px;
+    opacity: .3;
+}
+
+/* .disabled button:hover {
+    cursor: not-allowed;
+} */
 
 /* .recipe-page-recipecard-container > .recipecard-main-containers > .home-ingredients-container > .home-ingredient-container {}
 .recipe-page-recipecard-container > .recipecard-main-containers > .home-ingredients-container > .home-ingredient-container > .quantity{}

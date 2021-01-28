@@ -114,6 +114,7 @@ export const getShoppingList = (userId) => async (dispatch) => {
 
 export const removeRecipe = (id) => async (dispatch) => {
   dispatch(RemoveShoppingListItemBegin());
+  // console.log("inside remove recipe dispatch", id);
 
   const res = await fetch("/api/cooking-lists/remove-from-shop", {
     method: "POST",
@@ -127,8 +128,8 @@ export const removeRecipe = (id) => async (dispatch) => {
   return res;
 };
 
-export const resetShoppingList = () => (dispatch) => {
-  dispatch(shoppingListReset());
+export const resetShoppingList = () => async (dispatch) => {
+  await dispatch(shoppingListReset());
 };
 
 // const updateShoppingList = (oldState, newState) => {

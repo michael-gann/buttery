@@ -5,6 +5,15 @@
     justify-content: center;
     align-items: center;
     margin-top: 1%;
+    box-shadow: none;
+}
+
+.recipe-page-container > .recipecard-main-containers {
+    box-shadow: none;
+}
+
+.recipe-page-container > .recipecard-main-containers: hover {
+    border: none;
 }
 
 .recipe-page-container > .recipecard-main-containers > a {
@@ -15,6 +24,9 @@
     /* pointer-events: none; */
     cursor: text;
     text-decoration: none;
+    width: 100%;
+    border: none;
+    box-shadow: none;
 }
 
 .recipe-page-container > .recipecard-main-containers:hover {
@@ -52,18 +64,71 @@
     font-size: 14px;
     margin: 20px 20px;
 }
-.recipe-page-container > .recipecard-main-containers > a > .buttons-container {
+
+.recipe-page-container > .recipecard-main-containers > a > .buttons-container > .want-to-make-button,
+.recipe-page-container > .recipecard-main-containers > a > .buttons-container > .remove-from-shop-button,
+.recipe-page-container > .recipecard-main-containers > a > .hovering > .want-to-make-button,
+.recipe-page-container > .recipecard-main-containers > a > .hovering > .remove-from-shop-button {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.recipe-page-container > .recipecard-main-containers > a > .buttons-container button,
+.recipe-page-container > .recipecard-main-containers > a > .hovering button {
+    font-size: 14px;
+}
+
+
+.recipe-page-container > .recipecard-main-containers > a > .buttons-container, .recipe-page-container > .recipecard-main-containers > a > .buttons-container > .disabled, .recipe-page-container > .recipecard-main-containers > a > .hovering > .disabled {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.recipe-page-container > .recipecard-main-containers > a > .hovering, .recipe-page-container > .recipecard-main-containers > a > .buttons-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 80%;
 }
 
-.recipe-page-container > .recipecard-main-containers > a > .hovering {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 80%;
+.recipe-page-container > .recipecard-main-containers > a > .hovering > .disabled > .cooked-button,
+.recipe-page-container > .recipecard-main-containers > a > .buttons-container > .disabled > .cooked-button,
+.recipe-page-container > .recipecard-main-containers > a > .hovering > .remove-from-shop-button > .cooked-button,
+.recipe-page-container > .recipecard-main-containers > a > .buttons-container > .remove-from-shop-button > .cooked-button{
+    height: 40px;
+    width: 125px;
+   border-radius: 8px;
+    background-color: white;
+    transition: background-color 300ms ease-in-out,
+                font-size 300ms ease,
+                color 300ms ease-in-out,
+                box-shadow 300ms ease;
+    border: 1px solid#23bf93;
+    color: #23bf93;
+    font-size: 14px;
+    opacity: 1;
+}
+
+.recipe-page-container > .recipecard-main-containers > a > .hovering > .disabled > .cooked-button:hover,
+.recipe-page-container > .recipecard-main-containers > a > .buttons-container > .disabled > .cooked-button:hover,
+.recipe-page-container > .recipecard-main-containers > a > .hovering > .remove-from-shop-button > .cooked-button:hover
+ {
+    background-color:#23bf93;
+    cursor: pointer;
+    color: white;
+    box-shadow: 0px 2px 2px 0px rgba(10, 139, 96, 0.16),
+    0px 3px 3px 0px rgba(10, 139, 96, 0.16),
+    0px 4px 4px 0px rgba(10, 139, 96, 0.16),
+    0px 6px 6px 0px rgba(10, 139, 96, 0.16);
+}
+
+.recipe-page-container > .recipecard-main-containers > a > .hovering > .disabled > .cooked-button:active,
+.recipe-page-container > .recipecard-main-containers > a > .buttons-container > .disabled > .cooked-button:active {
+    transform: translate(2px, 1px);
+    border: 1px solid rgba(133, 132, 132, 0.404)
 }
 
 .recipe-page-container > .recipecard-main-containers > a > .buttons-container > .remove-from-shop-button button:hover {
@@ -111,11 +176,16 @@
     transform: translate(1px, 1px);
 }
 
+.recipe-page-container > .recipecard-main-containers > a span {
+    /* width: 800px; */
+}
+
 .recipe-page-container > .recipecard-main-containers > a span > .home-recipe-title {
     font-size: 3.5rem;
     text-align: center;
     margin-bottom: 15px;
     pointer-events: none;
+    width: 800px;
 }
 
 .recipe-page-container > .recipecard-main-containers > a span > .home-recipe-title a:hover {

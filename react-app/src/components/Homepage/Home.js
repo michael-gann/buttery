@@ -36,6 +36,9 @@ const Home = () => {
   const history = useHistory();
   const [isHomepage, setIsHomepage] = useState(false);
   const isLoading = useSelector((state) => state.recipes.loading);
+  const recipeShoppingList = useSelector(
+    (state) => state.cookingLists.recipesToShop
+  );
   const numberOfRecipesToShop = useSelector(
     (state) => state.cookingLists.recipesToShop.length
   );
@@ -44,6 +47,8 @@ const Home = () => {
   const shoppingList = useSelector((state) =>
     Object.values(state.cookingLists.shoppingList)
   );
+
+  const alreadyShopping = recipeShoppingList.map((r) => r.recipe_id);
 
   useEffect(() => {
     setIsHomepage(true);
@@ -81,7 +86,12 @@ const Home = () => {
 
     const submit_form = () => {
       dispatch(pantryActions.updateUserPantryItems(form));
-      dispatch(cookingListActions.resetShoppingList());
+      for (const id of alreadyShopping) {
+        dispatch(cookingListActions.removeRecipe(JSON.stringify(id)));
+      }
+      dispatch(cookingListActions.resetShoppingList()).then(() =>
+        dispatch(cookingListActions.getShoppingList(sessionUser.id))
+      );
     };
 
     submit_form();
@@ -120,12 +130,14 @@ const Home = () => {
                 </Badge>
               </div>
               <ShoppingList isHomepage={isHomepage}></ShoppingList>
-              <button
-                onClick={handleSubmit}
-                className="shopped-for-ingredients"
-              >
-                Shopped
-              </button>
+              {recipeShoppingList.length ? (
+                <button
+                  onClick={handleSubmit}
+                  className="shopped-for-ingredients"
+                >
+                  Shopped
+                </button>
+              ) : null}
             </div>
           </div>
           <div className="pantry">

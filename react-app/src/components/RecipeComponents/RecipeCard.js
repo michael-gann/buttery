@@ -53,6 +53,7 @@ export const pretendPantry = (
   return Object.values(pantryIngredientsMap);
 };
 
+// styles for home page
 const useStyles = makeStyles((theme) => ({
   badge: {
     backgroundColor: "#23BF93",
@@ -77,6 +78,31 @@ const useStyles3 = makeStyles((theme) => ({
   },
 }));
 
+// styles for recipes page
+const useStyles4 = makeStyles((theme) => ({
+  badge: {
+    backgroundColor: "#23BF93",
+    right: -16,
+    top: -28,
+  },
+}));
+
+const useStyles5 = makeStyles((theme) => ({
+  badge: {
+    backgroundColor: "#E6C73B",
+    right: -16,
+    top: -28,
+  },
+}));
+
+const useStyles6 = makeStyles((theme) => ({
+  badge: {
+    backgroundColor: "#F39C9F",
+    right: -16,
+    top: -28,
+  },
+}));
+
 const RecipeCard = ({
   id,
   isEditing,
@@ -94,9 +120,11 @@ const RecipeCard = ({
   const recipeShoppingList = useSelector(
     (state) => state.cookingLists.recipesToShop
   );
+
   const alreadyShopping = recipeShoppingList.find(
     (r) => parseInt(r.recipe_id) === parseInt(id)
   );
+
   const recipeIdsInShoppingList = useSelector((state) =>
     state.cookingLists.recipesToShop.map((r) => r.recipe_id)
   );
@@ -105,11 +133,13 @@ const RecipeCard = ({
       return recipeIdsInShoppingList.includes(parseInt(Object.keys(r)[0]));
     })
   );
+
   const recipeIngredients =
     Object.values(recipe)[0] &&
     !recipeIdsInShoppingList.includes(parseInt(Object.keys(recipe)[0]))
       ? Object.values(recipe)[0].ingredients
       : [];
+
   const recipeIngredientsForPantry = Object.values(recipe)[0].ingredients;
   const allRecipeIngredients = Object.values(
     recipesInShoppingList
@@ -144,10 +174,19 @@ const RecipeCard = ({
     (x, y) => x.ingredient_id === y.ingredient_id && y.quantity >= 0
   );
 
+  console.log(result, realPantryResult);
+
   useEffect(() => {
     dispatch(recipeActions.setRecipeDistance(result.length, id));
     setToShop(alreadyShopping ? true : false);
-  }, [dispatch, result.length, id, alreadyShopping]);
+  }, [
+    // shoppingList,
+    dispatch,
+    result.length,
+    id,
+    alreadyShopping,
+    realPantryResult.length,
+  ]);
 
   const isClose = result.length > 0 && result.length <= 3;
   const canMake = result.length === 0;
@@ -159,9 +198,15 @@ const RecipeCard = ({
   const classes = useStyles();
   const classes2 = useStyles2();
   const classes3 = useStyles3();
+  const classes4 = useStyles4();
+  const classes5 = useStyles5();
+  const classes6 = useStyles6();
 
   const addToShop = (e) => {
     e.preventDefault();
+    if (e.target.className === "nope" || e.target.className === "disabled") {
+      return;
+    }
     if (handleShowSuccess) {
       handleShowSuccess();
     }
@@ -185,7 +230,11 @@ const RecipeCard = ({
   };
 
   const handleHover = (e) => {
-    setIsHovering(!isHovering);
+    setIsHovering(true);
+  };
+
+  const handleHoverOff = (e) => {
+    setIsHovering(false);
   };
 
   return (
@@ -230,7 +279,12 @@ const RecipeCard = ({
                       <i className="fas fa-minus"></i> Remove
                     </button>
                   ) : (
-                    <button onClick={addToShop}>
+                    <button
+                      className={
+                        pantryCanMake ? "disabled" : "want-to-make-button"
+                      }
+                      onClick={addToShop}
+                    >
                       <i className="fas fa-plus"></i> Shop
                     </button>
                   )}
@@ -241,7 +295,7 @@ const RecipeCard = ({
             <div
               className="recipecard-main-containers"
               onMouseEnter={handleHover}
-              onMouseLeave={handleHover}
+              onMouseLeave={handleHoverOff}
             >
               <NavLink to={`/recipes/${id}`}>
                 <Badge
@@ -250,10 +304,10 @@ const RecipeCard = ({
                   anchororign={{ vertical: "top", horizontal: "right" }}
                   classes={
                     pantryIsClose
-                      ? { badge: classes2.badge }
+                      ? { badge: classes5.badge }
                       : pantryCanMake
-                      ? { badge: classes.badge }
-                      : { badge: classes3.badge }
+                      ? { badge: classes4.badge }
+                      : { badge: classes6.badge }
                   }
                 >
                   <div className="home-recipe-title">
@@ -275,7 +329,11 @@ const RecipeCard = ({
                 <div className={isHovering ? "hovering" : "buttons-container"}>
                   <div
                     className={
-                      toShop ? "remove-from-shop-button" : "want-to-make-button"
+                      toShop
+                        ? "remove-from-shop-button"
+                        : pantryCanMake
+                        ? "disabled"
+                        : "want-to-make-button"
                     }
                   >
                     {toShop ? (
@@ -284,14 +342,17 @@ const RecipeCard = ({
                       </button>
                     ) : (
                       <>
-                        <button onClick={addToShop}>
+                        <button
+                          className={pantryCanMake ? "nope" : ""}
+                          onClick={addToShop}
+                        >
                           <i className="fas fa-plus"></i> Shop
                         </button>
                       </>
                     )}
-                  </div>
-                  <div className="made-button">
-                    <button>Cooked</button>
+                    {isRecipePage ? (
+                      <button className="cooked-button">Cooked</button>
+                    ) : null}
                   </div>
                 </div>
               </NavLink>

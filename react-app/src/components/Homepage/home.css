@@ -39,7 +39,7 @@
     display: flex;
     min-width: 50%;
     /* max-width: 50%; */
-    border: 1px solid transparent;
+    /* border: 1px solid transparent; */
     padding: 5px;
     border-radius: 5px;
     min-width: 400px;
@@ -326,6 +326,32 @@
 .shopped-for-ingredients:active {
     transform: translate(2px, 1px);
     border: 1px solid rgba(133, 132, 132, 0.404)
+}
+
+.home-main-container > .recipes .home-recipecard-container > .recipe-card > span .recipecard-main-containers > .want-to-make-button > .disabled {
+    height: 40px;
+    width: 125px;
+   border-radius: 8px;
+    background-color: white;
+    transition: background-color 300ms ease-in-out,
+                font-size 300ms ease,
+                color 300ms ease-in-out,
+                box-shadow 300ms ease;
+    border: 1px solid#23bf93;
+    color: #23bf93;
+    font-size: 14px;
+    opacity: .3;
+    border: none;
+}
+
+.home-main-container > .recipes .home-recipecard-container > .recipe-card > span .recipecard-main-containers > .want-to-make-button > .disabled:hover {
+    background-color: white;
+    color: #23bf93;
+    cursor: default;
+}
+
+.home-main-container > .recipes .home-recipecard-container > .recipe-card > span .recipecard-main-containers > .want-to-make-button > .disabled:active {
+    transform: none;
 }
 
 /* .close-to-make {

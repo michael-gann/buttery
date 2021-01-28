@@ -11,6 +11,8 @@ import RecipeCard from "./RecipeCard";
 const HomeRecipe = ({ isHomepage, setIsHomepage }) => {
   const history = useHistory();
   const [showSuccess, setShowSuccess] = useState(false);
+  // const [toShop, setToShop] = useState(alreadyShopping ? true : false);
+
   const recipeObjects = useSelector((state) => state.recipes.recipes);
 
   const recipeIdsCopy = _.cloneDeep(recipeObjects);
@@ -39,6 +41,14 @@ const HomeRecipe = ({ isHomepage, setIsHomepage }) => {
     setShowSuccess(false);
   };
 
+  // const removeFromShop = (e, id, user) => {
+  //   e.preventDefault();
+  //   dispatch(cookingListActions.removeRecipe(id)).then(() =>
+  //     dispatch(cookingListActions.getShoppingList(user.id))
+  //   );
+  //   setToShop(false);
+  // };
+
   return (
     <>
       <div
@@ -53,6 +63,8 @@ const HomeRecipe = ({ isHomepage, setIsHomepage }) => {
             return (
               <div className="recipe-card" key={id}>
                 <RecipeCard
+                  // setToShop={setToShop}
+                  // removeFromShop={removeFromShop}
                   handleShowSuccess={handleShowSuccess}
                   handleShowSuccessClose={handleShowSuccessClose}
                   showSuccess={showSuccess}
