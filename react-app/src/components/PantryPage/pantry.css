@@ -6,11 +6,12 @@
 }
 
 .pantry-page-header {
-    font-size: 2em;
+    font-size: 3rem;
     text-align: center;
     margin-top: 3%;
     font-weight: bold;
     margin-bottom: 3%;
+    color: black;
 }
 
 .pantry-pantry-category-containers {
@@ -18,7 +19,7 @@
     flex-direction: column;
     /* justify-content: center; */
     align-items: center;
-    min-width: 40%;
+    min-width: 45%;
     /* width: 45%; */
     max-width: 40%;
     padding: 5px;
@@ -40,17 +41,18 @@
     display: flex;
     /* margin-right: 100px; */
     width: 95%;
-    min-height: 150px;
+    /* min-height: 150px; */
 }
 
 .pantry-pantry-category-containers > .pantry-ingredients-container > .pantry-ingredient-container {
     font-size: 15px;
     display: flex;
-    width: 100%;
+    /* width: 100%; */
     /* text-align: center; */
     /* margin-right: 20px; */
     /* justify-content: space-around; */
     /* justify-content: center; */
+    margin-left: 10px;
 }
 
 .pantry-ingredient-quantity {

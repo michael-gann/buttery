@@ -12,6 +12,8 @@ const PantryIngredient = ({
   handleIngredientAdd,
   handleIngredientRemove,
   handleUpdateIngredient,
+  quantityError,
+  setQuantityError,
 }) => {
   return (
     <>
@@ -23,8 +25,12 @@ const PantryIngredient = ({
       </div>
       {ingredientFields.map((field, idx) => {
         return (
-          <div className="ingredient-fields" key={`${idx}`}>
+          <div
+            className={`ingredient-fields ${quantityError ? "q-error" : ""}`}
+            key={`${idx}`}
+          >
             <Quantity
+              setQuantityError={setQuantityError}
               idx={idx}
               value={field}
               handleUpdateIngredient={handleUpdateIngredient}
@@ -41,7 +47,11 @@ const PantryIngredient = ({
               ingredients={ingredients}
               handleUpdateIngredient={handleUpdateIngredient}
             />
-            <button type="button" onClick={() => handleIngredientRemove(idx)}>
+            <button
+              className="pantry-ingredient-remove-button"
+              type="button"
+              onClick={() => handleIngredientRemove(idx)}
+            >
               <ImMinus />
             </button>
           </div>

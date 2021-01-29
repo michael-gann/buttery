@@ -209,3 +209,7 @@ form {
 .demo-login-button:active {
     transform: translate(2px, 1px)
 }
+
+.error-shake {
+    width: 100%;
+}

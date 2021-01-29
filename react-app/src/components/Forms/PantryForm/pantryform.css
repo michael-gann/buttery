@@ -117,3 +117,37 @@
 .pantry-form-container > .pantry-form-holder > .pantry-form > .pantry-submit-button button:active {
     transform: translate(2px, 1px)
 }
+
+.pantry-form-container > .pantry-form-holder > .pantry-form > .pantry-submit-button > .disabled {
+    opacity: 0.3;
+    box-shadow: none;
+}
+
+.pantry-form-container > .pantry-form-holder > .pantry-form > .pantry-submit-button > .disabled:hover {
+    transform: none;
+    color: black;
+    box-shadow: none;
+    cursor: default;
+}
+
+.quantity-error {
+    color: red;
+    align-self: center;
+    height: 20px;
+    font-size: 20px;
+}
+
+.pantry-ingredient-remove-button {
+    color: black;
+    font-size: 1.5em;
+    background-color: white;
+    transition: color 150ms ease-in-out;
+}
+
+.pantry-ingredient-remove-button:hover {
+    color: #F39C9F;
+    cursor: pointer;
+}
+
+.pantry-ingredient-remove-button:active {
+    transform: translate(2px, 1px);}

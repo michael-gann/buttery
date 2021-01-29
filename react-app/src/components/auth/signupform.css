@@ -21,6 +21,14 @@
     align-items: center;
 }
 
+.sign-up-form > .error-shake {
+    width: 100%;
+}
+
+.sign-up-form > .sign-up-form-container > div {
+    width: 100%;
+}
+
 .sign-up-form form {
     width: 100%;
     margin-bottom: 10%;

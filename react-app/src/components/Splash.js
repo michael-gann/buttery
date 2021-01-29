@@ -45,7 +45,7 @@ const Splash = () => {
 
             <FadeInSlower className>
               <div className="splash-description-2">
-                <div className="text-2">Is only a step away</div>
+                <div className="text-2">is only a step away</div>
                 <button onClick={handleClick} className="splash-sign-up">
                   Sign-up
                 </button>

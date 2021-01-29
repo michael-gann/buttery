@@ -26,7 +26,7 @@ const NavBar = () => {
               <img
                 className="logo"
                 alt="buttery-logo"
-                src="../images/buttery-logo.svg"
+                src="/images/buttery-logo-png.png"
               ></img>
             </NavLink>
           </div>

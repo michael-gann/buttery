@@ -1,9 +1,20 @@
 import React from "react";
 
-const Quantity = ({ value, handleUpdateIngredient, idx }) => {
+const Quantity = ({ value, handleUpdateIngredient, idx, setQuantityError }) => {
   const type = {
     value: "quantity",
   };
+
+  // const [quantity, setQuantity] = useState("")
+  if (setQuantityError) {
+    if (parseFloat(value.qty) <= 0 && value.qty !== "") {
+      setQuantityError("Quantity must be greater than 0.");
+    }
+
+    if (parseFloat(value.qty) > 0 && value.qty !== "") {
+      setQuantityError("");
+    }
+  }
 
   return (
     <>

@@ -92,7 +92,7 @@ const Recipe = () => {
                   </div>
                 </div>
                 <div className="home-steps-container">
-                  <div className="recipe-steps-header">Steps</div>
+                  {/* <div className="recipe-steps-header">Steps</div> */}
                   <Steps steps={recipe[`${id}`].steps} />
                 </div>
               </>

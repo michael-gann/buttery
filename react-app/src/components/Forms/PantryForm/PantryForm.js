@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 
@@ -14,15 +14,31 @@ const PantryForm = () => {
   const dispatch = useDispatch();
   const [ingredientFields, setIngredientFields] = useState([
     {
-      qty: 0,
-      ingredient: { value: -1, label: " " },
+      qty: "",
+      ingredient: { value: null, label: "" },
       ingredientInput: "",
+      measurementInput: "",
+      measurement: { value: null, label: "" },
     },
   ]);
+
+  const [quantityError, setQuantityError] = useState("");
 
   const user = useSelector((state) => state.users.sessionUser);
   const ingredients = useSelector((state) => state.ingredients.ingredients);
   const measurements = useSelector((state) => state.measurements.measurements);
+
+  const [error, setError] = useState("");
+  const checkForError = ingredientFields.filter(
+    (i) => i.qty === "" || i.qty <= 0
+  );
+
+  console.log(checkForError);
+  useEffect(() => {
+    if (checkForError) {
+      setError(checkForError);
+    }
+  }, [ingredientFields.length]);
 
   const handleUpdateIngredient = (idx, event, type, val, inputVal) => {
     let values = [...ingredientFields];
@@ -65,9 +81,11 @@ const PantryForm = () => {
   const handleIngredientAdd = () => {
     const values = [...ingredientFields];
     values.push({
-      qty: 0,
-      ingredient: { value: -1, label: " " },
+      qty: "",
+      ingredient: { value: null, label: "" },
       ingredientInput: "",
+      measurementInput: "",
+      measurement: { value: null, label: "" },
     });
     setIngredientFields(values);
   };
@@ -78,7 +96,10 @@ const PantryForm = () => {
     setIngredientFields(values);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    if (e.target.className === "disabled") {
+      return;
+    }
     let pantry_ingredients = {};
 
     ingredientFields.forEach((ingredient, i) => {
@@ -123,7 +144,14 @@ const PantryForm = () => {
       <div className="pantry-form-holder">
         <div className="pantry-form">
           <div className="pantry-form-header">Add to pantry</div>
+          {quantityError ? (
+            <div className="quantity-error">{quantityError}</div>
+          ) : (
+            <div className="quantity-error"></div>
+          )}
           <PantryIngredient
+            setQuantityError={setQuantityError}
+            quantityError={quantityError}
             measurements={measurements}
             ingredients={ingredients}
             handleIngredientAdd={handleIngredientAdd}
@@ -132,7 +160,14 @@ const PantryForm = () => {
             ingredientFields={ingredientFields}
           />
           <div className="pantry-submit-button">
-            <button onClick={handleSubmit}>
+            <button
+              className={
+                checkForError.length || checkForError.length === 0
+                  ? "disabled"
+                  : null
+              }
+              onClick={handleSubmit}
+            >
               {ingredientFields.length === 1 || ingredientFields.length === 0
                 ? "Submit ingredient"
                 : "Submit ingredients"}

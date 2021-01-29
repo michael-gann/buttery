@@ -10,11 +10,11 @@ const Ingredient = ({ value, idx, ingredients, handleUpdateIngredient }) => {
   return (
     <>
       <Autocomplete
-        value={value.ingredient}
+        value={value.ingredient || ""}
         onChange={(e, newValue) => {
           handleUpdateIngredient(idx, e, type, newValue);
         }}
-        inputValue={value.ingredientInput}
+        inputValue={value.ingredientInput || ""}
         onInputChange={(event, newInputValue) => {
           handleUpdateIngredient(idx, event, type, null, newInputValue);
         }}
