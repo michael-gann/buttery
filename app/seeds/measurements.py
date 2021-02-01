@@ -24,6 +24,7 @@ def seed_measurements():
     demo16 = Measurement(name="large")
     demo17 = Measurement(name="medium")
     demo18 = Measurement(name="small")
+    demo19 = Measurement(name="sprig")
 
     db.session.add(demo)
     db.session.add(demo1)
@@ -44,6 +45,7 @@ def seed_measurements():
     db.session.add(demo16)
     db.session.add(demo17)
     db.session.add(demo18)
+    db.session.add(demo19)
 
     db.session.commit()
 

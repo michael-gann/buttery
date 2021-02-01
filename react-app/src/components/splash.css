@@ -80,8 +80,12 @@
 }
 
 .splash-sign-up:hover {
-    background-color: #f3e633e0;
+    background-color: #1ae0b6e0;
     cursor: pointer;
-    color: black;
-    border: 1px solid #d8cd39e0;
+    color: white;
+    border: 1px solid #23dd9fe0;
+}
+
+.splash-sign-up:active {
+    transform: translate(2px, 1px);
 }

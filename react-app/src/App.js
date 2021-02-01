@@ -13,6 +13,7 @@ import Splash from "./components/Splash";
 import Recipes from "./components/RecipesPage/Recipes";
 import Recipe from "./components/RecipePage/Recipe";
 import Pantry from "./components/PantryPage/Pantry";
+import Footer from "./components/Footer";
 
 import * as recipeActions from "./store/recipes";
 import * as pantryActions from "./store/pantries";
@@ -37,6 +38,7 @@ function App() {
   return (
     <BrowserRouter>
       <NavBar />
+
       <Switch>
         <Route path="/" exact={true}>
           <Splash></Splash>
@@ -49,21 +51,27 @@ function App() {
         </Route>
         <ProtectedRoute path="/home" exact={true}>
           <Home></Home>
+          <Footer />
         </ProtectedRoute>
         <ProtectedRoute path="/recipes/:id" exact={true}>
           <Recipe></Recipe>
+          <Footer />
         </ProtectedRoute>
         <ProtectedRoute path="/pantry" exact={true}>
           <Pantry></Pantry>
+          <Footer />
         </ProtectedRoute>
         <ProtectedRoute path="/new-recipe" exact={true}>
           <RecipeForm user={sessionUser} />
+          <Footer />
         </ProtectedRoute>
         <ProtectedRoute path="/add-to-pantry" exact={true}>
           <PantryForm />
+          <Footer />
         </ProtectedRoute>
         <ProtectedRoute path="/recipes" exact={true}>
           <Recipes></Recipes>
+          <Footer />
         </ProtectedRoute>
         <Route route="*">
           <h1>page not found!</h1>
