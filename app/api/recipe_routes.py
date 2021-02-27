@@ -41,6 +41,11 @@ def recipes():
     return jsonify(recipes_by_id)
 
 
+@recipe_routes.route("/5", methods=["GET"])
+def something():
+    pass
+
+
 @recipe_routes.route("/<int:id>", methods=["GET"])  # get a single recipe by ID
 def recipe(id):
     recipe_query = Recipe.query.options(selectinload(

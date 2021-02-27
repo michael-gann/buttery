@@ -15,9 +15,6 @@ const MeasurementSelect = ({
     value: "measurement",
   };
 
-  console.log(measurements);
-  console.log(value);
-  console.log(value.measurement, value.measurementInput);
   return (
     <>
       <Autocomplete

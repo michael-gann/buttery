@@ -33,7 +33,6 @@ const PantryForm = () => {
     (i) => i.qty === "" || i.qty <= 0
   );
 
-  console.log(checkForError);
   useEffect(() => {
     if (checkForError) {
       setError(checkForError);
