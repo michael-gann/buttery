@@ -1,4 +1,4 @@
-# buttery ([https://buttery.herokuapp.com])
+# buttery (https://buttery.herokuapp.com)
 
 buttery lets you add your own recipes and create a virtual pantry to keep track of your pantry's ingredients. You can add recipes you want to make to your cooking list and receive a shopping list of items needed based off of your pantry stock.
 
