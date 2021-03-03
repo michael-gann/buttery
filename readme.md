@@ -2,7 +2,7 @@
 
 buttery lets you add your own recipes and create a virtual pantry to keep track of your pantry's ingredients. You can add recipes you want to make to your cooking list and receive a shopping list of items needed based off of your pantry stock.
 
-COMING SOON (You can then mark recipes as "shopped" to update your Pantry and then mark them as "made" to update your pantry stock.)
+You can then mark recipes as "shopped" to update your Pantry and then mark them as "made" to update your pantry stock.
 
 ## DB Schema
 
