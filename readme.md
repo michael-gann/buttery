@@ -138,6 +138,10 @@
 
 ### Shopping List
 
+<p align="center">
+  <img src="https://media.giphy.com/media/eCDiTo6ngFI4jTguih/giphy.gif" alt="shopping list site example gif">
+</p>
+
 A user can generate a shopping list based on recieps they add as "want to make". The app knows what ingredients aren't in the pantry or if making a recipe will cause you to run out of an ingredient, so you should buy more. In your shopping list you can click "shopped" to update your pantry with the items that were in your shopping list.
 
 ### Pantry
@@ -149,7 +153,7 @@ Only ingredients in both your pantry and a recipe  matching the same measurement
 ### Recipes
 
 <p align="center">
-  <img src="https://media.giphy.com/media/YHw43U1Q8k6mSHg8Dy/giphy.gif" alt="site navigation gif">
+  <img src="https://media.giphy.com/media/PNmFVaGepwlIryAPVf/giphy.gif" alt="site navigation gif">
 </p>
 
 Recipes can be added from scratch using a dynamic form on the "/recipes" page. This allows you to keep track of any recipes you want to add and allows the app to know what ingredients are needed and can compare them with what is in your pantry.
@@ -163,6 +167,49 @@ When viewing a recipe, the ingredients are highlighted to let a user know if the
 <p align="center">
 <img src="https://i.imgur.com/kdGlheD.pnga" alt="site navigation gif" width="80%">
 </p>
+
+## Backend
+
+**/api**
+
+### User
+
+- ["GET"] /auth
+- ["POST"] /auth/login
+- ["GET"] /auth/logout
+- ["POST"] /auth/signup
+
+### Recipe
+
+- ["GET", "POST"] /recipes
+- ["GET", "DELETE"] /recipes/id
+
+### Pantry
+
+- ["GET"] /pantries/user-pantry
+- ["PUT"] /pantries/update-pantry
+
+### Ingredient
+
+- ["GET"] /ingredients
+
+### Measurement
+
+- ["GET"] /measurements
+
+### Cooking List
+
+- ["GET", "POST"] /cooking-lists/shopping-list
+- ["POST"] /cooking-lists/mark-shopped
+- ["POST"] /cooking-lists/mark-cooked
+
+## Frontend
+
+ - "/" Splash
+ - "/home" Home (Dashboard View)
+ - "/pantry" Pantry Page
+ - "/recipes" Recipes Page
+ - "/recipe/id" A Recipe
 
 <!-- ROADMAP -->
 ## Roadmap
