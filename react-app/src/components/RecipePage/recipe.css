@@ -308,7 +308,7 @@
     display: flex;
 }
 
-.do-not-have {
+.do-not-have, .not-enough {
     background-color: #F39C9F;
     border-radius: 8px;
 

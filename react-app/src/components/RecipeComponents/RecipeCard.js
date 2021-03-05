@@ -116,7 +116,7 @@ const RecipeCard = ({
     state.recipes.recipes.find((recipe) => Object.keys(recipe)[0] === id)
   );
   const shoppingList = useSelector((state) =>
-    Object.values(state.cookingLists.shoppingList)
+    _.cloneDeep(Object.values(state.cookingLists.shoppingList))
   );
   const recipeShoppingList = useSelector(
     (state) => state.cookingLists.recipesToShop
@@ -138,7 +138,7 @@ const RecipeCard = ({
   const recipeIngredients =
     Object.values(recipe)[0] &&
     !recipeIdsInShoppingList.includes(parseInt(Object.keys(recipe)[0]))
-      ? Object.values(recipe)[0].ingredients
+      ? _.cloneDeep(Object.values(recipe)[0].ingredients)
       : [];
 
   const recipeIngredientsForPantry = Object.values(recipe)[0].ingredients;
@@ -172,8 +172,11 @@ const RecipeCard = ({
   const realPantryResult = _.differenceWith(
     recipeIngredientsForPantry,
     pantryIngredients,
-    (x, y) => x.ingredient_id === y.ingredient_id && y.quantity >= 0
+    (x, y) => x.ingredient_id === y.ingredient_id
   );
+
+  console.log("real pantry", realPantryResult);
+  console.log("fake pantry", result);
 
   useEffect(() => {
     setToShop(alreadyShopping ? true : false);

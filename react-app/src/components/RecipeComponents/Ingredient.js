@@ -16,6 +16,7 @@ const Ingredient = ({ ingredient, isInPantry }) => {
   const [isQFloat, setIsQFloat] = useState(false);
   const willRunOut = ingredient.willRunOut;
   const doNotHave = ingredient.doNotHave;
+  const notEnough = ingredient.notEnough;
 
   useEffect(() => {
     setIsQFloat(isFloat(ingredient.quantity));
@@ -26,10 +27,12 @@ const Ingredient = ({ ingredient, isInPantry }) => {
       {isInPantry ? (
         <div
           className={
-            willRunOut
-              ? "will-run-out pantry-ingredients-container"
+            notEnough
+              ? "pantry-ingredients-container not-enough"
               : doNotHave
               ? "pantry-ingredients-container do-not-have"
+              : willRunOut
+              ? "pantry-ingredients-container will-run-out "
               : "pantry-ingredients-container"
           }
         >

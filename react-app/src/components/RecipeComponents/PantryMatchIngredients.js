@@ -40,12 +40,20 @@ const PantryMatchIngredients = ({ ingredients }) => {
         pantryIngredientByIngredientId[key].quantity -
           ingredientsByIngredientId[key].quantity <=
         0;
+      ingredientsInPantry[key].notEnough =
+        pantryIngredientByIngredientId[key].quantity -
+          ingredientsByIngredientId[key].quantity <
+        0;
     }
   }
+
+  console.log(ingredientsInPantry);
 
   const ingredientsInPantryArray = Object.values(ingredientsInPantry).sort(
     (a, b) => a.id - b.id
   );
+
+  console.log(ingredientsInPantryArray);
 
   return (
     <>

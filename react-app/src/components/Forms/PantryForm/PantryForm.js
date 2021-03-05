@@ -29,6 +29,7 @@ const PantryForm = () => {
   const measurements = useSelector((state) => state.measurements.measurements);
 
   const [error, setError] = useState("");
+
   const checkForError = ingredientFields.filter(
     (i) => i.qty === "" || i.qty <= 0
   );
@@ -138,6 +139,8 @@ const PantryForm = () => {
     history.push("/pantry");
   };
 
+  console.log();
+
   return (
     <div className="pantry-form-container">
       <div className="pantry-form-holder">
@@ -159,12 +162,9 @@ const PantryForm = () => {
             ingredientFields={ingredientFields}
           />
           <div className="pantry-submit-button">
+            {/* TODO: Fix disabled button not enabling */}
             <button
-              className={
-                checkForError.length || checkForError.length === 0
-                  ? "disabled"
-                  : null
-              }
+              className={checkForError.length > 0 ? "disabled" : null}
               onClick={handleSubmit}
             >
               {ingredientFields.length === 1 || ingredientFields.length === 0
