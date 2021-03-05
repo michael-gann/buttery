@@ -83,12 +83,11 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![buttery screen shot](images/screenshot.png)](https://buttery.herokuapp.com)
+<p align="center">
+  <img src="images/screenshot.png" alt="screenshot of app" width="80%">
+</p>
 
-![buttery db schema](https://i.imgur.com/kdGlheD.pnga)
-
-![Alt Text](https://media.giphy.com/media/ClZZPi3QXgXXoNRyyG/giphy.gif)
-<img src="https://media.giphy.com/media/ClZZPi3QXgXXoNRyyG/giphy.gif" alt="login gif" align="center">
+<!-- ![Alt Text](https://media.giphy.com/media/ClZZPi3QXgXXoNRyyG/giphy.gif) -->
 
 ### Built With
 
@@ -100,9 +99,13 @@
 <!-- GETTING STARTED -->
 ## Getting Started
 
-To get a local copy up and running follow these simple steps.
+<p align="center">
+  <img src="https://media.giphy.com/media/ClZZPi3QXgXXoNRyyG/giphy.gif" alt="login gif">
+</p>
 
-### Prerequisites
+<p align="center">To start using the app, create an account to get started!</p>
+
+<!-- ### Prerequisites
 
 * npm
 
@@ -128,12 +131,10 @@ To get a local copy up and running follow these simple steps.
 
   ```sh
   pip install
-  ```
+  ``` -->
 
 <!-- USAGE EXAMPLES -->
 ## Usage
-
-![Alt Text](https://media.giphy.com/media/ClZZPi3QXgXXoNRyyG/giphy.gif)
 
 ### Shopping List
 
@@ -147,13 +148,21 @@ Only ingredients in both your pantry and a recipe  matching the same measurement
 
 ### Recipes
 
-![Alt Text](https://media.giphy.com/media/YHw43U1Q8k6mSHg8Dy/giphy.gif)
+<p align="center">
+  <img src="https://media.giphy.com/media/YHw43U1Q8k6mSHg8Dy/giphy.gif" alt="site navigation gif">
+</p>
 
 Recipes can be added from scratch using a dynamic form on the "/recipes" page. This allows you to keep track of any recipes you want to add and allows the app to know what ingredients are needed and can compare them with what is in your pantry.
 
 There will be a colored number indicator (I call this the recipe distance) on a recipe for how close a recipe is to being able to be made for a quick visual cue as to what recipes can be made. On the homepage, the recipes will be sorted in ascending order based on the recipe distance.
 
 When viewing a recipe, the ingredients are highlighted to let a user know if they will run out of an ingredient if they make the recipe or making the recipe will cause them to run out so they should buy more. Conveniently, there is a button to add a recipes missing ingredients to the shopping list.
+
+## DB Schema
+
+<p align="center">
+<img src="https://i.imgur.com/kdGlheD.pnga" alt="site navigation gif" width="80%">
+</p>
 
 <!-- ROADMAP -->
 ## Roadmap
