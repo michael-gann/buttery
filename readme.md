@@ -142,7 +142,7 @@
   <img src="https://media.giphy.com/media/eCDiTo6ngFI4jTguih/giphy.gif" alt="shopping list site example gif">
 </p>
 
-A user can generate a shopping list based on recieps they add as "want to make". The app knows what ingredients aren't in the pantry or if making a recipe will cause you to run out of an ingredient, so you should buy more. In your shopping list you can click "shopped" to update your pantry with the items that were in your shopping list.
+A user can generate a shopping list based on recipes they add as "want to make". The app knows what ingredients aren't in the pantry or if making a recipe will cause you to run out of an ingredient, so you should buy more. In your shopping list you can click "shopped" to update your pantry with the items that were in your shopping list.
 
 ### Pantry
 
