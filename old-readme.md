@@ -6,7 +6,7 @@ COMING SOON (You can then mark recipes as "shopped" to update your Pantry and th
 
 ## DB Schema
 
-![buttery db schema](https://i.imgur.com/kdGlheD.png)
+![buttery db schema](https://i.imgur.com/kdGlheD.pnga)
 
 ## User Auth
 
@@ -23,9 +23,9 @@ Users can sign-up and login.
 A user can add ingredients to their virtual pantry to reflect their current real life stock of ingredients. Doing so enables the app to generate
 shopping lists and also recommend recipes to the user based on how close they are to already being able to make it with what they have in stock.
 
-- dynamic form for adding/editing ingredients 
+- dynamic form for adding/editing ingredients
 - clean view of pantry to see what you have in stock
-- ability to edit an ingredients quantity manually 
+- ability to edit an ingredients quantity manually
 
 ## Shopping List
 
@@ -66,7 +66,7 @@ Mostly RESTful endpoints for buttery. Data api endpoints are prepended with /api
 
 ### User
 
-- ["GET"] /auth 
+- ["GET"] /auth
 - ["POST"] /auth/login
 - ["GET"] /auth/logout
 - ["POST"] /auth/signup

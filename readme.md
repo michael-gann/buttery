@@ -85,6 +85,10 @@
 
 [![buttery screen shot](images/screenshot.png)](https://buttery.herokuapp.com)
 
+![buttery db schema](https://i.imgur.com/kdGlheD.pnga)
+
+![Alt Text](https://media.giphy.com/media/ClZZPi3QXgXXoNRyyG/giphy.gif)
+
 ### Built With
 
 * [React](https://reactjs.org/)
@@ -128,6 +132,8 @@ To get a local copy up and running follow these simple steps.
 <!-- USAGE EXAMPLES -->
 ## Usage
 
+![Alt Text](https://media.giphy.com/media/ClZZPi3QXgXXoNRyyG/giphy.gif)
+
 ### Shopping List
 
 A user can generate a shopping list based on recieps they add as "want to make". The app knows what ingredients aren't in the pantry or if making a recipe will cause you to run out of an ingredient, so you should buy more. In your shopping list you can click "shopped" to update your pantry with the items that were in your shopping list.
@@ -139,6 +145,8 @@ Ingredients can be added to a 'virtual pantry' by using a dynamic form on the "/
 Only ingredients in both your pantry and a recipe  matching the same measurement unit will be used to track how close a recipe is to being able to be made. Plans are in the works to convert different units of measurement to allow more dynamic ingredient calculations.
 
 ### Recipes
+
+![Alt Text](https://media.giphy.com/media/YHw43U1Q8k6mSHg8Dy/giphy.gif)
 
 Recipes can be added from scratch using a dynamic form on the "/recipes" page. This allows you to keep track of any recipes you want to add and allows the app to know what ingredients are needed and can compare them with what is in your pantry.
 
