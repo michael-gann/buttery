@@ -88,6 +88,7 @@
 ![buttery db schema](https://i.imgur.com/kdGlheD.pnga)
 
 ![Alt Text](https://media.giphy.com/media/ClZZPi3QXgXXoNRyyG/giphy.gif)
+<img src="https://media.giphy.com/media/ClZZPi3QXgXXoNRyyG/giphy.gif" alt="login gif" align="center">
 
 ### Built With
 
