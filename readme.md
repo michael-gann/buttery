@@ -10,8 +10,6 @@
 *** github_username, buttery, twitter_handle, email, project_title, project_description
 -->
 
-
-
 <!-- PROJECT SHIELDS -->
 <!--
 *** I'm using markdown "reference style" links for readability.
@@ -22,15 +20,15 @@
 -->
 <!-- [![Contributors][contributors-shield]][contributors-url] -->
 <!-- [![Forks][forks-shield]][forks-url] -->
+
 [![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
+<!-- [![Issues][issues-shield]][issues-url] -->
 <!-- [![MIT License][license-shield]][license-url] -->
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
-
-
 <!-- PROJECT LOGO -->
-<br />
+
+<!-- <br /> -->
 <p align="center">
   <a href="https://github.com/michael-gann/buttery">
     <img src="images/buttery-logo-png.png" alt="Logo" width="250" height="80">
@@ -39,7 +37,12 @@
   <h3 align="center">buttery</h3>
 
   <p align="center">
-    buttery lets you add your own recipes and create a virtual pantry to keep track of your pantry's ingredients. You can add recipes you want to make to your cooking list and receive a shopping list of items needed based off of your pantry stock. You can mark a recip as "shop" to add missing ingredients to a shopping list or, if you have the required ingredients, mark a recipe as 'cooked' to deduct the ingredients from your pantry.
+    buttery lets you add your own recipes and create a virtual pantry to keep
+    track of your pantry's ingredients. You can add recipes you want to make to
+    your cooking list and receive a shopping list of items needed based off of
+    your pantry stock. You can mark a recip as "shop" to add missing
+    ingredients to a shopping list or, if you have the required ingredients,
+    mark a recipe as 'cooked' to deduct the ingredients from your pantry.
     <br />
     <!-- <a href="https://github.com/michael-gann/buttery"><strong>Explore the docs »</strong></a> -->
     <br />
@@ -51,8 +54,6 @@
     <!-- <a href="https://github.com/michael-gann/buttery/issues">Request Feature</a> -->
   </p>
 </p>
-
-
 
 <!-- TABLE OF CONTENTS -->
 <details open="open">
@@ -80,16 +81,10 @@
   </ol>
 </details>
 
-
-
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
 [![buttery screen shot](images/screenshot.png)](https://buttery.herokuapp.com)
-
-
-
-
 
 ### Built With
 
@@ -97,8 +92,6 @@
 * [Redux](https://redux.js.org/)
 * [Flask](https://flask.palletsprojects.com/en/1.1.x/)
 * [Styled Components](https://styled-components.com/)
-
-
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -127,7 +120,11 @@ To get a local copy up and running follow these simple steps.
    npm install
    ```
 
+3. Change directory to app and install backend packages using pip
 
+  ```sh
+  pip install
+  ```
 
 <!-- USAGE EXAMPLES -->
 ## Usage
@@ -137,10 +134,10 @@ To get a local copy up and running follow these simple steps.
 A user can generate a shopping list based on recieps they add as "want to make". The app knows what ingredients aren't in the pantry or if making a recipe will cause you to run out of an ingredient, so you should buy more. In your shopping list you can click "shopped" to update your pantry with the items that were in your shopping list.
 
 ### Pantry
+
 Ingredients can be added to a 'virtual pantry' by using a dynamic form on the "/pantry" page. This allows the app to dynamically update the pantry based on what ingredients are used for any given recipe that you mark as "made". Your pantry is also what allows the app to know how close you are to being able to make a recipe.
 ***Current Limitations***
 Only ingredients in both your pantry and a recipe  matching the same measurement unit will be used to track how close a recipe is to being able to be made. Plans are in the works to convert different units of measurement to allow more dynamic ingredient calculations.
-
 
 ### Recipes
 
@@ -150,13 +147,10 @@ There will be a colored number indicator (I call this the recipe distance) on a 
 
 When viewing a recipe, the ingredients are highlighted to let a user know if they will run out of an ingredient if they make the recipe or making the recipe will cause them to run out so they should buy more. Conveniently, there is a button to add a recipes missing ingredients to the shopping list.
 
-
 <!-- ROADMAP -->
 ## Roadmap
 
 See the [open issues](https://github.com/michael-gann/buttery/issues) for a list of proposed features (and known issues).
-
-
 
 <!-- CONTRIBUTING -->
 ## Contributing
@@ -168,8 +162,6 @@ Contributions are what make the open source community such an amazing place to b
 3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
-
-
 
 <!-- LICENSE -->
 <!-- CONTACT -->
@@ -191,21 +183,17 @@ mchlgnn@protonmail.com
 * [react-animations](https://github.com/FormidableLabs/react-animations)
 * [Lodash](https://lodash.com/)
 
-
-
-
-
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/michael-gann/repo.svg?style=for-the-badge
 [contributors-url]: https://github.com/michael-gann/buttery/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/michael-gann/repo.svg?style=for-the-badge
 [forks-url]: https://github.com/michael-gann/repo/network/members
-[stars-shield]: https://img.shields.io/github/stars/michael-gann/repo.svg?style=for-the-badge
+[stars-shield]: https://img.shields.io/github/stars/michael-gann/buttery.svg?style=for-the-badge
 [stars-url]: https://github.com/michael-gann/buttery/stargazers
 [issues-shield]: https://img.shields.io/github/issues/michael-gann/repo.svg?style=for-the-badge
 [issues-url]: https://github.com/michael-gann/buttery/issues
 [license-shield]: https://img.shields.io/github/license/michael-gann/repo.svg?style=for-the-badge
 [license-url]: https://github.com/michael-gann/repo/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/michael-gann
+[linkedin-url]: https://www.linkedin.com/in/michael-gann-1a2161201/
