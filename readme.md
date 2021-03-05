@@ -22,8 +22,9 @@
 <!-- [![Forks][forks-shield]][forks-url] -->
 
 [![Stargazers][stars-shield]][stars-url]
-<!-- [![Issues][issues-shield]][issues-url] -->
+[![Issues][issues-shield]][issues-url]
 <!-- [![MIT License][license-shield]][license-url] -->
+[![react][react-shield]][react-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 <!-- PROJECT LOGO -->
@@ -197,3 +198,4 @@ mchlgnn@protonmail.com
 [license-url]: https://github.com/michael-gann/repo/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/michael-gann-1a2161201/
+[react-url]: https://img.shields.io/badge/react
