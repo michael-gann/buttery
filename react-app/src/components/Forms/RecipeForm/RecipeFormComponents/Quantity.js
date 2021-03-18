@@ -5,13 +5,8 @@ const Quantity = ({ value, handleUpdateIngredient, idx, setQuantityError }) => {
     value: "quantity",
   };
 
-  // const [quantity, setQuantity] = useState("")
   if (setQuantityError) {
-    if (parseFloat(value.qty) <= 0 && value.qty !== "") {
-      setQuantityError("Quantity must be greater than 0.");
-    }
-
-    if (parseFloat(value.qty) > 0 && value.qty !== "") {
+    if (value.qty > 0 && value.qty !== null) {
       setQuantityError("");
     }
   }
@@ -22,7 +17,7 @@ const Quantity = ({ value, handleUpdateIngredient, idx, setQuantityError }) => {
         Amount
         <input
           className="recipe-form-quantity"
-          value={value.qty}
+          value={parseInt(value.qty)}
           type="number"
           onChange={(e) => handleUpdateIngredient(idx, e, type)}
         ></input>

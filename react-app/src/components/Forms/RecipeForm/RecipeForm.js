@@ -23,7 +23,6 @@ const RecipeForm = ({ isEditing, recipeToEdit, handleEditRecipe }) => {
   const ingredients = useSelector((state) => state.ingredients.ingredients);
   const measurements = useSelector((state) => state.measurements.measurements);
 
-  // const { id } = useParams();
   let editSteps = [];
   let editIngredients = [];
 

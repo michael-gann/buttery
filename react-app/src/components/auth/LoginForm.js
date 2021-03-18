@@ -25,7 +25,7 @@ const LoginForm = () => {
   const errors = useSelector((state) => state.users.errors);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [localErrors, setLocalErrors] = useState([]);
+  // const [localErrors, setLocalErrors] = useState([]);
 
   const onLogin = async (e) => {
     e.preventDefault();
