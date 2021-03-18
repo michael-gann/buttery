@@ -314,6 +314,18 @@ box-shadow: 0px 0px 2px 0px rgba(10, 139, 96, 0.18),
     transform: translate(2px, 1px);
 }
 
+.recipe-submit-button .disabled {
+    opacity: 0.3;
+    box-shadow: none;
+}
+
+.recipe-submit-button .disabled:hover {
+    transform: none;
+    color: black;
+    box-shadow: none;
+    cursor: default;
+}
+
 .step-remove-button {
     margin-left: 3%;
 }

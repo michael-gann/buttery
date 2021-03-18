@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import RecipeName from "./RecipeFormComponents/RecipeName";
@@ -77,6 +77,7 @@ const RecipeForm = ({ isEditing, recipeToEdit, handleEditRecipe }) => {
   const [stepFields, setStepFields] = useState(
     isEditing ? editSteps : [{ value: null }]
   );
+  const [isDisabled, setIsDisabled] = useState(true);
 
   const handleChange = (i, event) => {
     const values = [...stepFields];
@@ -88,7 +89,7 @@ const RecipeForm = ({ isEditing, recipeToEdit, handleEditRecipe }) => {
     const values = [...ingredientFields];
     switch (type.value) {
       case "quantity":
-        values[idx] = { ...values[idx], qty: event.target.value };
+        values[idx] = { ...values[idx], qty: parseInt(event.target.value) };
         setIngredientFields(values);
         break;
       case "measurement":
@@ -152,7 +153,54 @@ const RecipeForm = ({ isEditing, recipeToEdit, handleEditRecipe }) => {
     setIngredientFields(values);
   };
 
-  const handleSubmit = () => {
+  const checkIngredientFields = (fields, steps, recipeTitle, recipeInfo) => {
+    // number of input values to check for the recipe
+    let valuesToPass = fields.length * 3;
+    valuesToPass += steps.length;
+    valuesToPass += 2; // for recipe title and recipe content inputs
+
+    let valuesPassing = 0;
+
+    for (let i = 0; i < fields.length; i++) {
+      if (fields[i].qty !== null && fields[i].qty > 0) {
+        valuesPassing++;
+      }
+
+      if (fields[i].ingredient.value !== null) {
+        valuesPassing++;
+      }
+
+      if (fields[i].measurement.value !== null) {
+        valuesPassing++;
+      }
+    }
+
+    for (const step of steps) {
+      if (step.value !== null && step.value !== "") {
+        valuesPassing++;
+      }
+    }
+
+    if (recipeTitle !== "") {
+      valuesPassing++;
+    }
+
+    if (recipeInfo !== "") {
+      valuesPassing++;
+    }
+
+    if (valuesPassing === valuesToPass) {
+      setIsDisabled(false);
+    } else {
+      setIsDisabled(true);
+    }
+  };
+
+  const handleSubmit = (e) => {
+    if (e.target.className === "disabled") {
+      return;
+    }
+
     let recipe_ingredients = {};
     let recipe_steps = {};
 
@@ -207,6 +255,10 @@ const RecipeForm = ({ isEditing, recipeToEdit, handleEditRecipe }) => {
     history.push("/recipes");
   };
 
+  useEffect(() => {
+    checkIngredientFields(ingredientFields, stepFields, recipe, recipeContent);
+  }, [ingredientFields, stepFields]);
+
   return (
     <div className="recipe-form-container">
       <div className="recipe-form-holder">
@@ -242,7 +294,12 @@ const RecipeForm = ({ isEditing, recipeToEdit, handleEditRecipe }) => {
             ></RecipeStep>
           </div>
           <div className="recipe-submit-button">
-            <button onClick={handleSubmit}>Submit recipe</button>
+            <button
+              className={isDisabled ? "disabled" : ""}
+              onClick={handleSubmit}
+            >
+              Submit recipe
+            </button>
           </div>
         </div>
       </div>
