@@ -18,9 +18,6 @@ const PantryForm = () => {
   const measurements = useSelector((state) => state.measurements.measurements);
 
   const [isDisabled, setIsDisabled] = useState(true);
-  // const [quantityError, setQuantityError] = useState("");
-  // const [ingredientError, setIngredientError] = useState("");
-  // const [measurementError, setMeasurementError] = useState("");
   const [ingredientFields, setIngredientFields] = useState([
     {
       qty: null,
