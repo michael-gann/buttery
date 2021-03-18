@@ -3,7 +3,12 @@ import { useSelector } from "react-redux";
 
 import PantryIngredients from "./PantryIngredients";
 
-const Category = ({ id, isHomepage }) => {
+const Category = ({
+  id,
+  isHomepage,
+  setIngredientToEditId,
+  handleEditPantry,
+}) => {
   const categories = useSelector((state) => state.categories.categories);
   // get number of each category of ingredient and display here if homepage
   const ingredients = useSelector((state) => state.pantries.pantries);
@@ -59,7 +64,11 @@ const Category = ({ id, isHomepage }) => {
         <>
           <div className="pantry-category-header">{icon}</div>
           <div className="pantry-ingredients-container">
-            <PantryIngredients id={id}></PantryIngredients>
+            <PantryIngredients
+              setIngredientToEditId={setIngredientToEditId}
+              handleEditPantry={handleEditPantry}
+              id={id}
+            ></PantryIngredients>
           </div>
         </>
       )}

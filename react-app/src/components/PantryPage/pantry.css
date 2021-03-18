@@ -127,3 +127,9 @@
 .add-pantry-item:active {
     transform: translate(2px, 1px)
 }
+
+.edit-pantry-item-container .edit-pantry-item {
+    width: 20px;
+    height: 40px;
+
+}

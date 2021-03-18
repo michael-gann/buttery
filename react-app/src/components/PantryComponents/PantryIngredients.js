@@ -5,7 +5,7 @@ import PantryIngredient from "./PantryIngredient";
 
 import { MetroSpinner } from "react-spinners-kit";
 
-const PantryIngredients = ({ id }) => {
+const PantryIngredients = ({ id, setIngredientToEditId, handleEditPantry }) => {
   const ingredients = useSelector((state) => state.pantries.pantries);
   const isLoading = useSelector((state) => state.pantries.loading);
 
@@ -24,6 +24,8 @@ const PantryIngredients = ({ id }) => {
                 <PantryIngredient
                   ingredient={i}
                   isLoading={isLoading}
+                  setIngredientToEditId={setIngredientToEditId}
+                  handleEditPantry={handleEditPantry}
                 ></PantryIngredient>
               </div>
             </>

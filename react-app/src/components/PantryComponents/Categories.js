@@ -2,7 +2,13 @@ import React from "react";
 
 import Category from "./Category";
 
-const Categories = ({ categories, isHomepage, isPantry }) => {
+const Categories = ({
+  categories,
+  isHomepage,
+  isPantry,
+  setIngredientToEditId,
+  handleEditPantry,
+}) => {
   return (
     <>
       {isPantry ? (
@@ -12,7 +18,12 @@ const Categories = ({ categories, isHomepage, isPantry }) => {
               categories.map((c) => {
                 return (
                   <div className="pantry-pantry-category-containers" key={c}>
-                    <Category isHomepage={isHomepage} id={c}></Category>
+                    <Category
+                      setIngredientToEditId={setIngredientToEditId}
+                      handleEditPantry={handleEditPantry}
+                      isHomepage={isHomepage}
+                      id={c}
+                    ></Category>
                   </div>
                 );
               })}
@@ -26,7 +37,11 @@ const Categories = ({ categories, isHomepage, isPantry }) => {
               categories.map((c) => {
                 return (
                   <div className="pantry-category-containers" key={c}>
-                    <Category isHomepage={isHomepage} id={c}></Category>
+                    <Category
+                      setIngredientToEditId={setIngredientToEditId}
+                      isHomepage={isHomepage}
+                      id={c}
+                    ></Category>
                   </div>
                 );
               })}

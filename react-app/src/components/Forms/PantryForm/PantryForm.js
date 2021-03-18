@@ -9,24 +9,49 @@ import * as pantryActions from "../../../store/pantries";
 
 import "./pantryform.css";
 
-const PantryForm = () => {
+const PantryForm = ({ ingredientToEditId, isEditing, handleEditPantry }) => {
   const history = useHistory();
   const dispatch = useDispatch();
 
   const user = useSelector((state) => state.users.sessionUser);
   const ingredients = useSelector((state) => state.ingredients.ingredients);
   const measurements = useSelector((state) => state.measurements.measurements);
+  const ingredientToEdit = useSelector((state) =>
+    state.pantries.pantries.find(
+      (ingredient) => ingredient.ingredient_id === ingredientToEditId
+    )
+  );
+
+  console.log("TO EDIT", ingredientToEdit, ingredientToEditId);
 
   const [isDisabled, setIsDisabled] = useState(true);
-  const [ingredientFields, setIngredientFields] = useState([
-    {
-      qty: null,
-      ingredient: { value: null, label: "" },
-      ingredientInput: "",
-      measurementInput: "",
-      measurement: { value: null, label: "" },
-    },
-  ]);
+  const [ingredientFields, setIngredientFields] = useState(
+    isEditing
+      ? [
+          {
+            qty: ingredientToEdit.quantity,
+            measurement: {
+              value: ingredientToEdit.measurement.id,
+              label: `${ingredientToEdit.measurement.name}`,
+            },
+            ingredient: {
+              value: ingredientToEdit.ingredient.id,
+              label: `${ingredientToEdit.ingredient.name}`,
+            },
+            measurementInput: `${ingredientToEdit.measurement.name}`,
+            ingredientInput: `${ingredientToEdit.ingredient.name}`,
+          },
+        ]
+      : [
+          {
+            qty: 0,
+            measurement: { value: -1, label: "" },
+            ingredient: { value: -1, label: "" },
+            measurementInput: "",
+            ingredientInput: "",
+          },
+        ]
+  );
 
   const handleUpdateIngredient = (idx, event, type, val, inputVal) => {
     let values = [...ingredientFields];
@@ -140,7 +165,7 @@ const PantryForm = () => {
       form.set(key, pantry_ingredients[key]);
     }
 
-    const submit_form = () => {
+    const submitForm = () => {
       dispatch(pantryActions.updateUserPantryItems(form));
       //   if (isEditing) {
       //     // dispatch(recipeActions.editRecipe(form));
@@ -150,7 +175,7 @@ const PantryForm = () => {
       //   }
     };
 
-    submit_form();
+    submitForm();
 
     history.push("/pantry");
   };
