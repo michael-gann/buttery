@@ -1,13 +1,9 @@
 import _ from "lodash";
 
-const GET_MEASUREMENTS = "/api/measurements/options";
-
-const getMeasurements = (measurements) => {
-  return {
-    type: GET_MEASUREMENTS,
-    payload: measurements,
-  };
-};
+import {
+  GET_MEASUREMENTS,
+  getMeasurements,
+} from "../actions/measurements.actions";
 
 export const measurements = () => async (dispatch) => {
   const res = await fetch("/api/measurements/options");

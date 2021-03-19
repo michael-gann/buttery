@@ -1,52 +1,15 @@
 import _ from "lodash";
 
-const GET_PANTRIES_BEGIN = "GET_PANTRIES_BEGIN";
-const GET_PANTRIES_SUCCESS = "GET_PANTRIES_SUCCESS";
-
-const UPDATE_PANTRIES_BEGIN = "UPDATE_PANTRIES_BEGIN";
-const UPDATE_PANTRIES_SUCCESS = "UPDATE_PANTRIES_SUCCESS";
-// const UPDATE_PANTRIES_FAILURE = "UPDATE_PANTRIES_FAILURE";
-
-// const CREATE_PANTRY_COPY = "CREATE_PANTRY_COPY";
-// const RESET_PANTRY_COPY = "RESET_PANTRY_COPY";
-
-const getPantriesBegin = () => {
-  return {
-    type: GET_PANTRIES_BEGIN,
-  };
-};
-
-const getPantriesSuccess = (pantries) => {
-  return {
-    type: GET_PANTRIES_SUCCESS,
-    payload: pantries,
-  };
-};
-
-const updatePantriesBegin = () => {
-  return {
-    type: UPDATE_PANTRIES_BEGIN,
-  };
-};
-
-// const createPantryCopy = () => {
-//   return {
-//     type: CREATE_PANTRY_COPY,
-//   };
-// };
-
-// const resetPantryCopy = () => {
-//   return {
-//     type: RESET_PANTRY_COPY,
-//   };
-// };
-
-const updatePantriesSuccess = (pantryIngredients) => {
-  return {
-    type: UPDATE_PANTRIES_SUCCESS,
-    payload: pantryIngredients,
-  };
-};
+import {
+  GET_PANTRIES_BEGIN,
+  GET_PANTRIES_SUCCESS,
+  UPDATE_PANTRIES_BEGIN,
+  UPDATE_PANTRIES_SUCCESS,
+  getPantriesBegin,
+  getPantriesSuccess,
+  updatePantriesBegin,
+  updatePantriesSuccess,
+} from "../actions/pantries.actions";
 
 export const getUserPantryItems = (userId) => async (dispatch) => {
   dispatch(getPantriesBegin());
@@ -72,18 +35,6 @@ export const updateUserPantryItems = (form) => async (dispatch) => {
 
   return res;
 };
-
-// export const pantryCopy = () => (dispatch, getState) => {
-//   dispatch(createPantryCopy());
-
-//   return;
-// };
-
-// export const resetPantry = () => (dispatch, getState) => {
-//   dispatch(restPantryCopy());
-
-//   return;
-// };
 
 const pantriesReducer = (
   state = { pantries: [], pantryCopy: [], loading: false },

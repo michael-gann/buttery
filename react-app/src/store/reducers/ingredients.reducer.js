@@ -1,13 +1,9 @@
 import _ from "lodash";
 
-const GET_INGREDIENTS = "/api/ingredients/options";
-
-const getIngredients = (ingredients) => {
-  return {
-    type: GET_INGREDIENTS,
-    payload: ingredients,
-  };
-};
+import {
+  GET_INGREDIENTS,
+  getIngredients,
+} from "../actions/ingredients.actions";
 
 export const ingredients = () => async (dispatch) => {
   const res = await fetch("/api/ingredients/options");

@@ -9,9 +9,9 @@ import Badge from "@material-ui/core/Badge";
 import RecipeForm from "../Forms/RecipeForm/RecipeForm";
 import RecipeTitle from "./RecipeTitle";
 
-import * as cookingListActions from "../../store/cookingLists";
-import * as recipeActions from "../../store/recipes";
-import * as pantryActions from "../../store/pantries";
+import * as cookingListActions from "../../store/reducers/cookingLists.reducer";
+import * as recipeActions from "../../store/reducers/recipes.reducer";
+import * as pantryActions from "../../store/reducers/pantries.reducer";
 
 export const pretendPantry = (
   recipeIngredients, // ingredients for every recipe in the cart already, and this card's recipe

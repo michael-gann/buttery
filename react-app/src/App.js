@@ -15,8 +15,8 @@ import Recipe from "./components/RecipePage/Recipe";
 import Pantry from "./components/PantryPage/Pantry";
 import Footer from "./components/Footer";
 
-import * as recipeActions from "./store/recipes";
-import * as pantryActions from "./store/pantries";
+import * as recipeActions from "./store/reducers/recipes.reducer";
+import * as pantryActions from "./store/reducers/pantries.reducer";
 
 function App() {
   const dispatch = useDispatch();

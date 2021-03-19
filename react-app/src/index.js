@@ -4,12 +4,12 @@ import "./index.css";
 import App from "./App";
 
 import { Provider } from "react-redux";
-import configureStore from "./store/rootReducer";
+import configureStore from "./store/reducers/rootReducer.reducer";
 
-import * as userActions from "./store/users";
-import * as categoryActions from "./store/categories";
-import * as measurementActions from "./store/measurements";
-import * as ingredientActions from "./store/ingredients";
+import * as userActions from "./store/reducers/users.reducer";
+import * as categoryActions from "./store/reducers/categories.reducer";
+import * as measurementActions from "./store/reducers/measurements.reducer";
+import * as ingredientActions from "./store/reducers/ingredients.reducer";
 
 const store = configureStore();
 

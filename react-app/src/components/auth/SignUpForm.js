@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Redirect, NavLink } from "react-router-dom";
 // import { signUp } from "../../services/auth";
 
-import * as userActions from "../../store/users";
+import * as userActions from "../../store/reducers/users.reducer";
 
 import "./signupform.css";
 

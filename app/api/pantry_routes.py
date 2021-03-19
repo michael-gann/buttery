@@ -30,7 +30,7 @@ def pantry():
 
 # submit a new item to pantry or update existing
 @pantry_routes.route("update-pantry", methods=["PUT"])
-def post_pantry():
+def put_pantry():
     form = PantryItemsForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
@@ -80,3 +80,41 @@ def post_pantry():
 
         return jsonify(new_pantry_ingredients)
     return {'errors': ['Internal Server Error']}, 500
+
+
+@pantry_routes.route("edit-ingredient", methods=["PUT"])
+def edit_pantry():
+    form = PantryItemsForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+
+        new_pantry_ingredient_queries = []
+        for pantry_ingredient in form.pantry_ingredients.entries:
+
+            db_pantry_ingredient = PantryIngredient.query.filter_by(
+                user_id=pantry_ingredient.user_id.data
+            ).filter_by(ingredient_id=pantry_ingredient.ingredient_id.data
+                        ).filter_by(measurement_id=pantry_ingredient.measurement_id.data
+                                    ).first()
+
+            db_pantry_ingredient.quantity = pantry_ingredient.quantity.data
+
+            new_pantry_ingredient_queries.append(db_pantry_ingredient)
+
+            db.session.add(db_pantry_ingredient)
+
+        db.session.commit()
+
+        new_pantry_ingredient = [
+            {
+                **ingredient.to_dict(),
+                "ingredient": {**ingredient.ingredients.to_dict()},
+                "measurement": {**ingredient.measurements.to_dict()}
+            }
+            for ingredient in new_pantry_ingredient_queries
+        ]
+
+        return jsonify(new_pantry_ingredient)
+    else:
+        return {'errors': ['Didn\'t make it past the form validation!']}, 500

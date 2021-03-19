@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom";
 
 import ShoppingListItems from "../ShoppingListComponents/ShoppingListItem";
 
-import * as cookingListActions from "../../store/cookingLists";
+import * as cookingListActions from "../../store/reducers/cookingLists.reducer";
 
 // const fadeInAnimation = keyframes`${fadeInLeft}`;
 

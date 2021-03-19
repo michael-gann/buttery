@@ -7,7 +7,7 @@ import RecipeContent from "./RecipeFormComponents/RecipeContent";
 import RecipeStep from "./RecipeFormComponents/RecipeStep";
 import RecipeIngredient from "./RecipeFormComponents/RecipeIngredient";
 
-import * as recipeActions from "../../../store/recipes";
+import * as recipeActions from "../../../store/reducers/recipes.reducer";
 
 import "./recipeform.css";
 

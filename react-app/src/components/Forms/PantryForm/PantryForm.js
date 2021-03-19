@@ -5,7 +5,7 @@ import { useHistory } from "react-router";
 
 import PantryIngredient from "./PantryFormComponents/PantryIngredient";
 
-import * as pantryActions from "../../../store/pantries";
+import * as pantryActions from "../../../store/reducers/pantries.reducer";
 
 import "./pantryform.css";
 
@@ -22,7 +22,7 @@ const PantryForm = ({ ingredientToEditId, isEditing, handleEditPantry }) => {
     )
   );
 
-  console.log("TO EDIT", ingredientToEdit, ingredientToEditId);
+  // console.log("TO EDIT", ingredientToEdit, ingredientToEditId);
 
   const [isDisabled, setIsDisabled] = useState(true);
   const [ingredientFields, setIngredientFields] = useState(
@@ -143,36 +143,43 @@ const PantryForm = ({ ingredientToEditId, isEditing, handleEditPantry }) => {
 
     let pantry_ingredients = {};
 
-    ingredientFields.forEach((ingredient, i) => {
-      // eslint-disable-next-line
-      for (const key in ingredient) {
+    if (isEditing) {
+      ingredientFields.forEach((ingredient, i) => {
         pantry_ingredients[`pantry_ingredients-${i}-ingredient_id`] =
-          ingredient.ingredient.value;
+          ingredientToEdit.ingredient.id;
         pantry_ingredients[`pantry_ingredients-${i}-measurement_id`] =
-          ingredient.measurement.value;
+          ingredientToEdit.measurement.id;
         pantry_ingredients[`pantry_ingredients-${i}-quantity`] = ingredient.qty;
         pantry_ingredients[`pantry_ingredients-${i}-user_id`] = user.id;
-      }
-    });
+      });
+    } else {
+      ingredientFields.forEach((ingredient, i) => {
+        // eslint-disable-next-line
+        for (const key in ingredient) {
+          pantry_ingredients[`pantry_ingredients-${i}-ingredient_id`] =
+            ingredient.ingredient.value;
+          pantry_ingredients[`pantry_ingredients-${i}-measurement_id`] =
+            ingredient.measurement.value;
+          pantry_ingredients[`pantry_ingredients-${i}-quantity`] =
+            ingredient.qty;
+          pantry_ingredients[`pantry_ingredients-${i}-user_id`] = user.id;
+        }
+      });
+    }
 
     const form = new FormData();
-
-    // if (isEditing) {
-    //   form.set("recipe_id", recipeToEdit);
-    // }
 
     for (const key in pantry_ingredients) {
       form.set(key, pantry_ingredients[key]);
     }
 
     const submitForm = () => {
-      dispatch(pantryActions.updateUserPantryItems(form));
-      //   if (isEditing) {
-      //     // dispatch(recipeActions.editRecipe(form));
-      //     handleEditRecipe();
-      //   } else {
-      //   dispatch(recipeActions.addNewRecipe(form));
-      //   }
+      if (isEditing) {
+        // dispatch(pantryActions.editIngredient(form));
+        handleEditPantry();
+      } else {
+        dispatch(pantryActions.updateUserPantryItems(form));
+      }
     };
 
     submitForm();

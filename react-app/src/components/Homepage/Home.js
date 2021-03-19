@@ -9,8 +9,8 @@ import HomeRecipe from "../RecipeComponents/HomeRecipe";
 import HomePantry from "../PantryComponents/HomePantry";
 import ShoppingList from "../ShoppingListComponents/ShoppingList";
 
-import * as pantryActions from "../../store/pantries";
-import * as cookingListActions from "../../store/cookingLists";
+import * as pantryActions from "../../store/reducers/pantries.reducer";
+import * as cookingListActions from "../../store/reducers/cookingLists.reducer";
 
 import "./home.css";
 

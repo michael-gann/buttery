@@ -1,13 +1,13 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 
-import ingredientsReducer from "./ingredients";
-import measurementsReducer from "./measurements";
-import recipesReducer from "./recipes";
-import usersReducer from "./users";
-import categoriesReducer from "./categories";
-import pantriesReducer from "./pantries";
-import cookingListsReducer from "./cookingLists";
+import ingredientsReducer from "./ingredients.reducer";
+import measurementsReducer from "./measurements.reducer";
+import recipesReducer from "./recipes.reducer";
+import usersReducer from "./users.reducer";
+import categoriesReducer from "./categories.reducer";
+import pantriesReducer from "./pantries.reducer";
+import cookingListsReducer from "./cookingLists.reducer";
 
 const rootReducer = combineReducers({
   ingredients: ingredientsReducer,

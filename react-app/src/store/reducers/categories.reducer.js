@@ -1,20 +1,11 @@
 import _ from "lodash";
 
-const GET_CATEGORIES_BEGIN = "GET_CATEGORIES_BEGIN";
-const GET_CATEGORIES_SUCCESS = "GET_CATEGORIES_SUCCESS";
-
-const getCategoriesBegin = () => {
-  return {
-    type: GET_CATEGORIES_BEGIN,
-  };
-};
-
-const getCategoriesSuccess = (categories) => {
-  return {
-    type: GET_CATEGORIES_SUCCESS,
-    payload: categories,
-  };
-};
+import {
+  GET_CATEGORIES_BEGIN as BEGIN,
+  GET_CATEGORIES_SUCCESS as SUCCESS,
+  getCategoriesBegin,
+  getCategoriesSuccess,
+} from "../actions/categories.actions";
 
 export const categories = () => async (dispatch) => {
   dispatch(getCategoriesBegin());
@@ -33,11 +24,11 @@ const categoriesReducer = (
 ) => {
   let newState;
   switch (action.type) {
-    case GET_CATEGORIES_BEGIN:
+    case BEGIN:
       newState = _.cloneDeep(state);
       newState.loading = true;
       return newState;
-    case GET_CATEGORIES_SUCCESS:
+    case SUCCESS:
       newState = _.cloneDeep(state);
       newState.loading = false;
       newState.categories = action.payload;
