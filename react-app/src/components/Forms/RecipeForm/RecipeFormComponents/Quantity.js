@@ -20,7 +20,6 @@ const Quantity = ({ value, handleUpdateIngredient, idx, setQuantityError }) => {
           value={parseFloat(value.qty)}
           type="number"
           step="0.01"
-          min="1"
           onChange={(e) => handleUpdateIngredient(idx, e, type)}
         ></input>
       </label>

@@ -15,6 +15,8 @@ const HomeRecipe = ({ isHomepage, setIsHomepage }) => {
 
   const recipeObjects = useSelector((state) => state.recipes.recipes);
 
+  const addNewCard = true;
+
   const recipeIdsCopy = _.cloneDeep(recipeObjects);
 
   const recipeIds = recipeIdsCopy
@@ -77,10 +79,27 @@ const HomeRecipe = ({ isHomepage, setIsHomepage }) => {
             );
           })}
         {!isHomepage ? (
-          <div className="add-recipe-container">
-            <button className="add-recipe-button" onClick={handleClick}>
-              <i className="fas fa-plus"></i> Add New Recipe
-            </button>
+          // <div className="add-recipe-container">
+          //   <button className="add-recipe-button" onClick={handleClick}>
+          //     <i className="fas fa-plus"></i> Add New Recipe
+          //   </button>
+          // </div>
+          // <RecipeCard addNewCard={addNewCard}></RecipeCard>
+          <div className="recipe-card" onClick={handleClick}>
+            <div className="recipecard-main-containers">
+              <a>
+                <span>
+                  <div className="home-recipe-title">
+                    <a>
+                      <i className="fas fa-plus"></i>New recipe
+                    </a>
+                  </div>
+                  <div className="home-recipe-content">
+                    Add a new recipe by clicking this card!
+                  </div>
+                </span>
+              </a>
+            </div>
           </div>
         ) : null}
       </div>

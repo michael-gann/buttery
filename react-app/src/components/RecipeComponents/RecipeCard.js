@@ -111,6 +111,7 @@ const RecipeCard = ({
   isHomepage,
   isRecipePage,
   handleShowSuccess,
+  addNewCard,
 }) => {
   const recipe = useSelector((state) =>
     state.recipes.recipes.find((recipe) => Object.keys(recipe)[0] === id)
