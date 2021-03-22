@@ -17,8 +17,10 @@ const Quantity = ({ value, handleUpdateIngredient, idx, setQuantityError }) => {
         Amount
         <input
           className="recipe-form-quantity"
-          value={parseInt(value.qty)}
+          value={parseFloat(value.qty)}
           type="number"
+          step="0.01"
+          min="1"
           onChange={(e) => handleUpdateIngredient(idx, e, type)}
         ></input>
       </label>

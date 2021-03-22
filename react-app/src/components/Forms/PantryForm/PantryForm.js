@@ -18,28 +18,34 @@ const PantryForm = ({ ingredientToEditId, isEditing, handleEditPantry }) => {
   const measurements = useSelector((state) => state.measurements.measurements);
   const ingredientToEdit = useSelector((state) =>
     state.pantries.pantries.find(
-      (ingredient) => ingredient.ingredient_id === ingredientToEditId
+      (ingredient) => parseInt(ingredient.id) === parseInt(ingredientToEditId)
     )
   );
-
-  // console.log("TO EDIT", ingredientToEdit, ingredientToEditId);
 
   const [isDisabled, setIsDisabled] = useState(true);
   const [ingredientFields, setIngredientFields] = useState(
     isEditing
       ? [
           {
-            qty: ingredientToEdit.quantity,
+            qty: ingredientToEdit ? ingredientToEdit.quantity : 0,
             measurement: {
-              value: ingredientToEdit.measurement.id,
-              label: `${ingredientToEdit.measurement.name}`,
+              value: ingredientToEdit ? ingredientToEdit.measurement.id : -1,
+              label: `${
+                ingredientToEdit ? ingredientToEdit.measurement.name : ""
+              }`,
             },
             ingredient: {
-              value: ingredientToEdit.ingredient.id,
-              label: `${ingredientToEdit.ingredient.name}`,
+              value: ingredientToEdit ? ingredientToEdit.ingredient.id : -1,
+              label: `${
+                ingredientToEdit ? ingredientToEdit.ingredient.name : ""
+              }`,
             },
-            measurementInput: `${ingredientToEdit.measurement.name}`,
-            ingredientInput: `${ingredientToEdit.ingredient.name}`,
+            measurementInput: `${
+              ingredientToEdit ? ingredientToEdit.measurement.name : ""
+            }`,
+            ingredientInput: `${
+              ingredientToEdit ? ingredientToEdit.ingredient.name : ""
+            }`,
           },
         ]
       : [
@@ -53,11 +59,13 @@ const PantryForm = ({ ingredientToEditId, isEditing, handleEditPantry }) => {
         ]
   );
 
+  console.log(ingredientToEdit);
+
   const handleUpdateIngredient = (idx, event, type, val, inputVal) => {
     let values = [...ingredientFields];
     switch (type.value) {
       case "quantity":
-        values[idx] = { ...values[idx], qty: parseInt(event.target.value) };
+        values[idx] = { ...values[idx], qty: parseFloat(event.target.value) };
         setIngredientFields(values);
         break;
       case "measurement":
@@ -175,7 +183,7 @@ const PantryForm = ({ ingredientToEditId, isEditing, handleEditPantry }) => {
 
     const submitForm = () => {
       if (isEditing) {
-        // dispatch(pantryActions.editIngredient(form));
+        dispatch(pantryActions.editUserPantryItem(form));
         handleEditPantry();
       } else {
         dispatch(pantryActions.updateUserPantryItems(form));
@@ -188,6 +196,7 @@ const PantryForm = ({ ingredientToEditId, isEditing, handleEditPantry }) => {
   };
 
   useEffect(() => {
+    console.log("TO EDIT", ingredientToEditId);
     checkIngredientFields(ingredientFields);
   }, [ingredientFields]);
 

@@ -82,7 +82,7 @@ def put_pantry():
     return {'errors': ['Internal Server Error']}, 500
 
 
-@pantry_routes.route("edit-ingredient", methods=["PUT"])
+@pantry_routes.route("edit-pantry-ingredient", methods=["PUT"])
 def edit_pantry():
     form = PantryItemsForm()
     form['csrf_token'].data = request.cookies['csrf_token']

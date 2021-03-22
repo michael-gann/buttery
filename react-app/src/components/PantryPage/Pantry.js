@@ -19,6 +19,8 @@ const Pantry = () => {
 
   const [ingredientToEditId, setIngredientToEditId] = useState(-1);
 
+  console.log("ID", ingredientToEditId);
+
   const isPantry = true;
   const [isEditing, setIsEditing] = useState(false);
 
