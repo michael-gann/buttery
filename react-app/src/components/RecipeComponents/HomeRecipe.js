@@ -32,6 +32,7 @@ const HomeRecipe = ({ isHomepage, setIsHomepage }) => {
 
   const handleClick = (e) => {
     e.preventDefault();
+    window.scrollTo(0, 0);
     return history.push(`/new-recipe`);
   };
 
@@ -87,15 +88,15 @@ const HomeRecipe = ({ isHomepage, setIsHomepage }) => {
           // <RecipeCard addNewCard={addNewCard}></RecipeCard>
           <div className="recipe-card" onClick={handleClick}>
             <div className="recipecard-main-containers">
-              <a>
-                <span>
+              <a className="new-card-anchor">
+                <span className="new-card-container">
                   <div className="home-recipe-title">
                     <a>
                       <i className="fas fa-plus"></i>New recipe
                     </a>
                   </div>
-                  <div className="home-recipe-content">
-                    Add a new recipe by clicking this card!
+                  <div className="home-recipe-content new-card-content">
+                    Add a new recipe by clicking this card
                   </div>
                 </span>
               </a>

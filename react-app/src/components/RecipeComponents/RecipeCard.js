@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import _ from "lodash";
 
@@ -111,8 +111,8 @@ const RecipeCard = ({
   isHomepage,
   isRecipePage,
   handleShowSuccess,
-  addNewCard,
 }) => {
+  const history = useHistory();
   const recipe = useSelector((state) =>
     state.recipes.recipes.find((recipe) => Object.keys(recipe)[0] === id)
   );
@@ -197,6 +197,12 @@ const RecipeCard = ({
   const classes4 = useStyles4();
   const classes5 = useStyles5();
   const classes6 = useStyles6();
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    window.scrollTo(0, 0);
+    return history.push(`/recipes/${id}`);
+  };
 
   const addToShop = (e) => {
     e.preventDefault();
@@ -302,6 +308,7 @@ const RecipeCard = ({
           ) : (
             <div
               className="recipecard-main-containers"
+              onClick={handleClick}
               onMouseEnter={handleHover}
               onMouseLeave={handleHoverOff}
             >

@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 
 import LogoutButton from "../auth/LogoutButton";
 
@@ -16,12 +16,19 @@ const SlideInDown = styled.div`
 `;
 
 const NavBar = () => {
+  const history = useHistory();
   const isAuthenticated = useSelector((state) => state.users.authenticated);
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    window.scrollTo(0, 0);
+  };
+
   return (
     <nav>
       <SlideInDown>
         <div className="navbar-main-container">
-          <div className="logo">
+          <div className="logo" onClick={handleClick}>
             <NavLink to="/" exact={true} activeClassName="active">
               <img
                 className="logo"
@@ -32,24 +39,24 @@ const NavBar = () => {
           </div>
           {isAuthenticated ? (
             <div className="links">
-              <div className="nav-home">
+              <div className="nav-home" onClick={handleClick}>
                 <NavLink to="/home" exact={true} activeClassName="active">
                   Home
                 </NavLink>
               </div>
-              <div className="nav-recipes">
+              <div className="nav-recipes" onClick={handleClick}>
                 <NavLink to="/recipes" exact={true} activeClassName="active">
                   Recipes
                 </NavLink>
               </div>
               <div>
-                <div className="nav-pantry">
+                <div className="nav-pantry" onClick={handleClick}>
                   <NavLink to="/pantry" exact={true} activeClassName="active">
                     Pantry
                   </NavLink>
                 </div>
               </div>
-              <div className="nav-logout-button">
+              <div className="nav-logout-button" onClick={handleClick}>
                 <LogoutButton></LogoutButton>
               </div>
             </div>
