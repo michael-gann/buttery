@@ -24,28 +24,35 @@ const Category = ({
 
   switch (category.name) {
     case "Dry & Baking":
-      icon = icon = <i className="fas fa-cookie"></i>;
+      icon = icon = <i alt="cookie icon" className="fas fa-cookie"></i>;
       break;
     case "Produce":
-      icon = icon = <i className="fas fa-apple-alt"></i>;
+      icon = icon = <i alt="apple icon" className="fas fa-apple-alt"></i>;
       break;
     case "Bread":
-      icon = icon = <i className="fas fa-bread-slice"></i>;
+      icon = icon = <i alt="bread icon" className="fas fa-bread-slice"></i>;
       break;
     case "Dairy":
-      icon = icon = <i className="fas fa-cheese"></i>;
+      icon = icon = <i alt="cheese icon" className="fas fa-cheese"></i>;
       break;
     case "Meat & Seafood":
-      icon = icon = <i className="fas fa-bacon"></i>;
+      icon = icon = <i alt="bacon icon" className="fas fa-bacon"></i>;
       break;
     case "Frozen":
-      icon = icon = <i className="fas fa-snowflake"></i>;
+      icon = icon = <i alt="snowflake icon" className="fas fa-snowflake"></i>;
       break;
     case "Spice":
-      icon = icon = <i className="fas fa-mortar-pestle"></i>;
+      icon = icon = (
+        <i alt="mortal and pestle icon" className="fas fa-mortar-pestle"></i>
+      );
       break;
     case "Beverage":
-      icon = icon = <i className="fas fa-wine-glass-alt"></i>;
+      icon = icon = (
+        <i
+          alt="wine glass with liquid inside icon"
+          className="fas fa-wine-glass-alt"
+        ></i>
+      );
       break;
     default:
       icon = <div>Ooops...</div>;

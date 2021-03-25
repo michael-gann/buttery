@@ -151,3 +151,7 @@
 
 .pantry-ingredient-remove-button:active {
     transform: translate(2px, 1px);}
+
+    .pantry-form-container > .pantry-form-holder > .pantry-form > .edit-pantry-header {
+    margin-bottom: 10%;
+}

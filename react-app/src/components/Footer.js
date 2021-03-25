@@ -30,7 +30,7 @@ const Footer = () => {
               href="https://github.com/michael-gann"
               target="_blank"
             >
-              <i class="fab fa-github-alt"></i>
+              <i className="fab fa-github-alt"></i>
             </a>
           </div>
         </div>

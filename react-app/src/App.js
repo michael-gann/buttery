@@ -31,6 +31,18 @@ function App() {
     setLoaded(true);
   }, [dispatch, sessionUser]);
 
+  const [ingredientToEditId, setIngredientToEditId] = useState(-1);
+
+  const [isEditing, setIsEditing] = useState(false);
+
+  const handleEditPantry = (e) => {
+    if (isEditing) {
+      setIsEditing(true);
+    } else {
+      setIsEditing(!isEditing);
+    }
+  };
+
   if (!loaded) {
     return null;
   }
@@ -58,7 +70,13 @@ function App() {
           <Footer />
         </ProtectedRoute>
         <ProtectedRoute path="/pantry" exact={true}>
-          <Pantry></Pantry>
+          <Pantry
+            isEditing={isEditing}
+            setIsEditing={setIsEditing}
+            ingredientToEditId={ingredientToEditId}
+            setIngredientToEditId={setIngredientToEditId}
+            handleEditPantry={handleEditPantry}
+          ></Pantry>
           <Footer />
         </ProtectedRoute>
         <ProtectedRoute path="/new-recipe" exact={true}>
@@ -68,6 +86,13 @@ function App() {
         <ProtectedRoute path="/add-to-pantry" exact={true}>
           <PantryForm />
           <Footer />
+        </ProtectedRoute>
+        <ProtectedRoute path="/pantry/:id" exact={true}>
+          <PantryForm
+            isEditing={isEditing}
+            ingredientToEditId={ingredientToEditId}
+            handleEditPantry={handleEditPantry}
+          ></PantryForm>
         </ProtectedRoute>
         <ProtectedRoute path="/recipes" exact={true}>
           <Recipes></Recipes>

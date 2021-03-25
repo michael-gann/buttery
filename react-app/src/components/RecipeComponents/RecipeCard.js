@@ -176,8 +176,30 @@ const RecipeCard = ({
     (x, y) => x.ingredient_id === y.ingredient_id
   );
 
-  console.log("real pantry", realPantryResult);
-  console.log("fake pantry", result);
+  // console.log("real pantry", realPantryResult);
+  // console.log("fake pantry", result);
+  // console.log(
+  //   `Fake Pantry compare: Recipe Ingreds = ${recipeIngredients}, Prented Pantry = ${pretendPantry(
+  //     allRecipeIngredients,
+  //     shoppingList,
+  //     pantryIngredients
+  //   )}`
+  // );
+
+  console.log("Fake Pantry Compare: \n");
+  console.log("Recipe Ingreds = ", recipeIngredients, "\n");
+  console.log(
+    "Pretend Pantry = ",
+    pretendPantry(allRecipeIngredients, shoppingList, pantryIngredients),
+    "\n"
+  );
+  console.log("Recipe Ingreds for pantry = ", recipeIngredientsForPantry, "\n");
+  console.log("Real Pantry = ", pantryIngredients);
+  // console.log(
+  //   "Real Pantry compare",
+  //   recipeIngredientsForPantry,
+  //   pantryIngredients
+  // );
 
   useEffect(() => {
     setToShop(alreadyShopping ? true : false);
@@ -201,7 +223,7 @@ const RecipeCard = ({
   const handleClick = (e) => {
     e.preventDefault();
     window.scrollTo(0, 0);
-    return history.push(`/recipes/${id}`);
+    // return history.push(`/recipes/${id}`);
   };
 
   const addToShop = (e) => {

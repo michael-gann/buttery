@@ -52,6 +52,7 @@
     /* align-items: center; */
     min-height: 100%;
     margin-bottom: 20px;
+    width: 100%;
 }
 
 
@@ -269,14 +270,16 @@
 
 .new-card-container {
     display: flex;
-    width: 400px;
+    width: 100%;
     flex-direction: column;
     align-items: center;
+
 }
 
 .recipe-page-recipecard-container > .recipe-card > .recipecard-main-containers .new-card-anchor {
    justify-content: center;
    min-height: 0px;
+   width: 80%;
 }
 
 .new-card-content {
@@ -287,4 +290,9 @@
 
 .new-card-anchor .new-card-container .home-recipe-title a .fa-plus {
     font-size: 1.5rem;
+}
+
+.add-new-recipecard-containers {
+    display: flex;
+    align-items: center;
 }

@@ -14,15 +14,19 @@ const PantryIngredient = ({
   handleUpdateIngredient,
   quantityError,
   setQuantityError,
+  isEditing,
 }) => {
   return (
     <>
-      <div className="add-new-pantry-ingredient-button">
-        <button type="button" onClick={() => handleIngredientAdd()}>
-          <i className="fas fa-plus"></i>
-          Add new ingredient
-        </button>
-      </div>
+      {isEditing ? null : (
+        <div className="add-new-pantry-ingredient-button">
+          <button type="button" onClick={() => handleIngredientAdd()}>
+            <i className="fas fa-plus"></i>
+            Add new ingredient
+          </button>
+        </div>
+      )}
+
       {ingredientFields.map((field, idx) => {
         return (
           <div
@@ -47,13 +51,15 @@ const PantryIngredient = ({
               ingredients={ingredients}
               handleUpdateIngredient={handleUpdateIngredient}
             />
-            <button
-              className="pantry-ingredient-remove-button"
-              type="button"
-              onClick={() => handleIngredientRemove(idx)}
-            >
-              <ImMinus />
-            </button>
+            {isEditing ? null : (
+              <button
+                className="pantry-ingredient-remove-button"
+                type="button"
+                onClick={() => handleIngredientRemove(idx)}
+              >
+                <ImMinus />
+              </button>
+            )}
           </div>
         );
       })}

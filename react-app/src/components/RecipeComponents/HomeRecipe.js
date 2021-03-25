@@ -15,8 +15,6 @@ const HomeRecipe = ({ isHomepage, setIsHomepage }) => {
 
   const recipeObjects = useSelector((state) => state.recipes.recipes);
 
-  const addNewCard = true;
-
   const recipeIdsCopy = _.cloneDeep(recipeObjects);
 
   const recipeIds = recipeIdsCopy
@@ -87,7 +85,7 @@ const HomeRecipe = ({ isHomepage, setIsHomepage }) => {
           // </div>
           // <RecipeCard addNewCard={addNewCard}></RecipeCard>
           <div className="recipe-card" onClick={handleClick}>
-            <div className="recipecard-main-containers">
+            <div className="recipecard-main-containers add-new-recipecard-containers">
               <a className="new-card-anchor">
                 <span className="new-card-container">
                   <div className="home-recipe-title">

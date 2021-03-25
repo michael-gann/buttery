@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { MdEdit } from "react-icons/md";
+import { useHistory } from "react-router-dom";
 
 const isFloat = (n) => {
   if (typeof n == "number" && !isNaN(n)) {
@@ -18,35 +19,75 @@ const PantryIngredients = ({
   setIngredientToEditId,
   handleEditPantry,
 }) => {
+  const history = useHistory();
   const [isQFloat, setIsQFloat] = useState(false);
+  const [isHovering, setIsHovering] = useState(false);
+
+  const handleHover = (e) => {
+    setIsHovering(true);
+  };
+
+  const handleHoverOff = (e) => {
+    setIsHovering(false);
+  };
+
+  // const handleClick = (e) => {
+  //   e.preventDefault();
+  //   setIngredientToEditId(ingredient.id);
+  // };
 
   useEffect(() => {
     setIsQFloat(isFloat(ingredient.quantity));
   }, [ingredient.quantity]);
 
-  console.log(setIngredientToEditId);
+  // console.log(setIngredientToEditId);
 
   return (
     <>
-      <div className="pantry-ingredient-quantity">
-        {isQFloat ? ingredient.quantity.toFixed(2) : ingredient.quantity}
-      </div>
-      <div className="pantry-ingredient-measurement">
-        {ingredient.measurement.name}
-      </div>
-      <div className="pantry-ingredient-ingredient">
-        {ingredient.ingredient.name}
-      </div>
-      <div className="edit-pantry-item-container">
-        <button
-          className="edit-pantry-item"
-          onClick={() => {
-            setIngredientToEditId(ingredient.id);
-            handleEditPantry();
-          }}
-        >
-          <MdEdit></MdEdit> Edit
-        </button>
+      <div
+        className="inner-pantry-ingredient-container"
+        onMouseEnter={handleHover}
+        onMouseLeave={handleHoverOff}
+        onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          setIngredientToEditId(ingredient.id);
+          handleEditPantry();
+          return history.push(`/pantry/${ingredient.id}`);
+        }}
+      >
+        <div className="pantry-ingredient-quantity">
+          {isQFloat ? ingredient.quantity.toFixed(2) : ingredient.quantity}
+        </div>
+        <div className="pantry-ingredient-measurement">
+          {ingredient.measurement.name}
+        </div>
+        <div className="pantry-ingredient-ingredient">
+          {ingredient.ingredient.name}
+        </div>
+        <div className="edit-pantry-item-container">
+          {isHovering ? (
+            <button
+              className="edit-pantry-item pantry-hovering"
+              onClick={() => {
+                setIngredientToEditId(ingredient.id);
+                handleEditPantry();
+              }}
+            >
+              <MdEdit></MdEdit> Edit
+            </button>
+          ) : (
+            <button
+              className="edit-pantry-item"
+              onClick={() => {
+                setIngredientToEditId(ingredient.id);
+                handleEditPantry();
+              }}
+            >
+              <MdEdit></MdEdit> Edit
+            </button>
+          )}
+        </div>
       </div>
     </>
   );

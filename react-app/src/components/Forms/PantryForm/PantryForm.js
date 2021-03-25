@@ -204,13 +204,20 @@ const PantryForm = ({ ingredientToEditId, isEditing, handleEditPantry }) => {
     <div className="pantry-form-container">
       <div className="pantry-form-holder">
         <div className="pantry-form">
-          <div className="pantry-form-header">Add to pantry</div>
+          {isEditing ? (
+            <div className="pantry-form-header edit-pantry-header">
+              Edit pantry ingredient
+            </div>
+          ) : (
+            <div className="pantry-form-header">Add to pantry</div>
+          )}
 
           <PantryIngredient
             // setQuantityError={setQuantityError}
             // quantityError={quantityError}
             // setIngredientError={setIngredientError}
             // setMeasurementError={setMeasurementError}
+            isEditing={isEditing}
             measurements={measurements}
             ingredients={ingredients}
             handleIngredientAdd={handleIngredientAdd}

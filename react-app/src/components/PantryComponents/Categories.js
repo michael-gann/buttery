@@ -1,5 +1,7 @@
 import React from "react";
 
+import { useHistory } from "react-router-dom";
+
 import Category from "./Category";
 
 const Categories = ({
@@ -9,6 +11,7 @@ const Categories = ({
   setIngredientToEditId,
   handleEditPantry,
 }) => {
+  const history = useHistory();
   return (
     <>
       {isPantry ? (
@@ -17,7 +20,15 @@ const Categories = ({
             {categories &&
               categories.map((c) => {
                 return (
-                  <div className="pantry-pantry-category-containers" key={c}>
+                  <div
+                    className="pantry-pantry-category-containers"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      window.scrollTo(0, 0);
+                      history.push("/add-to-pantry");
+                    }}
+                    key={c}
+                  >
                     <Category
                       setIngredientToEditId={setIngredientToEditId}
                       handleEditPantry={handleEditPantry}
