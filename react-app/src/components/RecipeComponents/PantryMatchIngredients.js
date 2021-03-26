@@ -29,10 +29,15 @@ const PantryMatchIngredients = ({ ingredients }) => {
     }
   }
 
+  let count = 0;
+
   for (const key in ingredientsInPantry) {
     if (pantryIngredientByIngredientId[key] === undefined) {
       ingredientsInPantry[key].quantity = 0;
       ingredientsInPantry[key].doNotHave = true;
+      ingredientsInPantry[key].willRunOut = true;
+      ingredientsInPantry[key].notEnough = true;
+      ingredientsInPantry[key].haveEnough = false;
     } else {
       ingredientsInPantry[key].quantity =
         pantryIngredientByIngredientId[key].quantity;
@@ -40,20 +45,72 @@ const PantryMatchIngredients = ({ ingredients }) => {
         pantryIngredientByIngredientId[key].quantity -
           ingredientsByIngredientId[key].quantity <=
         0;
+      ingredientsInPantry[key].haveEnough =
+        pantryIngredientByIngredientId[key].quantity -
+          ingredientsByIngredientId[key].quantity ===
+        0;
       ingredientsInPantry[key].notEnough =
         pantryIngredientByIngredientId[key].quantity -
           ingredientsByIngredientId[key].quantity <
         0;
+      ingredientsInPantry[key].doNotHave = false;
     }
+    if (
+      !(
+        ingredientsInPantry[key].notEnough ||
+        ingredientsInPantry[key].willRunOut ||
+        ingredientsInPantry[key].doNotHave
+      )
+    ) {
+    } else if (
+      !(
+        ingredientsInPantry[key].notEnough &&
+        ingredientsInPantry[key].willRunOut &&
+        ingredientsInPantry[key].doNotHave
+      )
+    ) {
+      count++;
+    } else {
+      count++;
+    }
+
+    if (ingredientsInPantry[key].haveEnough) {
+      count--;
+    }
+
+    // console.log(
+    //   "notenough",
+    //   ingredientsInPantry[key].notEnough,
+    //   "run out",
+    //   ingredientsInPantry[key].willRunOut,
+    //   "exactly 0",
+    //   ingredientsInPantry[key].haveEnough,
+    //   "don'thave",
+    //   ingredientsInPantry[key].doNotHave
+    // );
+    console.log("COUNT", count);
   }
 
-  console.log(ingredientsInPantry);
+  // console.log(ingredientsInPantry);
 
   const ingredientsInPantryArray = Object.values(ingredientsInPantry).sort(
     (a, b) => a.id - b.id
   );
 
-  console.log(ingredientsInPantryArray);
+  for (const key in ingredientsInPantry) {
+    if (pantryIngredientByIngredientId[key]) {
+      if (
+        pantryIngredientByIngredientId[key].quantity -
+          ingredientsByIngredientId[key] <=
+          0 ||
+        pantryIngredientByIngredientId[key].quantity -
+          ingredientsByIngredientId[key] <
+          0 ||
+        ingredientsInPantry[key].quantity === 0
+      ) {
+      }
+    }
+  }
 
   return (
     <>

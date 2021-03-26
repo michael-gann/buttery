@@ -164,17 +164,50 @@ const RecipeCard = ({
   const [toShop, setToShop] = useState(alreadyShopping ? true : false);
   const [isHovering, setIsHovering] = useState(false);
 
-  const result = _.differenceWith(
+  const recipeDistanceFinder = (recipeIngreds, realPantry) => {
+    const ingredientCounter = [];
+    for (const i of recipeIngreds) {
+      for (const pi of realPantry) {
+        const pantryIngred = _.cloneDeep(pi);
+        const recipeIngred = _.cloneDeep(i);
+        // console.log("PANTRY INGRED", pantryIngred);
+        if (
+          recipeIngred.ingredient_id === pantryIngred.ingredient_id &&
+          pantryIngred.quantity !== 0 &&
+          pantryIngred.quantity - recipeIngred.quantity < 0
+        ) {
+          console.log(recipe);
+          console.log(pantryIngred, recipeIngred);
+          console.log(pantryIngred.quantity - recipeIngred.quantity);
+          ingredientCounter.push(recipeIngred);
+        }
+      }
+    }
+
+    return ingredientCounter;
+  };
+
+  // const result = _.differenceWith(
+  //   recipeIngredients,
+  //   pretendPantry(allRecipeIngredients, shoppingList, pantryIngredients),
+  //   (x, y) => x.ingredient_id === y.ingredient_id && y.quantity >= 0
+  // );
+
+  const result = recipeDistanceFinder(
     recipeIngredients,
-    pretendPantry(allRecipeIngredients, shoppingList, pantryIngredients),
-    (x, y) => x.ingredient_id === y.ingredient_id && y.quantity >= 0
+    pretendPantry(allRecipeIngredients, shoppingList, pantryIngredients)
   );
 
-  const realPantryResult = _.differenceWith(
+  const realPantryResult = recipeDistanceFinder(
     recipeIngredientsForPantry,
-    pantryIngredients,
-    (x, y) => x.ingredient_id === y.ingredient_id
+    pantryIngredients
   );
+
+  // const realPantryResult = _.differenceWith(
+  //   recipeIngredientsForPantry,
+  //   pantryIngredients,
+  //   (x, y) => x.ingredient_id === y.ingredient_id
+  // );
 
   // console.log("real pantry", realPantryResult);
   // console.log("fake pantry", result);
@@ -200,6 +233,8 @@ const RecipeCard = ({
   //   recipeIngredientsForPantry,
   //   pantryIngredients
   // );
+
+  // console.log("TEST", testFunc(allRecipeIngredients, pantryIngredients));
 
   useEffect(() => {
     setToShop(alreadyShopping ? true : false);
