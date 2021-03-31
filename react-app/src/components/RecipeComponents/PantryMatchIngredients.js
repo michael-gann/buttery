@@ -78,18 +78,6 @@ const PantryMatchIngredients = ({ ingredients }) => {
       count--;
     }
 
-    // console.log(
-    //   "notenough",
-    //   ingredientsInPantry[key].notEnough,
-    //   "run out",
-    //   ingredientsInPantry[key].willRunOut,
-    //   "exactly 0",
-    //   ingredientsInPantry[key].haveEnough,
-    //   "don'thave",
-    //   ingredientsInPantry[key].doNotHave
-    // );
-    console.log("COUNT", count);
-  }
 
   // console.log(ingredientsInPantry);
 
