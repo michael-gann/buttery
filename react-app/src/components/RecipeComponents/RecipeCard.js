@@ -228,6 +228,8 @@ const RecipeCard = ({
   );
   console.log("Recipe Ingreds for pantry = ", recipeIngredientsForPantry, "\n");
   console.log("Real Pantry = ", pantryIngredients);
+  console.log("SHOPPING LIST", shoppingList);
+  console.log("realPantryResult", realPantryResult, "result", result);
   // console.log(
   //   "Real Pantry compare",
   //   recipeIngredientsForPantry,

@@ -77,7 +77,7 @@ const PantryMatchIngredients = ({ ingredients }) => {
     if (ingredientsInPantry[key].haveEnough) {
       count--;
     }
-
+  }
 
   // console.log(ingredientsInPantry);
 
